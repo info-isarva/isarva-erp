@@ -1,0 +1,9 @@
+# ISARVA ERP Reverse Proxy to Vercel Next.js
+RewriteEngine On
+SSLProxyEngine On
+SSLProxyCheckPeerCN Off
+SSLProxyCheckPeerName Off
+
+# Forward all requests under /isarva-erp/ to Vercel
+RewriteRule ^(.*)$ https://isarva-erp.vercel.app/isarva-erp/$1 [P,L]
+
