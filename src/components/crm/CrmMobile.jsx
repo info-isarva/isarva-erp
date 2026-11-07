@@ -30,42 +30,6 @@ export default function CrmMobile({ onOpenLightbox }) {
                 Empower field reps to log client visits, update deal milestones, access customer contact history, and receive instant push notifications for new leads anywhere.
               </p>
 
-              {/* App Store Download Badges */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 sm:gap-4">
-                {/* Google Play Store Badge */}
-                <div className="inline-flex min-h-[56px] items-center gap-3.5 rounded-2xl border border-gray-200 bg-white px-5 py-2.5 shadow-2xs cursor-default hover:border-gray-300 transition-colors">
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Play_Arrow_logo.svg"
-                    alt="Google Play"
-                    className="w-6 h-6 shrink-0"
-                  />
-                  <div className="flex flex-col items-start leading-none">
-                    <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider font-heading">
-                      GET IT ON
-                    </span>
-                    <span className="text-sm sm:text-base font-extrabold text-gray-900 mt-1 font-heading">
-                      Google Play
-                    </span>
-                  </div>
-                </div>
-
-                {/* Apple App Store Badge */}
-                <div className="inline-flex min-h-[56px] items-center gap-3.5 rounded-2xl border border-gray-200 bg-white px-5 py-2.5 shadow-2xs cursor-default hover:border-gray-300 transition-colors">
-                  <img
-                    src="https://www.vectorlogo.zone/logos/apple/apple-icon.svg"
-                    alt="App Store"
-                    className="w-6 h-6 object-contain shrink-0"
-                  />
-                  <div className="flex flex-col items-start leading-none">
-                    <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider font-heading">
-                      Download on the
-                    </span>
-                    <span className="text-sm sm:text-base font-extrabold text-gray-900 mt-1 font-heading">
-                      App Store
-                    </span>
-                  </div>
-                </div>
-              </div>
             </div>
 
             {/* Right Graphic Mockup */}

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   X,
   CheckCircle2,
@@ -16,68 +16,222 @@ import {
   ShieldCheck,
   Lock,
   Headphones,
-  ArrowRight
+  ArrowRight,
+  Search,
+  ChevronDown,
+  Check
 } from 'lucide-react';
 
-export default function LeadModal({ isOpen, onClose, modalType = 'demo', selectedProduct, countryCode = 'IN' }) {
-  const [formData, setFormData] = useState({
+/** Map site product labels to CRM category ids when names differ. */
+const PRODUCT_CATEGORY_ALIASES = {
+  'billsoft application': 77,
+  'billsoft accounting': 77,
+  'billsoft accounting software': 77,
+  'restaurant pos': 73,
+  'hrms & payroll': 1,
+  'crm & sales': 2
+};
+
+function findCategoryMatch(categories, selectedProduct) {
+  if (!Array.isArray(categories) || categories.length === 0) return null;
+  if (!selectedProduct) return null;
+
+  const needle = String(selectedProduct).trim().toLowerCase();
+  const exact = categories.find((c) => String(c.category_name || '').toLowerCase() === needle);
+  if (exact) return exact;
+
+  const aliasId = PRODUCT_CATEGORY_ALIASES[needle];
+  if (aliasId) {
+    const byAlias = categories.find((c) => Number(c.id) === aliasId);
+    if (byAlias) return byAlias;
+  }
+
+  return (
+    categories.find((c) => {
+      const name = String(c.category_name || '').toLowerCase();
+      return name.includes(needle) || needle.includes(name);
+    }) || null
+  );
+}
+
+function emptyForm(match) {
+  return {
     name: '',
     email: '',
     phone: '',
     company: '',
-    product: selectedProduct || 'All-in-One ERP Platform',
+    product: match?.category_name || '',
+    categoryId: match?.id ? String(match.id) : '',
     message: ''
-  });
+  };
+}
+
+/** Accepts +country codes and common separators; requires 10–15 digits. */
+function isValidPhoneNumber(value) {
+  const raw = String(value || '').trim();
+  if (!raw) return false;
+  if (!/^[+\d][\d\s\-().]*$/.test(raw)) return false;
+
+  const digits = raw.replace(/\D/g, '');
+  if (digits.length < 10 || digits.length > 15) return false;
+
+  // Reject obviously fake / repeated numbers like 0000000000
+  if (/^(\d)\1+$/.test(digits)) return false;
+
+  return true;
+}
+
+function getPhoneValidationError(value) {
+  const raw = String(value || '').trim();
+  if (!raw) return 'Phone number is required.';
+  if (/[a-zA-Z]/.test(raw)) return 'Please enter a valid phone number (digits only).';
+  if (!isValidPhoneNumber(raw)) {
+    return 'Enter a valid phone number with 10–15 digits (e.g. +91 98765 43210).';
+  }
+  return '';
+}
+
+export default function LeadModal({ isOpen, onClose, modalType = 'demo', selectedProduct, countryCode = 'IN' }) {
+  const [formData, setFormData] = useState(emptyForm(null));
+  const [categories, setCategories] = useState([]);
+  const [categoriesLoading, setCategoriesLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
+  const [phoneError, setPhoneError] = useState('');
+  const [productMenuOpen, setProductMenuOpen] = useState(false);
+  const [productSearch, setProductSearch] = useState('');
+  const productDropdownRef = useRef(null);
+  const productSearchRef = useRef(null);
 
-  // Reset form fields to completely blank whenever popup modal opens
   useEffect(() => {
-    if (isOpen) {
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        product: selectedProduct || 'All-in-One ERP Platform',
-        message: ''
-      });
-      setIsSubmitted(false);
-      setErrorMsg('');
-      if (typeof window !== 'undefined') {
-        try {
-          localStorage.removeItem('isarva_saved_lead_data');
-        } catch (e) { }
+    let cancelled = false;
+
+    async function loadCategories() {
+      setCategoriesLoading(true);
+      try {
+        const res = await fetch('/api/product-categories?scope=erp');
+        const data = await res.json().catch(() => null);
+        if (!cancelled && Array.isArray(data?.categories)) {
+          setCategories(data.categories);
+        }
+      } catch (err) {
+        console.error('Failed to load product categories:', err);
+      } finally {
+        if (!cancelled) setCategoriesLoading(false);
       }
     }
-  }, [isOpen, selectedProduct]);
+
+    loadCategories();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // Reset form fields whenever popup modal opens / categories resolve
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const match = findCategoryMatch(categories, selectedProduct);
+    setFormData(emptyForm(match));
+    setIsSubmitted(false);
+    setErrorMsg('');
+    setPhoneError('');
+    setProductMenuOpen(false);
+    setProductSearch('');
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.removeItem('isarva_saved_lead_data');
+      } catch (e) { }
+    }
+  }, [isOpen, selectedProduct, categories]);
+
+  useEffect(() => {
+    if (!productMenuOpen) return;
+
+    const handleOutsideClick = (event) => {
+      if (productDropdownRef.current && !productDropdownRef.current.contains(event.target)) {
+        setProductMenuOpen(false);
+        setProductSearch('');
+      }
+    };
+
+    document.addEventListener('mousedown', handleOutsideClick);
+    const focusTimer = window.setTimeout(() => productSearchRef.current?.focus(), 0);
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+      window.clearTimeout(focusTimer);
+    };
+  }, [productMenuOpen]);
 
   if (!isOpen) return null;
 
+  const selectedCategory = categories.find((c) => String(c.id) === String(formData.categoryId));
+  const searchNeedle = productSearch.trim().toLowerCase();
+  const filteredCategories = searchNeedle
+    ? categories.filter((c) => String(c.category_name || '').toLowerCase().includes(searchNeedle))
+    : categories;
+
   const handleClose = () => {
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      company: '',
-      product: selectedProduct || 'All-in-One ERP Platform',
-      message: ''
-    });
+    const match = findCategoryMatch(categories, selectedProduct);
+    setFormData(emptyForm(match));
     setIsSubmitted(false);
     setErrorMsg('');
+    setPhoneError('');
+    setProductMenuOpen(false);
+    setProductSearch('');
     onClose();
+  };
+
+  const handlePhoneChange = (e) => {
+    const phone = e.target.value;
+    setFormData({ ...formData, phone });
+    if (phoneError) setPhoneError(getPhoneValidationError(phone));
+  };
+
+  const handlePhoneBlur = () => {
+    setPhoneError(getPhoneValidationError(formData.phone));
+  };
+
+  const selectCategory = (category) => {
+    setFormData({
+      ...formData,
+      categoryId: category ? String(category.id) : '',
+      product: category?.category_name || ''
+    });
+    setProductMenuOpen(false);
+    setProductSearch('');
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const nextPhoneError = getPhoneValidationError(formData.phone);
+    if (nextPhoneError) {
+      setPhoneError(nextPhoneError);
+      setErrorMsg(nextPhoneError);
+      return;
+    }
+
+    if (!formData.categoryId) {
+      setErrorMsg('Please select a product you are interested in.');
+      return;
+    }
+
     setLoading(true);
     setErrorMsg('');
+    setPhoneError('');
     try {
       const res = await fetch('/api/inquiries', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, inquiryType: modalType, country: countryCode })
+        body: JSON.stringify({
+          ...formData,
+          phone: formData.phone.trim(),
+          categoryId: Number(formData.categoryId),
+          inquiryType: modalType,
+          country: countryCode
+        })
       });
 
       const data = await res.json().catch(() => null);
@@ -122,7 +276,7 @@ export default function LeadModal({ isOpen, onClose, modalType = 'demo', selecte
         {!isSubmitted ? (
           <>
             {/* Left Column (Desktop / Tablet): Value Proposition & Guarantee */}
-            <div className="hidden md:flex md:w-[41%] lg:w-[37%] xl:w-[36%] flex-col justify-between p-5 md:p-6 lg:p-8 xl:p-9 relative overflow-hidden bg-[#eaf8f1] border-b md:border-b-0 md:border-r border-emerald-100/60">
+            <div className="hidden md:flex md:w-[41%] lg:w-[37%] xl:w-[36%] flex-col justify-between p-5 md:p-6 lg:p-8 xl:p-9 relative overflow-hidden bg-[#eaf8f1] border-b md:border-b-0 md:border-r border-emerald-100/60 md:rounded-l-2xl">
               {/* Background Image from Isarva Live */}
               <div className="absolute inset-0 pointer-events-none overflow-hidden select-none z-0">
                 <img
@@ -223,7 +377,7 @@ export default function LeadModal({ isOpen, onClose, modalType = 'demo', selecte
             </div>
 
             {/* Right Column: Form Container */}
-            <div className="w-full md:w-[59%] lg:w-[63%] xl:w-[64%] p-5 sm:p-6 lg:p-8 xl:p-9 flex flex-col justify-between bg-[#eaf8f1] md:bg-white relative overflow-hidden">
+            <div className="w-full md:w-[59%] lg:w-[63%] xl:w-[64%] p-5 sm:p-6 lg:p-8 xl:p-9 flex flex-col justify-between bg-[#eaf8f1] md:bg-white relative overflow-hidden md:rounded-r-2xl rounded-xl">
               {/* Background Image on Mobile */}
               <div className="absolute inset-0 pointer-events-none overflow-hidden select-none z-0 md:hidden opacity-95">
                 <img
@@ -233,7 +387,7 @@ export default function LeadModal({ isOpen, onClose, modalType = 'demo', selecte
                 />
               </div>
 
-              <div className="relative z-10">
+              <div className={`relative ${productMenuOpen ? 'z-30' : 'z-10'}`}>
                 <div className="mb-5 pr-8">
                   <div className="text-2xl sm:text-[28px] font-black text-slate-900 tracking-tight leading-tight font-heading">
                     {modalTitle}
@@ -301,12 +455,25 @@ export default function LeadModal({ isOpen, onClose, modalType = 'demo', selecte
                           required
                           type="tel"
                           name="phone"
-                          placeholder="Phone Number *"
+                          inputMode="tel"
+                          autoComplete="tel"
+                          placeholder="+91 98765 43210"
                           value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-900 text-sm placeholder:text-slate-400 focus:bg-white focus:border-[#009b55] focus:ring-2 focus:ring-[#009b55]/15 focus:outline-none transition-all"
+                          onChange={handlePhoneChange}
+                          onBlur={handlePhoneBlur}
+                          aria-invalid={Boolean(phoneError)}
+                          className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl border bg-slate-50/50 text-slate-900 text-sm placeholder:text-slate-400 focus:bg-white focus:ring-2 focus:outline-none transition-all ${
+                            phoneError
+                              ? 'border-rose-400 focus:border-rose-500 focus:ring-rose-500/15'
+                              : 'border-slate-200 focus:border-[#009b55] focus:ring-[#009b55]/15'
+                          }`}
                         />
                       </div>
+                      {phoneError && (
+                        <p className="mt-1.5 text-[11px] font-medium text-rose-600 leading-snug">
+                          {phoneError}
+                        </p>
+                      )}
                     </div>
 
                     <div>
@@ -330,37 +497,85 @@ export default function LeadModal({ isOpen, onClose, modalType = 'demo', selecte
                     </div>
                   </div>
 
-                  {/* Row 3: Interested In (Product) */}
-                  <div>
+                  {/* Row 3: Interested In (Product) — searchable CRM categories */}
+                  <div ref={productDropdownRef} className="relative z-40">
                     <label className="block text-xs font-bold text-slate-800 mb-1">
                       Interested In (Product) <span className="text-red-500">*</span>
                     </label>
-                    <div className="relative flex items-center">
+                    <button
+                      type="button"
+                      disabled={categoriesLoading || categories.length === 0}
+                      aria-haspopup="listbox"
+                      aria-expanded={productMenuOpen}
+                      onClick={() => setProductMenuOpen((open) => !open)}
+                      className={`relative w-full pl-10 pr-10 py-2.5 rounded-xl border text-left text-sm transition-all flex items-center focus:outline-none disabled:opacity-60 disabled:cursor-wait ${
+                        productMenuOpen
+                          ? 'bg-white border-[#009b55] ring-2 ring-[#009b55]/15'
+                          : 'border-slate-200 bg-slate-50/50 hover:bg-white focus:bg-white focus:border-[#009b55] focus:ring-2 focus:ring-[#009b55]/15'
+                      }`}
+                    >
                       <span className="absolute left-3.5 text-slate-400 pointer-events-none">
                         <LayoutGrid size={16} />
                       </span>
-                      <select
-                        name="selectedItem"
-                        required
-                        value={formData.product}
-                        onChange={(e) => setFormData({ ...formData, product: e.target.value })}
-                        className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-slate-200 bg-slate-50/50 text-slate-900 text-sm focus:bg-white focus:border-[#009b55] focus:ring-2 focus:ring-[#009b55]/15 focus:outline-none transition-all appearance-none cursor-pointer"
-                      >
-                        <option value="All-in-One ERP Platform">All-in-One ERP Platform</option>
-                        <option value="Restaurant POS Software">Restaurant POS Software</option>
-                        <option value="BillSoft Application">BillSoft Application</option>
-                        <option value="HRMS Software">HRMS Software</option>
-                        <option value="CRM Software">CRM Software</option>
-                        <option value="Inventory & Multi-Branch Core">Inventory & Multi-Branch Core</option>
-                        <option value="ZATCA Phase-2 Compliance">ZATCA Phase-2 Compliance</option>
-                        <option value="GST & E-Way Clearance">GST & E-Way Clearance</option>
-                      </select>
-                      <span className="absolute right-3.5 text-slate-400 pointer-events-none">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                        </svg>
+                      <span className={`truncate ${selectedCategory ? 'text-slate-900' : 'text-slate-400'}`}>
+                        {categoriesLoading
+                          ? 'Loading products...'
+                          : selectedCategory?.category_name || 'Select a product *'}
                       </span>
-                    </div>
+                      <span className={`absolute right-3.5 text-slate-400 pointer-events-none transition-transform ${productMenuOpen ? 'rotate-180' : ''}`}>
+                        <ChevronDown size={16} />
+                      </span>
+                    </button>
+
+                    {/* Hidden required field for native form validation */}
+                    <input type="hidden" name="selectedItem" value={formData.categoryId} required />
+
+                    {productMenuOpen && (
+                      <div className="absolute left-0 right-0 top-full mt-1.5 rounded-xl border border-slate-200 bg-white shadow-2xl overflow-hidden z-50">
+                        <div className="p-2 border-b border-slate-100">
+                          <div className="relative">
+                            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">
+                              <Search size={14} />
+                            </span>
+                            <input
+                              ref={productSearchRef}
+                              type="text"
+                              value={productSearch}
+                              onChange={(e) => setProductSearch(e.target.value)}
+                              placeholder="Search products..."
+                              className="w-full pl-9 pr-3 py-2 rounded-lg border border-slate-200 bg-slate-50 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-[#009b55] focus:ring-2 focus:ring-[#009b55]/15 focus:outline-none"
+                            />
+                          </div>
+                        </div>
+                        <ul role="listbox" className="max-h-48 overflow-y-auto py-1">
+                          {filteredCategories.length === 0 ? (
+                            <li className="px-3.5 py-3 text-sm text-slate-500">No products match your search.</li>
+                          ) : (
+                            filteredCategories.map((category) => {
+                              const isActive = String(category.id) === String(formData.categoryId);
+                              return (
+                                <li key={category.id}>
+                                  <button
+                                    type="button"
+                                    role="option"
+                                    aria-selected={isActive}
+                                    onClick={() => selectCategory(category)}
+                                    className={`w-full px-3.5 py-2.5 text-left text-sm flex items-center justify-between gap-2 transition-colors ${
+                                      isActive
+                                        ? 'bg-emerald-50 text-[#009b55] font-semibold'
+                                        : 'text-slate-800 hover:bg-slate-50'
+                                    }`}
+                                  >
+                                    <span className="truncate">{category.category_name}</span>
+                                    {isActive && <Check size={15} className="shrink-0 text-[#009b55]" />}
+                                  </button>
+                                </li>
+                              );
+                            })
+                          )}
+                        </ul>
+                      </div>
+                    )}
                   </div>
 
                   {/* Row 4: Message (Optional) */}
@@ -404,7 +619,7 @@ export default function LeadModal({ isOpen, onClose, modalType = 'demo', selecte
               </div>
 
               {/* Bottom 3 Micro-Trust Badges */}
-              <div className="grid grid-cols-3 gap-2 pt-4 border-t border-slate-100 mt-4 text-center sm:text-left relative z-10">
+              <div className="grid grid-cols-3 gap-2 pt-4 border-t border-slate-100 mt-4 text-center sm:text-left relative z-0">
                 <div className="flex items-center gap-2 justify-center sm:justify-start">
                   <div className="w-7 h-7 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
                     <ShieldCheck size={14} />

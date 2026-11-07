@@ -85,17 +85,15 @@ export default function BillsoftWhyUs() {
           {cards.map((card, idx) => (
             <div
               key={idx}
-              className="flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:shadow-xl hover:border-blue-300 transition-all duration-300 group"
+              className="flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:shadow-xl hover:border-blue-300 transition-all duration-300 group text-center"
             >
-              <div>
-                <div className="flex items-center justify-between mb-5">
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${card.iconStyle}`}>
-                    {card.icon}
-                  </div>
-                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200">
-                    {card.tag}
-                  </span>
+              <div className="flex flex-col items-center">
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-3 ${card.iconStyle}`}>
+                  {card.icon}
                 </div>
+                <span className="inline-flex px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200 mb-5">
+                  {card.tag}
+                </span>
 
                 <h3 className="mb-2.5">
                   {card.title}
@@ -106,7 +104,7 @@ export default function BillsoftWhyUs() {
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-gray-100 flex items-center gap-2">
+              <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#2563eb]" />
                 <span className="text-xs font-semibold text-slate-800">
                   {card.metric}

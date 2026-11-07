@@ -113,17 +113,15 @@ export default function PosCapabilities() {
           {capabilities.map((cap, idx) => (
             <div
               key={idx}
-              className={`p-6 sm:p-7 rounded-2xl bg-white border border-gray-200/90 shadow-2xs ${cap.hoverBorder} hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group`}
+              className={`p-6 sm:p-7 rounded-2xl bg-white border border-gray-200/90 shadow-2xs ${cap.hoverBorder} hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group text-center`}
             >
-              <div>
-                <div className="flex items-center justify-between mb-5">
-                  <div className={`w-12 h-12 rounded-xl ${cap.iconBg} flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300`}>
-                    {cap.svgIcon}
-                  </div>
-                  <span className={`px-3 py-1 rounded-full text-xs font-bold border ${cap.tagColor}`}>
-                    {cap.tag}
-                  </span>
+              <div className="flex flex-col items-center">
+                <div className={`w-12 h-12 rounded-xl ${cap.iconBg} flex items-center justify-center shadow-sm mb-3 group-hover:scale-110 transition-transform duration-300`}>
+                  {cap.svgIcon}
                 </div>
+                <span className={`inline-flex px-3 py-1 rounded-full text-xs font-bold border mb-5 ${cap.tagColor}`}>
+                  {cap.tag}
+                </span>
                 <h3 className="mb-2.5">
                   {cap.title}
                 </h3>

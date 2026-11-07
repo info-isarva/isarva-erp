@@ -104,17 +104,15 @@ export default function PosWhyUs() {
           {cards.map((c, idx) => (
             <div
               key={idx}
-              className="p-6 sm:p-7 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:border-emerald-300 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
+              className="p-6 sm:p-7 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:border-emerald-300 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group text-center"
             >
-              <div>
-                <div className="flex items-center justify-between mb-5">
-                  <div className={`w-12 h-12 rounded-xl ${c.iconStyle} flex items-center justify-center shadow-xs group-hover:scale-110 transition-transform duration-300`}>
-                    {c.icon}
-                  </div>
-                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700 border border-slate-200/80">
-                    {c.tag}
-                  </span>
+              <div className="flex flex-col items-center">
+                <div className={`w-12 h-12 rounded-xl ${c.iconStyle} flex items-center justify-center shadow-xs mb-3 group-hover:scale-110 transition-transform duration-300`}>
+                  {c.icon}
                 </div>
+                <span className="inline-flex px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700 border border-slate-200/80 mb-5">
+                  {c.tag}
+                </span>
 
                 <h3 className="mb-3">
                   {c.title}
@@ -125,7 +123,7 @@ export default function PosWhyUs() {
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-gray-100">
+              <div className="pt-4 border-t border-gray-100 flex justify-center">
                 <span className="text-xs font-bold text-[#059669] flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#059669]" />
                   {c.metric}

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import {
   Search,
   ChevronDown,
@@ -17,15 +18,54 @@ import {
 } from 'lucide-react';
 import FlagIcon from './FlagIcon';
 
+const SITE_SEARCH_PAGES = [
+  { label: 'Home', href: '/', keywords: 'home erp platform' },
+  { label: 'About Us', href: '/about', keywords: 'about company isarva' },
+  { label: 'All Solutions', href: '/solutions', keywords: 'solutions overview' },
+  { label: 'BillSoft Accounting', href: '/billsoft', keywords: 'billsoft accounting billing gst invoice' },
+  { label: 'Restaurant POS', href: '/restaurant-pos', keywords: 'pos restaurant food cafe' },
+  { label: 'HRMS & Payroll', href: '/hrms', keywords: 'hrms payroll hr attendance' },
+  { label: 'CRM & Sales', href: '/crm', keywords: 'crm sales pipeline leads' },
+  { label: 'ERP Features', href: '/erp-features', keywords: 'features modules' },
+  { label: 'Why Choose Us', href: '/why-choose-us', keywords: 'why choose benefits' },
+  { label: 'Contact Us', href: '/contact', keywords: 'contact support demo' },
+  { label: 'Privacy Policy', href: '/privacy-policy', keywords: 'privacy policy' }
+];
+
 export default function Navbar({ content, onOpenModal, selectedCountry: selectedCountryProp, onSelectCountry }) {
+  const router = useRouter();
   const [isCountryOpen, setIsCountryOpen] = useState(false);
   const selectedCountry = selectedCountryProp || content?.countries?.[0] || { code: 'IN', name: 'India' };
   const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
-
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const solutionsRef = useRef(null);
   const countryRef = useRef(null);
+  const searchRef = useRef(null);
+  const mobileSearchRef = useRef(null);
+  const searchInputRef = useRef(null);
+  const mobileSearchInputRef = useRef(null);
+
+  const normalizedQuery = searchQuery.trim().toLowerCase();
+  const searchResults = normalizedQuery
+    ? SITE_SEARCH_PAGES.filter((page) => {
+        const haystack = `${page.label} ${page.keywords}`.toLowerCase();
+        return haystack.includes(normalizedQuery);
+      })
+    : SITE_SEARCH_PAGES;
+
+  const closeSearch = () => {
+    setIsSearchOpen(false);
+    setSearchQuery('');
+  };
+
+  const goToSearchResult = (href) => {
+    closeSearch();
+    setIsMobileMenuOpen(false);
+    router.push(href);
+  };
 
   // Close dropdowns when clicking outside
   useEffect(() => {
@@ -36,6 +76,11 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
       if (countryRef.current && !countryRef.current.contains(event.target)) {
         setIsCountryOpen(false);
       }
+      const inDesktopSearch = searchRef.current?.contains(event.target);
+      const inMobileSearch = mobileSearchRef.current?.contains(event.target);
+      if (!inDesktopSearch && !inMobileSearch) {
+        closeSearch();
+      }
     }
 
     document.addEventListener('mousedown', handleClickOutside);
@@ -45,6 +90,22 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
       document.removeEventListener('touchstart', handleClickOutside);
     };
   }, []);
+
+  useEffect(() => {
+    if (!isSearchOpen) return;
+    const focusTimer = window.setTimeout(() => {
+      const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1024;
+      (isDesktop ? searchInputRef.current : mobileSearchInputRef.current)?.focus();
+    }, 0);
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') closeSearch();
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      window.clearTimeout(focusTimer);
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [isSearchOpen]);
 
   // Lock body scroll when mobile menu is open so menu can scroll freely
   useEffect(() => {
@@ -242,17 +303,83 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
               )}
             </div>
 
-            {/* Search Icon */}
-            <button
-              onClick={() => onOpenModal('demo')}
-              className="p-1.5 xl:p-2 text-slate-500 hover:text-brand-500 hover:bg-slate-50 rounded-full transition-colors shrink-0"
-              title="Search"
-            >
-              <Search size={16} />
-            </button>
+            {/* Site Search */}
+            <div className="relative shrink-0" ref={searchRef}>
+              {isSearchOpen ? (
+                <div className="flex items-center h-9 w-56 xl:w-64 rounded-full border border-slate-200 bg-white shadow-sm overflow-hidden focus-within:border-[#007a55] focus-within:ring-2 focus-within:ring-[#007a55]/15">
+                  <span className="pl-3 text-slate-400 shrink-0">
+                    <Search size={15} className="w-3.5 h-3.5" />
+                  </span>
+                  <input
+                    ref={searchInputRef}
+                    type="search"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' && searchResults[0]) {
+                        e.preventDefault();
+                        goToSearchResult(searchResults[0].href);
+                      }
+                    }}
+                    placeholder="Search pages..."
+                    className="w-full h-full px-2 text-sm text-slate-800 placeholder:text-slate-400 bg-transparent border-0 outline-none focus:ring-0"
+                    aria-label="Search site pages"
+                  />
+                  <button
+                    type="button"
+                    onClick={closeSearch}
+                    className="h-9 w-9 flex items-center justify-center text-slate-400 hover:text-slate-700 shrink-0"
+                    aria-label="Close search"
+                  >
+                    <X size={15} className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsCountryOpen(false);
+                    setIsSolutionsOpen(false);
+                    setIsSearchOpen(true);
+                  }}
+                  className="h-9 w-9 inline-flex items-center justify-center rounded-full border border-slate-200 bg-slate-50/90 text-slate-600 hover:text-[#007a55] hover:border-slate-300 hover:bg-slate-100 transition-colors"
+                  title="Search"
+                  aria-label="Open search"
+                >
+                  <Search size={16} className="w-4 h-4" />
+                </button>
+              )}
+
+              {isSearchOpen && (
+                <div className="hidden lg:block absolute right-0 top-full mt-2 w-72 xl:w-80 bg-white rounded-2xl shadow-xl border border-slate-100 py-2 z-50">
+                  <div className="px-3.5 pb-2 mb-1 border-b border-slate-100 text-xs font-bold text-slate-400 uppercase tracking-wider">
+                    {normalizedQuery ? 'Search results' : 'Popular pages'}
+                  </div>
+                  {searchResults.length === 0 ? (
+                    <div className="px-3.5 py-3 text-sm text-slate-500">No pages found.</div>
+                  ) : (
+                    <ul className="max-h-72 overflow-y-auto scrollbar-hide">
+                      {searchResults.map((page) => (
+                        <li key={page.href}>
+                          <button
+                            type="button"
+                            onClick={() => goToSearchResult(page.href)}
+                            className="w-full flex items-center justify-between gap-3 px-3.5 py-2.5 text-left text-sm text-slate-700 hover:bg-emerald-50/70 hover:text-[#007a55] transition-colors"
+                          >
+                            <span className="font-semibold truncate">{page.label}</span>
+                            <ArrowRight size={14} className="shrink-0 text-slate-300" />
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              )}
+            </div>
 
             {/* Primary Action Button */}
             <button
+              type="button"
               onClick={() => onOpenModal('demo')}
               className="btn-brand-primary text-xs xl:text-sm px-3.5 xl:px-5 py-2 xl:py-2.5 whitespace-nowrap shrink-0"
             >
@@ -262,16 +389,81 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
           </div>
 
           {/* Mobile Hamburger */}
-          <div className="flex lg:hidden items-center gap-3">
+          <div className="flex lg:hidden items-center gap-2">
             <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-slate-700 rounded-lg hover:bg-slate-100"
+              type="button"
+              onClick={() => {
+                setIsSearchOpen((open) => !open);
+                setIsMobileMenuOpen(false);
+              }}
+              className="h-10 w-10 inline-flex items-center justify-center text-slate-700 rounded-lg hover:bg-slate-100"
+              aria-label="Open search"
             >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              <Search size={20} className="w-5 h-5" />
+            </button>
+            <button
+              type="button"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="h-10 w-10 inline-flex items-center justify-center text-slate-700 rounded-lg hover:bg-slate-100"
+              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            >
+              {isMobileMenuOpen ? <X size={22} className="w-5.5 h-5.5" /> : <Menu size={22} className="w-5.5 h-5.5" />}
             </button>
           </div>
         </div>
       </div>
+
+      {/* Mobile Search Panel */}
+      {isSearchOpen && (
+        <div ref={mobileSearchRef} className="lg:hidden border-t border-slate-100 bg-white px-4 py-3 shadow-md">
+          <div className="flex items-center h-11 rounded-xl border border-slate-200 bg-slate-50 focus-within:bg-white focus-within:border-[#007a55] focus-within:ring-2 focus-within:ring-[#007a55]/15">
+            <span className="pl-3 text-slate-400 shrink-0">
+              <Search size={16} className="w-4 h-4" />
+            </span>
+            <input
+              ref={mobileSearchInputRef}
+              type="search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && searchResults[0]) {
+                  e.preventDefault();
+                  goToSearchResult(searchResults[0].href);
+                }
+              }}
+              placeholder="Search pages..."
+              className="w-full h-full px-2 text-sm text-slate-800 placeholder:text-slate-400 bg-transparent border-0 outline-none"
+              aria-label="Search site pages"
+            />
+            <button
+              type="button"
+              onClick={closeSearch}
+              className="h-11 w-11 flex items-center justify-center text-slate-400 hover:text-slate-700 shrink-0"
+              aria-label="Close search"
+            >
+              <X size={16} className="w-4 h-4" />
+            </button>
+          </div>
+          <ul className="mt-2 max-h-64 overflow-y-auto scrollbar-hide rounded-xl border border-slate-100 divide-y divide-slate-50">
+            {searchResults.length === 0 ? (
+              <li className="px-3.5 py-3 text-sm text-slate-500">No pages found.</li>
+            ) : (
+              searchResults.map((page) => (
+                <li key={page.href}>
+                  <button
+                    type="button"
+                    onClick={() => goToSearchResult(page.href)}
+                    className="w-full flex items-center justify-between gap-3 px-3.5 py-3 text-left text-sm font-semibold text-slate-700 hover:bg-emerald-50 hover:text-[#007a55]"
+                  >
+                    <span>{page.label}</span>
+                    <ArrowRight size={14} className="text-slate-300" />
+                  </button>
+                </li>
+              ))
+            )}
+          </ul>
+        </div>
+      )}
 
       {/* Mobile Menu Dropdown with Smooth Scrolling */}
       {isMobileMenuOpen && (

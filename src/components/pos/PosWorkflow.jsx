@@ -106,33 +106,33 @@ export default function PosWorkflow() {
         </div>
 
         {/* 5-Step Process Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 pt-4">
           {steps.map((s, idx) => (
             <div
               key={idx}
-              className={`p-6 rounded-2xl bg-slate-50/70 border border-gray-200/90 shadow-2xs ${s.hoverBorder} hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative`}
+              className={`pt-8 px-6 pb-6 rounded-2xl bg-slate-50/70 border border-gray-200/90 shadow-2xs ${s.hoverBorder} hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative overflow-visible`}
             >
+              {/* Step number centered on the card top border */}
+              <span className="absolute left-1/2 top-0 z-10 -translate-x-1/2 -translate-y-1/2 inline-flex items-center justify-center min-w-10 px-2.5 bg-white text-2xl font-black tabular-nums tracking-tight text-slate-300 group-hover:text-emerald-600 transition-colors leading-none">
+                {s.step}
+              </span>
+
               <div>
-                {/* Step Pill Header */}
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-2xl font-black text-slate-300 group-hover:text-emerald-600 transition-colors">
-                    {s.step}
-                  </span>
-                  <span className={`px-2.5 py-1 rounded-full text-xs font-bold border ${s.tagColor}`}>
+                {/* Icon left + phase badge right */}
+                <div className="flex items-center justify-between gap-3 mb-4">
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${s.color} flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300 shrink-0`}>
+                    {s.svgIcon}
+                  </div>
+                  <span className={`px-2.5 py-1 rounded-full text-xs font-bold border ${s.tagColor} shrink-0 self-center`}>
                     {s.phase}
                   </span>
                 </div>
 
-                {/* Icon */}
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${s.color} flex items-center justify-center shadow-md mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                  {s.svgIcon}
-                </div>
-
-                <h3 className="mb-2">
+                <h3 className="mb-2 text-left">
                   {s.title}
                 </h3>
 
-                <p className="mb-4 text-xs sm:text-sm">
+                <p className="mb-4 text-xs sm:text-sm text-left">
                   {s.description}
                 </p>
               </div>

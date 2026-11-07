@@ -129,47 +129,73 @@ export default function BillsoftHero({ onOpenDemoModal, onOpenBrochureModal, onO
 
           </div>
 
-          {/* Right Hero Column Graphic */}
-          <div className="lg:col-span-5 flex items-center justify-center">
+          {/* Right Hero Column Graphic — desktop browser with one tab */}
+          <div className="lg:col-span-5 flex items-center justify-center w-full">
             <div
-              className="relative cursor-pointer group w-full max-w-[560px]"
+              className="relative cursor-pointer group w-full max-w-xl"
               onClick={() => onOpenLightbox('/images/billsoft/dashboard.png', 'BillSoft AI Business Dashboard & Financial Analytics')}
             >
               <div className="absolute inset-4 bg-gradient-to-tr from-[#2563eb]/25 via-[#1d4ed8]/20 to-sky-200/30 blur-3xl rounded-full pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity" />
-              <div className="relative rounded-2xl overflow-hidden border border-blue-200/80 shadow-[0_24px_60px_rgba(37,99,235,0.22)] bg-slate-900">
-                <img
-                  src="/images/billsoft/dashboard.png"
-                  alt="BillSoft ERP Dashboard"
-                  className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500"
-                />
-                
-                {/* Overlay Zoom Pill */}
-                <div className="absolute bottom-4 right-4 bg-slate-950/80 backdrop-blur-md text-white text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-lg border border-white/20">
-                  <ZoomIn size={14} className="text-blue-400" />
-                  <span>Click to Expand</span>
-                </div>
 
-                {/* Floating Real-Time Status Badges */}
-                <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md border border-blue-200 rounded-xl px-3 py-2 shadow-lg hidden sm:flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center text-[#2563eb]">
-                    <CheckCircle2 size={18} />
+              {/* Desktop window shell */}
+              <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border border-slate-300/80 bg-slate-200 shadow-[0_24px_60px_rgba(37,99,235,0.18)]">
+                {/* Window title bar */}
+                <div className="flex items-center gap-2 px-3 sm:px-3.5 pt-2.5 pb-0 bg-slate-200">
+                  <div className="flex items-center gap-1.5 shrink-0 mb-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-rose-400" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
                   </div>
-                  <div className="text-left">
-                    <span className="block text-xs font-bold text-slate-900">IRN Generated</span>
-                    <span className="block text-xs text-emerald-600 font-semibold">QR Validated &bull; Signed</span>
-                  </div>
-                </div>
 
-                <div className="absolute bottom-16 left-4 bg-white/95 backdrop-blur-md border border-slate-200 rounded-xl px-3 py-2 shadow-lg hidden sm:flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600">
-                    <FileText size={18} />
-                  </div>
-                  <div className="text-left">
-                    <span className="block text-xs font-bold text-slate-900">E-Way Bill #29104</span>
-                    <span className="block text-xs text-slate-500 font-medium">Valid Transit Active</span>
+                  {/* Single active browser tab */}
+                  <div className="min-w-0 flex-1 flex items-end pl-2 sm:pl-3">
+                    <div className="relative inline-flex items-center gap-1.5 max-w-[70%] sm:max-w-[60%] px-3 sm:px-3.5 pt-1.5 pb-2 rounded-t-lg bg-white border border-b-0 border-slate-300/80 shadow-2xs">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#2563eb] shrink-0" />
+                      <span className="text-xs font-semibold text-slate-700 truncate">
+                        BillSoft Dashboard
+                      </span>
+                    </div>
                   </div>
                 </div>
 
+                {/* Browser content panel */}
+                <div className="bg-white border-t border-slate-200">
+                  {/* Desktop viewport — image sits inside */}
+                  <div className="relative w-full aspect-[16/10] sm:aspect-[16/9.5] bg-slate-900 overflow-hidden">
+                    <img
+                      src="/images/billsoft/dashboard.png"
+                      alt="BillSoft ERP Dashboard"
+                      className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-[1.015] transition-transform duration-500"
+                    />
+
+                    {/* Overlay Zoom Pill */}
+                    <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 z-20 bg-slate-950/80 backdrop-blur-md text-white text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-lg border border-white/20">
+                      <ZoomIn size={14} className="text-blue-400" />
+                      <span>Click to Expand</span>
+                    </div>
+
+                    {/* Floating Real-Time Status Badges */}
+                    <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-20 bg-white/95 backdrop-blur-md border border-blue-200 rounded-xl px-3 py-2 shadow-lg hidden sm:flex items-center gap-2.5">
+                      <div className="w-8 h-8 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center text-[#2563eb]">
+                        <CheckCircle2 size={18} />
+                      </div>
+                      <div className="text-left">
+                        <span className="block text-xs font-bold text-slate-900">IRN Generated</span>
+                        <span className="block text-xs text-emerald-600 font-semibold">QR Validated &bull; Signed</span>
+                      </div>
+                    </div>
+
+                    <div className="absolute bottom-14 left-3 sm:bottom-16 sm:left-4 z-20 bg-white/95 backdrop-blur-md border border-slate-200 rounded-xl px-3 py-2 shadow-lg hidden sm:flex items-center gap-2.5">
+                      <div className="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600">
+                        <FileText size={18} />
+                      </div>
+                      <div className="text-left">
+                        <span className="block text-xs font-bold text-slate-900">E-Way Bill #29104</span>
+                        <span className="block text-xs text-slate-500 font-medium">Valid Transit Active</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

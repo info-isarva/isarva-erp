@@ -87,7 +87,7 @@ export default function BillsoftCoverage({ onOpenLightbox }) {
           {sectors.map((sec, idx) => (
             <div
               key={idx}
-              className="p-5 rounded-2xl bg-slate-50 border border-gray-200/90 shadow-2xs hover:bg-white hover:border-blue-300 hover:shadow-md transition-all duration-200"
+              className="p-5 rounded-2xl bg-slate-50 border border-gray-200/90 shadow-2xs hover:bg-white hover:border-blue-300 hover:shadow-md transition-all duration-200 text-center flex flex-col items-center"
             >
               <div className="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center mb-3.5 shadow-2xs">
                 {sec.icon}

@@ -91,17 +91,15 @@ export default function BillsoftCapabilities() {
           {capabilities.map((item, index) => (
             <div
               key={index}
-              className={`group flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:shadow-xl transition-all duration-300 ${item.hoverBorder}`}
+              className={`group flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:shadow-xl transition-all duration-300 text-center ${item.hoverBorder}`}
             >
-              <div>
-                <div className="flex items-center justify-between mb-5">
-                  <div className={`w-12 h-12 rounded-xl ${item.iconBg} flex items-center justify-center shadow-md group-hover:scale-105 transition-transform duration-300`}>
-                    {item.icon}
-                  </div>
-                  <span className={`px-2.5 py-1 rounded-full text-xs font-bold border ${item.tagColor}`}>
-                    {item.tag}
-                  </span>
+              <div className="flex flex-col items-center">
+                <div className={`w-12 h-12 rounded-xl ${item.iconBg} flex items-center justify-center shadow-md mb-3 group-hover:scale-105 transition-transform duration-300`}>
+                  {item.icon}
                 </div>
+                <span className={`inline-flex px-2.5 py-1 rounded-full text-xs font-bold border mb-5 ${item.tagColor}`}>
+                  {item.tag}
+                </span>
                 
                 <h3 className="mb-2.5">
                   {item.title}
@@ -112,7 +110,7 @@ export default function BillsoftCapabilities() {
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-gray-100 flex items-center gap-2 text-xs font-semibold text-[#2563eb] opacity-90 group-hover:opacity-100">
+              <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-center gap-2 text-xs font-semibold text-[#2563eb] opacity-90 group-hover:opacity-100">
                 <span>Explore capability details</span>
                 <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
               </div>
