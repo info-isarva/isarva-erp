@@ -5,19 +5,19 @@ export const metadata = {
   description: 'Automate payroll processing, biometric & GPS geofenced attendance, statutory PF, ESI, TDS, and WPS compliance with ISARVA HRMS. Empower teams with web & mobile self-service (ESS).',
   keywords: 'HRMS software India, Payroll software India, Biometric attendance software, GPS attendance app, PF ESI TDS compliance software, Employee self service portal, Cloud payroll ERP, Saudi Arabia WPS payroll',
   alternates: {
-    canonical: 'https://demoweb.isarva.in/hrms',
+    canonical: 'https://www.isarvaerp.com/hrms',
   },
   openGraph: {
     title: 'ISARVA HRMS & Payroll Software – Biometric Attendance, Statutory Compliance & ESS',
     description: 'Automate monthly payroll, manage shifts, sync biometric punches, and generate 1-click statutory payslips with ISARVA HRMS.',
-    url: 'https://demoweb.isarva.in/hrms',
+    url: 'https://www.isarvaerp.com/hrms',
     siteName: 'ISARVA ERP',
     locale: 'en_IN',
     type: 'website',
     images: [
       {
         url: '/images/hrms/HRMS-dashboard-v3.png',
-        secureUrl: 'https://demoweb.isarva.in/images/hrms/HRMS-dashboard-v3.png',
+        secureUrl: 'https://www.isarvaerp.com/images/hrms/HRMS-dashboard-v3.png',
         width: 1200,
         height: 630,
         alt: 'ISARVA HRMS & Payroll Dashboard Interface',

@@ -14,7 +14,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://demoweb.isarva.in'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://www.isarvaerp.com'),
   title: 'ISARVA ERP | Smart Business Solutions for a Connected Tomorrow',
   description: 'Power your restaurant, retail and business operations with ISARVA ERP – featuring Restaurant POS, Accounting (BillSoft), HRMS and CRM with Indian GST and e-Invoicing compliance.',
   keywords: 'ISARVA ERP, Restaurant POS, BillSoft Accounting, GST e-Invoicing, HRMS, CRM, India Business Software',
@@ -32,14 +32,14 @@ export const metadata = {
   openGraph: {
     title: 'ISARVA ERP | Complete Business Management Platform',
     description: 'All-in-One ERP Platform featuring Restaurant POS, Accounting, HRMS, and CRM with Indian GST and e-Invoicing compliance.',
-    url: 'https://demoweb.isarva.in/',
+    url: 'https://www.isarvaerp.com/',
     siteName: 'ISARVA ERP',
     locale: 'en_IN',
     type: 'website',
     images: [
       {
         url: '/isarva-og.jpg',
-        secureUrl: 'https://demoweb.isarva.in/isarva-og.jpg',
+        secureUrl: 'https://www.isarvaerp.com/isarva-og.jpg',
         width: 1200,
         height: 630,
         alt: 'ISARVA ERP — Business Management, POS & Accounting Platform',

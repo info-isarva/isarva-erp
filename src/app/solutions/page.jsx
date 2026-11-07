@@ -7,20 +7,20 @@ export const metadata = {
   keywords:
     'ERP Solutions, Business Management Software, Restaurant POS Software, BillSoft Accounting, GST Invoicing Software, HRMS and Payroll Software, CRM Software India, Multi-Branch ERP, ZATCA e-Invoicing ERP',
   alternates: {
-    canonical: 'https://demoweb.isarva.in/solutions',
+    canonical: 'https://www.isarvaerp.com/solutions',
   },
   openGraph: {
     title: 'ERP Solutions — Integrated Business Management Suites | ISARVA ERP',
     description:
       'From point-of-sale and GST-compliant accounting to multi-branch HRMS and automated customer pipelines — discover how ISARVA ERP connects every corner of your business.',
-    url: 'https://demoweb.isarva.in/solutions',
+    url: 'https://www.isarvaerp.com/solutions',
     siteName: 'ISARVA ERP',
     locale: 'en_IN',
     type: 'website',
     images: [
       {
         url: '/isarva-og.jpg',
-        secureUrl: 'https://demoweb.isarva.in/isarva-og.jpg',
+        secureUrl: 'https://www.isarvaerp.com/isarva-og.jpg',
         width: 1200,
         height: 630,
         alt: 'ISARVA ERP Solutions — Integrated Business Suites',
@@ -42,8 +42,8 @@ const SOLUTIONS_JSON_LD = {
   '@graph': [
     {
       '@type': 'CollectionPage',
-      '@id': 'https://demoweb.isarva.in/solutions/#webpage',
-      url: 'https://demoweb.isarva.in/solutions',
+      '@id': 'https://www.isarvaerp.com/solutions/#webpage',
+      url: 'https://www.isarvaerp.com/solutions',
       name: 'ERP Solutions — Integrated Business Management Suites | ISARVA ERP',
       description:
         'Explore the full suite of modular and interconnected cloud business software from ISARVA ERP.',
@@ -54,13 +54,13 @@ const SOLUTIONS_JSON_LD = {
             '@type': 'ListItem',
             position: 1,
             name: 'Home',
-            item: 'https://demoweb.isarva.in/',
+            item: 'https://www.isarvaerp.com/',
           },
           {
             '@type': 'ListItem',
             position: 2,
             name: 'Solutions',
-            item: 'https://demoweb.isarva.in/solutions',
+            item: 'https://www.isarvaerp.com/solutions',
           },
         ],
       },
@@ -74,7 +74,7 @@ const SOLUTIONS_JSON_LD = {
           name: 'ISARVA Restaurant POS Software',
           applicationCategory: 'BusinessApplication',
           operatingSystem: 'Web, Android, iOS, Windows',
-          url: 'https://demoweb.isarva.in/restaurant-pos',
+          url: 'https://www.isarvaerp.com/restaurant-pos',
         },
         {
           '@type': 'SoftwareApplication',
@@ -82,7 +82,7 @@ const SOLUTIONS_JSON_LD = {
           name: 'ISARVA BillSoft Accounting Software',
           applicationCategory: 'FinancialApplication',
           operatingSystem: 'Web, Windows, Cloud',
-          url: 'https://demoweb.isarva.in/billsoft',
+          url: 'https://www.isarvaerp.com/billsoft',
         },
         {
           '@type': 'SoftwareApplication',
@@ -90,7 +90,7 @@ const SOLUTIONS_JSON_LD = {
           name: 'ISARVA HRMS & Payroll Management',
           applicationCategory: 'BusinessApplication',
           operatingSystem: 'Web, Android, iOS',
-          url: 'https://demoweb.isarva.in/hrms',
+          url: 'https://www.isarvaerp.com/hrms',
         },
         {
           '@type': 'SoftwareApplication',
@@ -98,7 +98,7 @@ const SOLUTIONS_JSON_LD = {
           name: 'ISARVA CRM & Sales Pipeline',
           applicationCategory: 'BusinessApplication',
           operatingSystem: 'Web, Cloud',
-          url: 'https://demoweb.isarva.in/crm',
+          url: 'https://www.isarvaerp.com/crm',
         },
       ],
     },

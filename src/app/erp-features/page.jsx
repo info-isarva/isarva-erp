@@ -7,20 +7,20 @@ export const metadata = {
   keywords:
     'ERP features, financial management software, inventory management, CRM software India, HRMS software, project management ERP, analytics reporting ERP, multi-branch ERP',
   alternates: {
-    canonical: 'https://demoweb.isarva.in/erp-features',
+    canonical: 'https://www.isarvaerp.com/erp-features',
   },
   openGraph: {
     title: 'ERP Features — All in One Business Platform | Isarva ERP',
     description:
       'Streamline finance, sales, inventory, HR, projects and more with Isarva ERP. Real-time insights, automation and complete business control.',
-    url: 'https://demoweb.isarva.in/erp-features',
+    url: 'https://www.isarvaerp.com/erp-features',
     siteName: 'ISARVA ERP',
     locale: 'en_IN',
     type: 'website',
     images: [
       {
         url: '/images/erp-features/erp-dashboard-hero.jpg',
-        secureUrl: 'https://demoweb.isarva.in/images/erp-features/erp-dashboard-hero.jpg',
+        secureUrl: 'https://www.isarvaerp.com/images/erp-features/erp-dashboard-hero.jpg',
         width: 1200,
         height: 630,
         alt: 'Isarva ERP Dashboard — All-in-One Business Management',

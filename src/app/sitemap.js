@@ -1,4 +1,4 @@
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://demoweb.isarva.in';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.isarvaerp.com';
 
 const PUBLIC_ROUTES = [
   { path: '/', changeFrequency: 'weekly', priority: 1.0 },

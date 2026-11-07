@@ -8,20 +8,20 @@ export const metadata = {
   keywords:
     'Why Choose ISARVA ERP, Cloud ERP Comparison, Best ERP India, Best ERP Saudi Arabia, ZATCA Phase 2 ERP, GST Compliant ERP, Enterprise Resource Planning, Business Management Software, Retail POS & ERP',
   alternates: {
-    canonical: 'https://demoweb.isarva.in/why-choose-us',
+    canonical: 'https://www.isarvaerp.com/why-choose-us',
   },
   openGraph: {
     title: 'Why Choose ISARVA ERP – High-Performance Unified Cloud Business Core',
     description:
       'Engineered for modern enterprises that refuse to settle. Compare ISARVA with legacy ERPs and discover native statutory compliance, transparent ROI, and zero seat penalties.',
-    url: 'https://demoweb.isarva.in/why-choose-us',
+    url: 'https://www.isarvaerp.com/why-choose-us',
     siteName: 'ISARVA ERP',
     locale: 'en_IN',
     type: 'website',
     images: [
       {
         url: '/images/why-us/hero-core-hub.jpg',
-        secureUrl: 'https://demoweb.isarva.in/images/why-us/hero-core-hub.jpg',
+        secureUrl: 'https://www.isarvaerp.com/images/why-us/hero-core-hub.jpg',
         width: 1200,
         height: 630,
         alt: 'Why Choose ISARVA ERP Architecture & Solutions Hub',
@@ -43,33 +43,33 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'WebPage',
-      '@id': 'https://demoweb.isarva.in/why-choose-us#webpage',
-      url: 'https://demoweb.isarva.in/why-choose-us',
+      '@id': 'https://www.isarvaerp.com/why-choose-us#webpage',
+      url: 'https://www.isarvaerp.com/why-choose-us',
       name: 'Why Choose ISARVA ERP – High-Performance Cloud Business Software',
       description:
         'Detailed comparison and core architectural pillars explaining why enterprises trust ISARVA ERP for multi-branch retail, manufacturing, logistics, and healthcare.',
       isPartOf: {
         '@type': 'WebSite',
-        '@id': 'https://demoweb.isarva.in/#website',
+        '@id': 'https://www.isarvaerp.com/#website',
         name: 'ISARVA ERP',
-        url: 'https://demoweb.isarva.in',
+        url: 'https://www.isarvaerp.com',
       },
     },
     {
       '@type': 'BreadcrumbList',
-      '@id': 'https://demoweb.isarva.in/why-choose-us#breadcrumb',
+      '@id': 'https://www.isarvaerp.com/why-choose-us#breadcrumb',
       itemListElement: [
         {
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: 'https://demoweb.isarva.in',
+          item: 'https://www.isarvaerp.com',
         },
         {
           '@type': 'ListItem',
           position: 2,
           name: 'Why Choose Us',
-          item: 'https://demoweb.isarva.in/why-choose-us',
+          item: 'https://www.isarvaerp.com/why-choose-us',
         },
       ],
     },

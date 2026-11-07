@@ -5,19 +5,19 @@ export const metadata = {
   description: "Have a project in mind? We'd love to hear about it. Send us a message and we'll respond within 24 hours. Contact ISARVA Infotech for Restaurant POS, BillSoft Accounting, HRMS, CRM, and cloud ERP solutions.",
   keywords: 'Contact ISARVA, ERP Consultation, Restaurant POS Support, BillSoft Accounting Demo, HRMS Software Contact, ISARVA Infotech Mangalore Bangalore Dubai UK, Business Management Software',
   alternates: {
-    canonical: 'https://demoweb.isarva.in/contact',
+    canonical: 'https://www.isarvaerp.com/contact',
   },
   openGraph: {
     title: 'Contact Us - Get in Touch with Our Experts | Isarva Infotech',
     description: "Have a project in mind? Connect with ISARVA Infotech for enterprise ERP, Restaurant POS, Accounting, and HRMS solutions. We respond within 24 hours.",
-    url: 'https://demoweb.isarva.in/contact',
+    url: 'https://www.isarvaerp.com/contact',
     siteName: 'ISARVA ERP',
     locale: 'en_IN',
     type: 'website',
     images: [
       {
         url: '/isarva-og.jpg',
-        secureUrl: 'https://demoweb.isarva.in/isarva-og.jpg',
+        secureUrl: 'https://www.isarvaerp.com/isarva-og.jpg',
         width: 1200,
         height: 630,
         alt: 'Contact ISARVA Infotech — Get in Touch with Our ERP Experts',
@@ -38,8 +38,8 @@ const CONTACT_JSON_LD = {
   '@graph': [
     {
       '@type': 'ContactPage',
-      '@id': 'https://demoweb.isarva.in/contact/#webpage',
-      url: 'https://demoweb.isarva.in/contact',
+      '@id': 'https://www.isarvaerp.com/contact/#webpage',
+      url: 'https://www.isarvaerp.com/contact',
       name: 'Contact Us - Get in Touch with Our Experts | Isarva Infotech',
       description: "Have a project in mind? Send us a message and we'll respond within 24 hours.",
       breadcrumb: {
@@ -49,23 +49,23 @@ const CONTACT_JSON_LD = {
             '@type': 'ListItem',
             position: 1,
             name: 'Home',
-            item: 'https://demoweb.isarva.in/',
+            item: 'https://www.isarvaerp.com/',
           },
           {
             '@type': 'ListItem',
             position: 2,
             name: 'Contact Us',
-            item: 'https://demoweb.isarva.in/contact',
+            item: 'https://www.isarvaerp.com/contact',
           },
         ],
       },
     },
     {
       '@type': 'Organization',
-      '@id': 'https://demoweb.isarva.in/#organization',
+      '@id': 'https://www.isarvaerp.com/#organization',
       name: 'ISARVA Infotech Private Limited',
-      url: 'https://demoweb.isarva.in/',
-      logo: 'https://demoweb.isarva.in/favicon.png',
+      url: 'https://www.isarvaerp.com/',
+      logo: 'https://www.isarvaerp.com/favicon.png',
       contactPoint: [
         {
           '@type': 'ContactPoint',
