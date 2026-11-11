@@ -32,20 +32,20 @@ export default function ErpReadyCta({ onOpenModal }) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
           {/* ── Left: CTA Content ── */}
-          <div className="flex flex-col gap-6 max-w-xl">
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-6 max-w-xl mx-auto lg:mx-0">
             <span className="section-eyebrow">Experience All Features</span>
 
             <h2>
               Ready to Get <span style={{ color: '#007a55' }}>Started?</span>
             </h2>
 
-            <p>
+            <p className="max-w-md mx-auto lg:mx-0">
               Join growing businesses that trust Isarva ERP to manage their
               operations, improve efficiency and drive growth.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-3 items-center">
+            <div className="flex flex-wrap gap-3 items-center justify-center lg:justify-start">
               <button
                 id="erp-cta-request-demo-btn"
                 className="btn-brand-primary"
@@ -63,7 +63,7 @@ export default function ErpReadyCta({ onOpenModal }) {
             </div>
 
             {/* Trust badges */}
-            <div className="flex flex-wrap gap-4 items-center">
+            <div className="flex flex-wrap gap-4 items-center justify-center lg:justify-start">
               {trustBadges.map((label) => (
                 <span
                   key={label}
@@ -86,9 +86,9 @@ export default function ErpReadyCta({ onOpenModal }) {
                 border: '1px solid #d1fae5',
               }}
             >
-              <p className="text-xs font-bold text-[#007a55] leading-snug text-right">
+              <span className="block text-xs font-bold text-[#007a55] leading-snug text-right">
                 Let's Build a Smarter<br />Business Together
-              </p>
+              </span>
             </div>
 
             <div
