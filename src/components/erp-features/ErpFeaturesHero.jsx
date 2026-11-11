@@ -66,7 +66,7 @@ export default function ErpFeaturesHero({ onOpenModal }) {
             </div>
 
             {/* Trust Badges */}
-            <div className="flex flex-wrap gap-4 items-center justify-center lg:justify-start pt-1">
+            <div className="flex flex-col items-start sm:flex-row sm:items-center sm:flex-wrap justify-center lg:justify-start gap-2.5 sm:gap-4 pt-1">
               {[
                 'All-in-One Platform',
                 'Scalable for Growth',

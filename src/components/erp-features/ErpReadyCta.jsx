@@ -63,7 +63,7 @@ export default function ErpReadyCta({ onOpenModal }) {
             </div>
 
             {/* Trust badges */}
-            <div className="flex flex-wrap gap-4 items-center justify-center lg:justify-start">
+            <div className="flex flex-col items-start sm:flex-row sm:items-center sm:flex-wrap justify-center lg:justify-start gap-2.5 sm:gap-4">
               {trustBadges.map((label) => (
                 <span
                   key={label}
