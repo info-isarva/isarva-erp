@@ -50,11 +50,14 @@
     color: var(--text-main);
     background-color: var(--bg-main);
     -webkit-text-size-adjust: 100%;
+    overflow-x: clip;
+    max-width: 100%;
   }
 
   body {
     min-height: 100vh;
-    overflow-x: hidden;
+    overflow-x: clip;
+    max-width: 100%;
     font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 1rem;
     /* 16px base */
@@ -739,6 +742,36 @@
 .billsoft-secondary-btn-white:hover {
   background: #f8fafc;
   border-color: #2563eb;
+}
+
+/* Responsive Guard: Ensure all landing buttons never cause horizontal overflow on mobile viewports */
+.pos-primary-btn-emerald,
+.pos-secondary-btn-white,
+.billsoft-primary-btn-blue,
+.billsoft-secondary-btn-white,
+.hrms-primary-btn-purple,
+.hrms-secondary-btn-white,
+.crm-primary-btn-orange,
+.crm-secondary-btn-white {
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  .pos-primary-btn-emerald,
+  .pos-secondary-btn-white,
+  .billsoft-primary-btn-blue,
+  .billsoft-secondary-btn-white,
+  .hrms-primary-btn-purple,
+  .hrms-secondary-btn-white,
+  .crm-primary-btn-orange,
+  .crm-secondary-btn-white {
+    white-space: normal;
+    height: auto;
+    min-height: 48px;
+    padding: 0.65rem 1rem;
+    line-height: 1.35;
+    text-align: center;
+  }
 }
 
 /* Badges and Tags */

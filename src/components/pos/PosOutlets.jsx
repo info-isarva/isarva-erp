@@ -38,11 +38,11 @@ export default function PosOutlets() {
         </div>
 
         {/* 10 Outlets Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-6">
           {outlets.map((outlet, idx) => (
             <div
               key={idx}
-              className="flex flex-col items-center text-center p-5 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:border-emerald-300 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+              className="flex flex-col items-center text-center p-3.5 sm:p-5 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:border-emerald-300 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
             >
               <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-3 border-emerald-100 shadow-md mb-4 bg-emerald-50 shrink-0">
                 <img

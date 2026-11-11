@@ -101,7 +101,7 @@ export default function PosFaq({ onOpenDemoModal }) {
 
                 {isOpen && (
                   <div className="px-5 sm:px-6 pb-6 pt-1 text-slate-600 text-sm sm:text-base border-t border-gray-100 animate-in fade-in duration-200">
-                    <p className="leading-relaxed">
+                    <p>
                       {faq.a}
                     </p>
                   </div>
@@ -112,11 +112,11 @@ export default function PosFaq({ onOpenDemoModal }) {
         </div>
 
         {/* Bottom CTA Button */}
-        <div className="mt-10 sm:mt-12 text-center">
+        <div className="mt-10 sm:mt-12 text-center px-4">
           <button
             type="button"
             onClick={onOpenDemoModal}
-            className="pos-primary-btn-emerald"
+            className="pos-primary-btn-emerald max-w-full text-xs sm:text-sm md:text-base px-4 sm:px-6 py-3 h-auto whitespace-normal leading-snug"
           >
             <span>Still have questions? Book a live demo</span>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 9" className="h-2.5 w-4 shrink-0">

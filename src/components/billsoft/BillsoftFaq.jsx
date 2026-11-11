@@ -121,7 +121,7 @@ export default function BillsoftFaq({ onOpenDemoModal }) {
           <button
             type="button"
             onClick={onOpenDemoModal}
-            className="billsoft-primary-btn-blue"
+            className="billsoft-primary-btn-blue max-w-full text-xs sm:text-sm md:text-base px-4 sm:px-6 py-3 h-auto whitespace-normal leading-snug"
           >
             <span>Talk to an Accounting Expert</span>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 9" className="h-2.5 w-4 shrink-0">
