@@ -63,11 +63,15 @@ export default function SolutionsContent() {
       />
 
       <main className="flex-1">
-        {/* Solutions Hero with Interactive Module Category Filter */}
-        <SolutionsHero activeTab={activeTab} onTabChange={setActiveTab} />
+        {/* Solutions Hero */}
+        <SolutionsHero />
 
         {/* 6 Core Solutions Deep-Dive Cards */}
-        <CoreSolutionsGrid activeTab={activeTab} onOpenModal={handleOpenModal} />
+        <CoreSolutionsGrid
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
+          onOpenModal={handleOpenModal}
+        />
 
         {/* Unified Real-Time Synergy vs Fragmented Apps */}
         <UnifiedSynergySection />

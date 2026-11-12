@@ -2,6 +2,14 @@
 
 import React from 'react';
 import Link from 'next/link';
+
+const SOLUTION_TABS = [
+  { id: 'all', label: 'All Solutions' },
+  { id: 'pos', label: 'Restaurant POS' },
+  { id: 'billsoft', label: 'BillSoft Accounting' },
+  { id: 'hrms', label: 'HRMS & Payroll' },
+  { id: 'crm', label: 'CRM & Sales' },
+];
 import {
   UtensilsCrossed,
   BarChart3,
@@ -102,17 +110,17 @@ const SOLUTIONS_DATA = [
   },
 ];
 
-export default function CoreSolutionsGrid({ activeTab, onOpenModal }) {
+export default function CoreSolutionsGrid({ activeTab, onTabChange, onOpenModal }) {
   const filteredSolutions =
     activeTab === 'all'
       ? SOLUTIONS_DATA
       : SOLUTIONS_DATA.filter((item) => item.category === activeTab);
 
   return (
-    <section className="section-padding bg-white relative">
+    <section id="core-modules" className="pt-12 pb-16 sm:pt-14 sm:pb-20 bg-white relative scroll-mt-20">
       <div className="site-container">
         {/* Section Header */}
-        <div className="section-header text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+        <div className="section-header text-center max-w-3xl mx-auto mb-8 sm:mb-10">
           <div className="section-eyebrow">CORE MODULES</div>
           <h2>
             <span>Modular by Design. Powerful as One.</span>
@@ -121,6 +129,29 @@ export default function CoreSolutionsGrid({ activeTab, onOpenModal }) {
             Choose individual modules to resolve immediate operational bottlenecks, or deploy the complete suite as your comprehensive enterprise backbone.
           </p>
         </div>
+
+        {/* Inline Module Filter Bar (Synced with Hero Pills) */}
+        {onTabChange && (
+          <div className="mb-8 sm:mb-10 flex flex-wrap items-center justify-center gap-2">
+            {SOLUTION_TABS.map((tab) => {
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => onTabChange(tab.id)}
+                  className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer ${
+                    isActive
+                      ? 'bg-[#007a55] text-white shadow-sm'
+                      : 'bg-slate-50 text-slate-700 hover:bg-emerald-50 hover:text-[#007a55] border border-slate-200'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              );
+            })}
+          </div>
+        )}
 
         {/* 4 Core Solutions Grid - Aligned to full site-container width (no extra left/right whitespace) */}
         <div

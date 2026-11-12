@@ -147,17 +147,19 @@ export default function UnifiedSynergySection() {
             {SYNERGY_FLOWS.map((flow, fIdx) => (
               <div
                 key={fIdx}
-                className="card-ecosystem rounded-2xl p-5 bg-white border card-shadow-emerald relative"
+                className="card-ecosystem rounded-2xl p-5 bg-white border card-shadow-emerald relative flex flex-col items-center justify-between text-center"
               >
-                <div className="w-8 h-8 rounded-lg bg-emerald-50 text-[#007a55] font-mono font-bold text-xs flex items-center justify-center mb-3 border border-emerald-200">
-                  {flow.step}
+                <div className="flex flex-col items-center">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-50 text-[#007a55] font-mono font-bold text-xs flex items-center justify-center mb-3 border border-emerald-200">
+                    {flow.step}
+                  </div>
+                  <h4 className="mb-1.5">
+                    <span>{flow.event}</span>
+                  </h4>
+                  <p className="mb-3">
+                    {flow.description}
+                  </p>
                 </div>
-                <h4 className="mb-1.5">
-                  <span>{flow.event}</span>
-                </h4>
-                <p className="mb-3">
-                  {flow.description}
-                </p>
                 <div className="inline-block px-2 py-0.5 rounded bg-emerald-50 text-xs font-mono font-semibold text-[#007a55]">
                   {flow.impact}
                 </div>

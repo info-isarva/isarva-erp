@@ -308,7 +308,7 @@ export default function Footer({
 
         {/* 3. MAIN 5-COLUMN EXPANDED NAVIGATION GRID */}
         <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8 border-b border-slate-200/80">
-          
+
           {/* Column 1: Brand Info, Regional Hubs & Socials (5 cols) */}
           <div className="lg:col-span-5 space-y-4 text-center lg:text-left flex flex-col items-center lg:items-start">
             <Link href="/" className="inline-block">
@@ -383,42 +383,56 @@ export default function Footer({
               Solutions
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-500 font-medium">
+              <li><Link href="/solutions" className="hover:text-[#007a55] transition-colors">All ERP Solutions</Link></li>
+              <li><Link href="/erp-features" className="hover:text-[#007a55] transition-colors">ERP Platform Features</Link></li>
               <li><Link href="/billsoft" className="hover:text-[#007a55] transition-colors">Accounting (BillSoft)</Link></li>
               <li><Link href="/restaurant-pos" className="hover:text-[#007a55] transition-colors">Restaurant POS</Link></li>
               <li><Link href="/hrms" className="hover:text-[#007a55] transition-colors">HRMS &amp; Payroll</Link></li>
               <li><Link href="/crm" className="hover:text-[#007a55] transition-colors">CRM &amp; Sales</Link></li>
-              <li><Link href="#products" className="hover:text-[#007a55] transition-colors">Inventory &amp; Operations</Link></li>
-              <li><Link href="#why-choose" className="hover:text-[#007a55] transition-colors">Reporting &amp; Analytics</Link></li>
             </ul>
           </div>
 
-          {/* Column 3: Solutions by Industry (2 cols) */}
+          {/* Column 3: Company & Regions (2 cols) */}
           <div className="lg:col-span-2 space-y-3 text-center lg:text-left">
             <h4>
-              Industries
+              Company
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-500 font-medium">
-              <li><Link href="#industries" className="hover:text-[#007a55] transition-colors">Restaurants &amp; Retail</Link></li>
-              <li><Link href="#industries" className="hover:text-[#007a55] transition-colors">Trading &amp; Distribution</Link></li>
-              <li><Link href="#industries" className="hover:text-[#007a55] transition-colors">Manufacturing</Link></li>
-              <li><Link href="#industries" className="hover:text-[#007a55] transition-colors">Multi-Location Businesses</Link></li>
-              <li><Link href="#industries" className="hover:text-[#007a55] transition-colors">Professional Services</Link></li>
+              <li><Link href="/" className="hover:text-[#007a55] transition-colors">Home</Link></li>
+              <li><Link href="/about" className="hover:text-[#007a55] transition-colors">About Us</Link></li>
+              <li><Link href="/why-choose-us" className="hover:text-[#007a55] transition-colors">Why Choose Us</Link></li>
+              <li><Link href="/sa" className="hover:text-[#007a55] transition-colors">Saudi Arabia Edition</Link></li>
+              <li><Link href="/contact" className="hover:text-[#007a55] transition-colors">Contact Us</Link></li>
             </ul>
           </div>
 
-          {/* Column 4: Resources (3 cols) */}
+          {/* Column 4: Connect & Legal (3 cols) */}
           <div className="lg:col-span-3 space-y-3 text-center lg:text-left">
             <h4>
-              Resources
+              Connect &amp; Legal
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-500 font-medium">
-              <li><Link href="/about" className="hover:text-[#007a55] transition-colors">About Us</Link></li>
-              <li><Link href="/why-choose-us" className="hover:text-[#007a55] transition-colors">Why Choose Us</Link></li>
-              <li><Link href="/#faqs" className="hover:text-[#007a55] transition-colors">Help Center &amp; FAQs</Link></li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => onOpenModal && onOpenModal('demo', 'Footer')}
+                  className="hover:text-[#007a55] transition-colors cursor-pointer"
+                >
+                  Book a Free Demo
+                </button>
+              </li>
+              <li>
+                <a href={`mailto:${metaEmail}`} className="hover:text-[#007a55] transition-colors break-all">
+                  {metaEmail}
+                </a>
+              </li>
+              <li>
+                <a href={`tel:${metaPhone.replace(/\s+/g, '')}`} className="hover:text-[#007a55] transition-colors">
+                  {metaPhone}
+                </a>
+              </li>
+              <li><Link href="/contact" className="hover:text-[#007a55] transition-colors">Support &amp; Inquiries</Link></li>
               <li><Link href="/privacy-policy" className="hover:text-[#007a55] transition-colors">Privacy Policy</Link></li>
-              <li><Link href="/#compliance" className="hover:text-[#007a55] transition-colors">GST e-Invoicing &amp; IRN</Link></li>
-              <li><Link href="/#compliance" className="hover:text-[#007a55] transition-colors">Saudi ZATCA Phase 2</Link></li>
-              <li><Link href="/contact" className="hover:text-[#007a55] transition-colors">Contact Us &amp; Support</Link></li>
             </ul>
           </div>
         </div>

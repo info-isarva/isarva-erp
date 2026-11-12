@@ -1,18 +1,10 @@
 'use client';
 
 import React from 'react';
-import { Sparkles, Layers, ShieldCheck, Zap } from 'lucide-react';
+import { Layers, ShieldCheck, Zap } from 'lucide-react';
 import { renderTitleWithGradient } from '../../lib/render-title';
 
-const SOLUTION_TABS = [
-  { id: 'all', label: 'All Solutions' },
-  { id: 'pos', label: 'Restaurant POS' },
-  { id: 'billsoft', label: 'BillSoft Accounting' },
-  { id: 'hrms', label: 'HRMS & Payroll' },
-  { id: 'crm', label: 'CRM & Sales' },
-];
-
-export default function SolutionsHero({ activeTab, onTabChange }) {
+export default function SolutionsHero() {
   return (
     <section className="relative section-padding-sm bg-gradient-to-b from-[#f0f8f4] via-[#e7f4ee] to-[#f4faf6] border-b border-[#d3eade]/70 overflow-hidden">
       {/* Soft atmospheric glow orbs */}
@@ -30,7 +22,7 @@ export default function SolutionsHero({ activeTab, onTabChange }) {
 
       <div className="site-container relative z-10">
         {/* Section Header */}
-        <div className="section-header text-center max-w-4xl mx-auto">
+        <div className="section-header text-center max-w-4xl mx-auto !mb-0">
           <div className="section-eyebrow">
             COMPLETE BUSINESS SUITE
           </div>
@@ -57,26 +49,6 @@ export default function SolutionsHero({ activeTab, onTabChange }) {
               <Zap size={14} className="text-[#007a55]" />
               Real-Time Cloud Synchronization
             </span>
-          </div>
-
-          {/* Interactive Filter Pills */}
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-2">
-            {SOLUTION_TABS.map((tab) => {
-              const isActive = activeTab === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  type="button"
-                  onClick={() => onTabChange(tab.id)}
-                  className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer ${isActive
-                    ? 'bg-[#007a55] text-white shadow-md shadow-emerald-800/20 scale-105'
-                    : 'bg-white/90 text-slate-700 hover:bg-emerald-50 hover:text-[#007a55] border border-slate-200/80 shadow-2xs'
-                    }`}
-                >
-                  {tab.label}
-                </button>
-              );
-            })}
           </div>
         </div>
       </div>
