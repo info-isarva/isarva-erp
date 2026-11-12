@@ -107,7 +107,7 @@ export default function HrmsWorkflow() {
         </div>
 
         {/* 5-Step Pipeline Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-5 lg:gap-3.5 xl:gap-4.5 items-stretch">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-x-4 sm:gap-x-5 lg:gap-x-3.5 xl:gap-x-4.5 gap-y-10 pt-7 items-stretch">
           {steps.map((item, idx) => (
             <div
               key={idx}
@@ -119,17 +119,19 @@ export default function HrmsWorkflow() {
               }`}
             >
               <div
-                className={`group relative flex-1 p-5 sm:p-6 lg:p-4.5 xl:p-5 2xl:p-6 rounded-2xl bg-white border border-slate-200/90 ${item.hoverBorder} shadow-[0_8px_20px_-4px_rgba(15,23,42,0.06),0_3px_8px_-2px_rgba(15,23,42,0.04)] hover:shadow-[0_16px_32px_-4px_rgba(124,58,237,0.18)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center justify-between overflow-hidden h-full min-w-0`}
+                className={`group relative flex-1 pt-10 px-5 pb-5 sm:pt-11 sm:px-6 sm:pb-6 lg:pt-10 lg:px-4.5 lg:pb-4.5 xl:pt-11 xl:px-5 xl:pb-5 2xl:px-6 2xl:pb-6 rounded-2xl bg-white border border-slate-200/90 ${item.hoverBorder} shadow-[0_8px_20px_-4px_rgba(15,23,42,0.06),0_3px_8px_-2px_rgba(15,23,42,0.04)] hover:shadow-[0_16px_32px_-4px_rgba(124,58,237,0.18)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center justify-between overflow-visible h-full min-w-0`}
               >
                 {/* Top Accent Gradient Line */}
-                <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-br ${item.color}`} />
+                <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
+                  <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-br ${item.color}`} />
+                </div>
+
+                {/* Step Gradient Icon centered on the card top border */}
+                <div className={`absolute left-1/2 top-0 z-10 -translate-x-1/2 -translate-y-1/2 flex h-12 w-12 sm:h-13 sm:w-13 items-center justify-center rounded-2xl bg-gradient-to-br ${item.color} shadow-md ring-4 ring-white group-hover:scale-110 transition-transform duration-300`}>
+                  {item.svgIcon}
+                </div>
 
                 <div className="flex flex-col items-center w-full min-w-0">
-                  {/* Step Gradient Icon */}
-                  <div className={`flex h-13 w-13 sm:h-14 sm:w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${item.color} shadow-md group-hover:scale-110 transition-transform duration-300 mb-3.5`}>
-                    {item.svgIcon}
-                  </div>
-
                   {/* Step Pill */}
                   <div className="flex items-center justify-center mb-3">
                     <span className={`inline-flex items-center gap-1.5 text-[10.5px] sm:text-[11.5px] font-bold px-3 py-1 rounded-full border ${item.tagColor} shadow-2xs whitespace-nowrap`}>

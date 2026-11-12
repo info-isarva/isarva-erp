@@ -87,23 +87,23 @@ export default function BillsoftWorkflow() {
         </div>
 
         {/* 5-Step Workflow Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5 sm:gap-6 relative pt-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-x-5 sm:gap-x-6 gap-y-10 relative pt-6">
           {steps.map((item, index) => (
             <div
               key={index}
-              className={`group flex flex-col justify-between pt-8 px-5 sm:px-6 pb-5 sm:pb-6 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:shadow-xl transition-all duration-300 relative overflow-visible ${item.hoverBorder}`}
+              className={`group flex flex-col justify-between pt-9 px-5 sm:px-6 pb-5 sm:pb-6 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:shadow-xl transition-all duration-300 relative overflow-visible ${item.hoverBorder}`}
             >
-              {/* Step number centered on the card top border */}
-              <span className="absolute left-1/2 top-0 z-10 -translate-x-1/2 -translate-y-1/2 inline-flex items-center justify-center min-w-10 px-2.5 bg-white text-2xl font-black tabular-nums tracking-tight text-slate-300 group-hover:text-[#2563eb] transition-colors leading-none">
-                {item.step}
-              </span>
+              {/* Icon centered on the card top border */}
+              <div className={`absolute left-1/2 top-0 z-10 -translate-x-1/2 -translate-y-1/2 w-11 h-11 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center shadow-md ring-4 ring-white group-hover:scale-110 transition-transform duration-300`}>
+                {item.icon}
+              </div>
 
               <div>
-                {/* Icon left + phase badge right, vertically centered */}
+                {/* Step number left + phase badge right */}
                 <div className="flex items-center justify-between gap-3 mb-4">
-                  <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center shadow-md shrink-0`}>
-                    {item.icon}
-                  </div>
+                  <span className="text-xl font-black tabular-nums tracking-tight text-slate-300 group-hover:text-[#2563eb] transition-colors leading-none">
+                    {item.step}
+                  </span>
                   <span className={`px-2 py-0.5 rounded-full text-xs font-bold border ${item.tagColor} shrink-0 self-center`}>
                     {item.phase}
                   </span>

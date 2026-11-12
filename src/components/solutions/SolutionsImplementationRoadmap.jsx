@@ -69,14 +69,24 @@ export default function SolutionsImplementationRoadmap() {
         </div>
 
         {/* 4 Phases Timeline Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 pt-6">
           {ROADMAP_STEPS.map((step, idx) => {
             const Icon = step.icon;
             return (
               <div
                 key={idx}
-                className="card-ecosystem rounded-2xl p-6 bg-white border border-emerald-600/25 shadow-[0_12px_32px_-4px_rgba(0,122,85,0.16),0_4px_14px_-2px_rgba(0,122,85,0.08)] hover:border-[#007a55]/60 hover:shadow-[0_24px_50px_-4px_rgba(0,122,85,0.28)] transition-all duration-300 flex flex-col justify-between group"
+                className="card-ecosystem relative overflow-visible rounded-2xl pt-9 px-6 pb-6 bg-white border border-emerald-600/25 shadow-[0_12px_32px_-4px_rgba(0,122,85,0.16),0_4px_14px_-2px_rgba(0,122,85,0.08)] hover:border-[#007a55]/60 hover:shadow-[0_24px_50px_-4px_rgba(0,122,85,0.28)] transition-all duration-300 flex flex-col justify-between group"
               >
+                {/* Icon centered on the card top border */}
+                <div className="absolute left-1/2 top-0 z-10 -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl p-1 shadow-xs group-hover:scale-110 transition-transform duration-300">
+                  <div
+                    className="w-11 h-11 rounded-lg flex items-center justify-center shadow-inner"
+                    style={{ background: `${step.color}15`, color: step.color }}
+                  >
+                    <Icon size={22} />
+                  </div>
+                </div>
+
                 <div>
                   {/* Step Header */}
                   <div className="flex items-center justify-between gap-2 mb-4">
@@ -90,13 +100,6 @@ export default function SolutionsImplementationRoadmap() {
                       <Calendar size={12} />
                       {step.duration}
                     </span>
-                  </div>
-
-                  <div
-                    className="w-11 h-11 rounded-xl flex items-center justify-center mb-4 shadow-inner"
-                    style={{ background: `${step.color}15`, color: step.color }}
-                  >
-                    <Icon size={22} />
                   </div>
 
                   <h3 className="mb-2">
