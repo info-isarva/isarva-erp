@@ -6,7 +6,7 @@ import Footer from '../Footer';
 import LeadModal from '../LeadModal';
 import { getDefaultContentForCountry } from '../../lib/content';
 import ContactForm from './ContactForm';
-import GlobalOfficesGrid from './GlobalOfficesGrid';
+import ContactNextSteps from './ContactNextSteps';
 
 export default function ContactContent() {
   const [countryCode, setCountryCode] = useState('IN');
@@ -191,7 +191,7 @@ export default function ContactContent() {
                 {/* Email Us */}
                 <div className="relative rounded-3xl p-8 bg-white border border-gray-100 shadow-lg hover:shadow-2xl card-shadow-emerald transition-all duration-300 group overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                  <div className="relative lg:text-left text-center">
+                  <div className="relative lg:text-left text-center flex items-center flex-col">
                     <div className="w-14 h-14 rounded-2xl lg:mx-0 mx-auto bg-gradient-to-br from-emerald-400 to-green-500 flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300 text-white">
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -208,7 +208,7 @@ export default function ContactContent() {
                 {/* Call Us */}
                 <div className="relative rounded-3xl p-8 bg-white border border-gray-100 shadow-lg hover:shadow-2xl card-shadow-emerald transition-all duration-300 group overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                  <div className="relative lg:text-left text-center">
+                  <div className="relative lg:text-left text-center flex items-center col flex-col">
                     <div className="w-14 h-14 rounded-2xl lg:mx-0 mx-auto bg-gradient-to-br from-emerald-400 to-green-500 flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300 text-white">
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -225,7 +225,7 @@ export default function ContactContent() {
                 {/* Working Hours */}
                 <div className="relative rounded-3xl p-8 bg-white border border-gray-100 shadow-lg hover:shadow-2xl card-shadow-emerald transition-all duration-300 group overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                  <div className="relative lg:text-left text-center">
+                  <div className="relative lg:text-left text-center flex items-center col flex-col">
                     <div className="w-14 h-14 rounded-2xl lg:mx-0 mx-auto bg-gradient-to-br from-emerald-400 to-green-500 flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300 text-white">
                       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -240,8 +240,8 @@ export default function ContactContent() {
             </div>
           </section>
 
-          {/* SECTION 2: OUR OFFICES (Mangalore, Bangalore, Dubai, UK) */}
-          <GlobalOfficesGrid />
+          {/* SECTION 2: WHAT HAPPENS NEXT & REGIONAL SUPPORT DESK */}
+          <ContactNextSteps onOpenDemoModal={handleOpenModal} />
         </div>
       </main>
 

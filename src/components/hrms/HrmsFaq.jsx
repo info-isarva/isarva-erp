@@ -66,13 +66,11 @@ export default function HrmsFaq() {
             return (
               <div
                 key={idx}
-                data-aos="fade-up"
-                data-aos-delay={(idx % 3) * 100 + 100}
-                data-aos-duration="600"
-                className={`rounded-2xl border transition-all duration-300 overflow-hidden bg-white ${isOpen
+                className={`rounded-2xl border transition-all duration-300 overflow-hidden bg-white ${
+                  isOpen
                     ? 'card-shadow-purple border-[#7c3aed] ring-1 ring-[#7c3aed]/20'
-                    : 'border-slate-200/90 hover:card-shadow-purple hover:border-purple-300'
-                  }`}
+                    : 'border-purple-200/80 shadow-[0_6px_20px_rgba(124,58,237,0.09)] hover:card-shadow-purple hover:border-purple-300'
+                }`}
               >
                 <button
                   type="button"

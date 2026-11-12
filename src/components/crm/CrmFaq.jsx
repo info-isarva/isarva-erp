@@ -66,12 +66,9 @@ export default function CrmFaq() {
             return (
               <div
                 key={idx}
-                data-aos="fade-up"
-                data-aos-delay={(idx % 3) * 100 + 100}
-                data-aos-duration="600"
                 className={`rounded-2xl border transition-all duration-200 overflow-hidden bg-white ${isOpen
-                    ? 'border-[#008CDB] shadow-md shadow-sky-500/10'
-                    : 'border-gray-200/90 hover:border-gray-300'
+                    ? 'card-shadow-blue border-[#008CDB] ring-1 ring-[#008CDB]/20'
+                    : 'border-sky-200/80 shadow-[0_6px_20px_rgba(2,132,199,0.09)] hover:border-sky-300 hover:shadow-[0_10px_28px_rgba(2,132,199,0.16)]'
                   }`}
               >
                 <button
@@ -85,8 +82,8 @@ export default function CrmFaq() {
                   </span>
                   <span
                     className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-transform duration-300 ${isOpen
-                        ? 'rotate-180 bg-[#008CDB] text-white'
-                        : 'bg-gray-100 text-gray-500'
+                      ? 'rotate-180 bg-[#008CDB] text-white'
+                      : 'bg-gray-100 text-gray-500'
                       }`}
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

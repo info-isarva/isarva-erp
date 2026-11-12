@@ -135,13 +135,9 @@ function getGridPosClass(index, total) {
 function FaqCard({ item, index, isOpen, onToggle, gridClass = '' }) {
   const theme = FAQ_THEMES[index % FAQ_THEMES.length];
   const [isHovered, setIsHovered] = useState(false);
-  const cardDelay = (index % 2) * 150 + 100;
 
   return (
     <div
-      data-aos="fade-up"
-      data-aos-delay={cardDelay}
-      data-aos-duration="600"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={`relative rounded-2xl transition-all duration-300 overflow-hidden min-w-0 w-full ${gridClass}`}
