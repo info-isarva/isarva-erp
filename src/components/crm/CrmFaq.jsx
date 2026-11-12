@@ -1,9 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { useSyncedFaqHeights } from '../../hooks/useSyncedFaqHeights';
 
 export default function CrmFaq() {
   const [openIndex, setOpenIndex] = useState(0);
+  const gridRef = useRef(null);
 
   const faqs = [
     {
@@ -36,12 +38,20 @@ export default function CrmFaq() {
     setOpenIndex(openIndex === idx ? -1 : idx);
   };
 
+  useSyncedFaqHeights(gridRef, faqs.length);
+
+  const mid = Math.ceil(faqs.length / 2);
+  const columns = [
+    faqs.slice(0, mid).map((faq, i) => ({ faq, idx: i })),
+    faqs.slice(mid).map((faq, i) => ({ faq, idx: mid + i })),
+  ];
+
   return (
     <section id="faq" className="section-padding bg-gray-50 border-b border-gray-200 scroll-mt-20">
-      <div className="w-full max-w-4xl mx-auto px-5 sm:px-6">
+      <div className="site-container">
 
         {/* Section Header */}
-        <div data-aos="fade-up" data-aos-duration="600" className="text-center mb-10 sm:mb-14">
+        <div data-aos="fade-up" data-aos-duration="600" className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-sky-500/10 via-purple-500/10 to-orange-500/10 border border-sky-300/60 text-[#008CDB] font-bold text-xs uppercase tracking-widest mb-4 shadow-2xs font-heading">
             <span className="w-2 h-2 rounded-full bg-[#008CDB] animate-pulse" />
             Got Questions?
@@ -59,47 +69,57 @@ export default function CrmFaq() {
           </p>
         </div>
 
-        {/* Accordion List */}
-        <div className="space-y-3.5 sm:space-y-4">
-          {faqs.map((faq, idx) => {
-            const isOpen = openIndex === idx;
-            return (
-              <div
-                key={idx}
-                className={`rounded-2xl border transition-all duration-200 overflow-hidden bg-white ${isOpen
-                    ? 'card-shadow-blue border-[#008CDB] ring-1 ring-[#008CDB]/20'
-                    : 'border-sky-200/80 shadow-[0_6px_20px_rgba(2,132,199,0.09)] hover:border-sky-300 hover:shadow-[0_10px_28px_rgba(2,132,199,0.16)]'
-                  }`}
-              >
-                <button
-                  type="button"
-                  onClick={() => toggleFaq(idx)}
-                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
-                  aria-expanded={isOpen}
-                >
-                  <span className="text-base sm:text-lg font-bold text-gray-900 leading-snug font-heading">
-                    {faq.q}
-                  </span>
-                  <span
-                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-transform duration-300 ${isOpen
-                      ? 'rotate-180 bg-[#008CDB] text-white'
-                      : 'bg-gray-100 text-gray-500'
+        {/* Accordion List — 2 Independent Columns on Desktop */}
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 items-start">
+          {columns.map((col, colIdx) => (
+            <div key={colIdx} className="flex flex-col gap-4 sm:gap-5 min-w-0">
+              {col.map(({ faq, idx }) => {
+                const isOpen = openIndex === idx;
+                return (
+                  <div
+                    key={idx}
+                    className={`rounded-2xl border transition-all duration-200 overflow-hidden bg-white ${isOpen
+                      ? 'card-shadow-blue border-[#008CDB] ring-1 ring-[#008CDB]/20'
+                      : 'border-sky-200/80 shadow-[0_6px_20px_rgba(2,132,199,0.09)] hover:border-sky-300 hover:shadow-[0_10px_28px_rgba(2,132,199,0.16)]'
                       }`}
                   >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </span>
-                </button>
+                    <button
+                      type="button"
+                      data-faq-btn
+                      onClick={() => toggleFaq(idx)}
+                      className="w-full min-h-20 md:min-h-24 py-3.5 lg:py-4 px-5 sm:px-6 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
+                      aria-expanded={isOpen}
+                    >
+                      <span className="text-base lg:text-lg font-bold text-gray-900 leading-snug font-heading">
+                        {faq.q}
+                      </span>
+                      <span
+                        className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-transform duration-300 ${isOpen
+                          ? 'rotate-180 bg-[#008CDB] text-white'
+                          : 'bg-gray-100 text-gray-500'
+                          }`}
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </span>
+                    </button>
 
-                {isOpen && (
-                  <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-1 text-sm sm:text-base text-gray-600 leading-relaxed border-t border-gray-100 animate-in fade-in duration-200">
-                    {faq.a}
+                    <div
+                      aria-hidden={!isOpen}
+                      className={`faq-accordion ${isOpen ? 'is-open' : ''}`}
+                    >
+                      <div className="faq-accordion-inner">
+                        <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-3 text-sm sm:text-base text-gray-600 leading-relaxed border-t border-gray-100">
+                          {faq.a}
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                )}
-              </div>
-            );
-          })}
+                );
+              })}
+            </div>
+          ))}
         </div>
 
       </div>

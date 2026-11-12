@@ -23,29 +23,29 @@ export default function SolutionsHero() {
       <div className="site-container relative z-10">
         {/* Section Header */}
         <div className="section-header text-center max-w-4xl mx-auto !mb-0">
-          <div className="section-eyebrow">
+          <div data-aos="fade-down" data-aos-duration="600" className="section-eyebrow">
             COMPLETE BUSINESS SUITE
           </div>
 
-          <h1 className="mb-4">
+          <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="700" className="mb-4">
             {renderTitleWithGradient('Unified Enterprise Solutions for Modern Commerce')}
           </h1>
 
-          <p className="max-w-2xl mx-auto">
+          <p data-aos="fade-up" data-aos-delay="200" data-aos-duration="700" className="max-w-2xl mx-auto">
             From point-of-sale and GST-compliant accounting to multi-branch HRMS and automated customer pipelines — discover how ISARVA ERP connects every corner of your business with zero duplicate entries.
           </p>
 
           {/* Value Badges */}
-          <div className="mt-7 flex flex-wrap items-center justify-center gap-3 text-xs">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 border border-emerald-200/80 shadow-2xs text-slate-700 font-medium">
+          <div data-aos="fade-up" data-aos-delay="300" data-aos-duration="700" className="mt-7 flex flex-wrap items-center justify-center gap-3 text-xs">
+            <span data-aos="zoom-in" data-aos-delay="350" className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 border border-emerald-200/80 shadow-2xs text-slate-700 font-medium">
               <Layers size={14} className="text-[#007a55]" />
               Modular &amp; Interconnected
             </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 border border-emerald-200/80 shadow-2xs text-slate-700 font-medium">
+            <span data-aos="zoom-in" data-aos-delay="420" className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 border border-emerald-200/80 shadow-2xs text-slate-700 font-medium">
               <ShieldCheck size={14} className="text-[#007a55]" />
               Native GST &amp; ZATCA Compliance
             </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 border border-emerald-200/80 shadow-2xs text-slate-700 font-medium">
+            <span data-aos="zoom-in" data-aos-delay="490" className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 border border-emerald-200/80 shadow-2xs text-slate-700 font-medium">
               <Zap size={14} className="text-[#007a55]" />
               Real-Time Cloud Synchronization
             </span>

@@ -44,7 +44,7 @@ export default function UnifiedSynergySection() {
     <section className="section-padding bg-white relative overflow-hidden">
       <div className="site-container">
         {/* Section Header */}
-        <div className="section-header text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+        <div data-aos="fade-up" data-aos-duration="600" className="section-header text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="section-eyebrow">DATA SYNCHRONIZATION</div>
           <h2>
             <span>The Power of a Unified ERP vs. Fragmented Software</span>
@@ -57,7 +57,7 @@ export default function UnifiedSynergySection() {
         {/* Comparison Matrix (Fragmented vs Unified) - Full width of site-container */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 w-full mb-16">
           {/* Left: Fragmented Legacy Approach */}
-          <div className="rounded-3xl p-6 sm:p-8 bg-slate-50 border border-slate-200/90 flex flex-col justify-between">
+          <div data-aos="fade-right" data-aos-duration="700" className="rounded-3xl p-6 sm:p-8 bg-slate-50 border border-slate-200/90 flex flex-col justify-between">
             <div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 text-red-700 text-xs font-bold font-mono mb-4">
                 <XCircle size={14} />
@@ -96,7 +96,7 @@ export default function UnifiedSynergySection() {
           </div>
 
           {/* Right: Unified ISARVA ERP Architecture */}
-          <div className="card-ecosystem rounded-3xl p-6 sm:p-8 bg-gradient-to-br from-[#007a55] via-[#006949] to-[#034d36] text-white border border-emerald-400/40 card-shadow-dark-emerald flex flex-col justify-between">
+          <div data-aos="fade-left" data-aos-delay="120" data-aos-duration="700" className="card-ecosystem rounded-3xl p-6 sm:p-8 bg-gradient-to-br from-[#007a55] via-[#006949] to-[#034d36] text-white border border-emerald-400/40 card-shadow-dark-emerald flex flex-col justify-between">
             <div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-400/20 text-emerald-200 text-xs font-bold font-mono mb-4 border border-emerald-300/30">
                 <CheckCircle2 size={14} />
@@ -147,6 +147,9 @@ export default function UnifiedSynergySection() {
             {SYNERGY_FLOWS.map((flow, fIdx) => (
               <div
                 key={fIdx}
+                data-aos="fade-up"
+                data-aos-delay={fIdx * 90 + 80}
+                data-aos-duration="600"
                 className="card-ecosystem rounded-2xl p-5 bg-white border card-shadow-emerald relative flex flex-col items-center justify-between text-center"
               >
                 <div className="flex flex-col items-center">

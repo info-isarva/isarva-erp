@@ -37,7 +37,7 @@ export default function BillsoftCoverage({ onOpenLightbox }) {
       <div className="site-container">
         
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
+        <div data-aos="fade-up" data-aos-duration="600" className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 mb-4">
             <span className="w-2 h-2 rounded-full bg-[#2563eb]" />
             <span className="section-eyebrow text-[#2563eb]">360° ENTERPRISE COVERAGE</span>
@@ -51,7 +51,7 @@ export default function BillsoftCoverage({ onOpenLightbox }) {
         </div>
 
         {/* Interactive Architecture Graphic Showcase */}
-        <div className="max-w-5xl mx-auto mb-14">
+        <div data-aos="zoom-in" data-aos-duration="700" className="max-w-5xl mx-auto mb-14">
           <div
             className="relative group cursor-pointer rounded-2xl overflow-hidden border border-gray-200/90 bg-white shadow-xl hover:shadow-2xl hover:border-blue-300 transition-all duration-300 p-2 sm:p-4"
             onClick={() => onOpenLightbox('/images/billsoft/what-billsoft-covers.png', 'BillSoft Complete Operational and ERP Coverage Matrix')}
@@ -87,6 +87,9 @@ export default function BillsoftCoverage({ onOpenLightbox }) {
           {sectors.map((sec, idx) => (
             <div
               key={idx}
+              data-aos="fade-up"
+              data-aos-delay={idx * 80 + 80}
+              data-aos-duration="600"
               className="p-5 rounded-2xl bg-slate-50 border border-gray-200/90 shadow-2xs hover:bg-white hover:border-blue-300 hover:shadow-md transition-all duration-200 text-center flex flex-col items-center"
             >
               <div className="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center mb-3.5 shadow-2xs">

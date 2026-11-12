@@ -36,23 +36,23 @@ export default function ErpFeaturesHero({ onOpenModal }) {
           {/* ── Left: Text Content ── */}
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-6 max-w-xl mx-auto lg:mx-0">
             {/* Eyebrow */}
-            <span className="section-eyebrow">ERP Software Features</span>
+            <span data-aos="fade-down" data-aos-duration="600" className="section-eyebrow">ERP Software Features</span>
 
             {/* Headline */}
-            <h1>
+            <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
               Everything Your Business Needs.{' '}
               <span style={{ color: '#0056d2' }}>All in One ERP.</span>
             </h1>
 
             {/* Subtitle */}
-            <p className="max-w-md mx-auto lg:mx-0">
+            <p data-aos="fade-up" data-aos-delay="200" data-aos-duration="700" className="max-w-md mx-auto lg:mx-0">
               Streamline your finance, sales, inventory, HR, projects and more
               with Isarva ERP. Get real-time insights, automate your operations
               and take complete control of your business.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-3 items-center justify-center lg:justify-start">
+            <div data-aos="fade-up" data-aos-delay="300" data-aos-duration="700" className="flex flex-wrap gap-3 items-center justify-center lg:justify-start">
               <a href="#features" className="btn-brand-primary" id="erp-hero-explore-btn">
                 Explore Features <ArrowRight size={16} />
               </a>
@@ -66,7 +66,7 @@ export default function ErpFeaturesHero({ onOpenModal }) {
             </div>
 
             {/* Trust Badges */}
-            <div className="flex flex-col items-start sm:flex-row sm:items-center sm:flex-wrap justify-center lg:justify-start gap-2.5 sm:gap-4 pt-1">
+            <div data-aos="fade-up" data-aos-delay="400" data-aos-duration="700" className="flex flex-col items-start sm:flex-row sm:items-center sm:flex-wrap justify-center lg:justify-start gap-2.5 sm:gap-4 pt-1">
               {[
                 'All-in-One Platform',
                 'Scalable for Growth',
@@ -84,7 +84,7 @@ export default function ErpFeaturesHero({ onOpenModal }) {
           </div>
 
           {/* ── Right: Dashboard Mockup ── */}
-          <div className="relative flex items-center justify-center">
+          <div data-aos="fade-left" data-aos-delay="150" data-aos-duration="800" className="relative flex items-center justify-center">
             {/* Floating "Manage Simplify Grow" badge */}
             <div
               className="absolute -top-4 right-2 z-10 hidden sm:flex flex-col items-center gap-1 bg-white rounded-xl px-3 py-2 text-center"

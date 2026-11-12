@@ -97,7 +97,7 @@ export default function ErpComparisonTable({ onOpenModal }) {
 
       <div className="site-container relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+        <div data-aos="fade-up" data-aos-duration="600" className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200/70 mb-3">
             <span className="section-eyebrow">
               ARCHITECTURAL COMPARISON
@@ -118,7 +118,7 @@ export default function ErpComparisonTable({ onOpenModal }) {
         {/* ========================================================================= */}
         {/* DESKTOP VIEW: Full Side-by-Side Comparison Matrix (>= lg / 1024px)         */}
         {/* ========================================================================= */}
-        <div className="hidden lg:block rounded-2xl bg-white border border-emerald-200/80 shadow-xl overflow-hidden card-shadow-emerald">
+        <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="700" className="hidden lg:block rounded-2xl bg-white border border-emerald-200/80 shadow-xl overflow-hidden card-shadow-emerald">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse min-w-full">
               <thead>

@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { useSyncedFaqHeights } from '../../hooks/useSyncedFaqHeights';
 import {
   Shield,
   Eye,
@@ -333,21 +334,21 @@ function HeroBanner() {
       <div className="site-container relative z-10 section-padding-sm">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           {/* Legal & Compliance Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 border border-emerald-200/70 shadow-2xs mb-5">
+          <div data-aos="fade-down" data-aos-duration="600" className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 border border-emerald-200/70 shadow-2xs mb-5">
             <Shield size={14} className="text-[#007a55]" />
             <span className="section-eyebrow">LEGAL &amp; COMPLIANCE</span>
           </div>
 
-          <h1>Privacy Policy</h1>
+          <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">Privacy Policy</h1>
 
-          <div className="mt-4">
+          <div data-aos="fade-up" data-aos-delay="200" data-aos-duration="700" className="mt-4">
             <p className="max-w-2xl mx-auto">
               At Isarva Infotech, we are committed to protecting your personal information and being transparent about how we collect, use, and safeguard your data. This policy explains our practices and your rights in plain, clear language.
             </p>
           </div>
 
           {/* Meta Info Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-3 mt-6">
+          <div data-aos="fade-up" data-aos-delay="300" data-aos-duration="700" className="flex flex-wrap items-center justify-center gap-3 mt-6">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 border border-slate-200/80 text-xs font-semibold text-slate-600 shadow-2xs">
               <Clock size={13} className="text-slate-400" />
               Last updated: January 1, 2025
@@ -375,7 +376,7 @@ function PrinciplesSection() {
   return (
     <section className="section-padding bg-white relative border-b border-slate-100">
       <div className="site-container">
-        <div className="section-header">
+        <div data-aos="fade-up" data-aos-duration="600" className="section-header">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-[#007a55] mx-auto shadow-2xs">
             <Sparkles size={14} className="text-[#007a55]" />
             <span className="section-eyebrow">OUR COMMITMENT</span>
@@ -392,6 +393,9 @@ function PrinciplesSection() {
             return (
               <div
                 key={idx}
+                data-aos="fade-up"
+                data-aos-delay={(idx % 3) * 90 + 80}
+                data-aos-duration="600"
                 className="group relative rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1"
                 style={{
                   background: principle.bg,
@@ -469,17 +473,15 @@ function TableOfContents() {
                 key={item.id}
                 href={`#${item.id}`}
                 onClick={(e) => handleNavClick(e, item.id)}
-                className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium transition-all group border-l-2 ${
-                  isActive
-                    ? 'bg-emerald-50/90 text-[#007a55] font-bold border-[#007a55] shadow-2xs'
-                    : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 border-transparent'
-                }`}
+                className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium transition-all group border-l-2 ${isActive
+                  ? 'bg-emerald-50/90 text-[#007a55] font-bold border-[#007a55] shadow-2xs'
+                  : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 border-transparent'
+                  }`}
               >
                 <Icon
                   size={14}
-                  className={`shrink-0 transition-colors ${
-                    isActive ? 'text-[#007a55]' : 'text-slate-400 group-hover:text-slate-600'
-                  }`}
+                  className={`shrink-0 transition-colors ${isActive ? 'text-[#007a55]' : 'text-slate-400 group-hover:text-slate-600'
+                    }`}
                 />
                 <span className="truncate">{item.label}</span>
               </a>
@@ -548,6 +550,8 @@ function PolicySection({ section }) {
 
 function FaqAccordion({ items }) {
   const [openIndex, setOpenIndex] = useState(null);
+  const gridRef = useRef(null);
+  useSyncedFaqHeights(gridRef, items.length);
 
   return (
     <section id="privacy-faqs" className="section-padding relative overflow-hidden border-t border-slate-200/60 scroll-mt-20"
@@ -576,84 +580,99 @@ function FaqAccordion({ items }) {
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto space-y-3">
-          {items.map((item, idx) => {
-            const isOpen = openIndex === idx;
-            const colors = [
-              { accent: '#007a55', bg: 'rgba(0, 122, 85, 0.06)', border: 'rgba(0, 122, 85, 0.18)' },
-              { accent: '#2563eb', bg: 'rgba(37, 99, 235, 0.06)', border: 'rgba(37, 99, 235, 0.18)' },
-              { accent: '#7c3aed', bg: 'rgba(124, 58, 237, 0.06)', border: 'rgba(124, 58, 237, 0.18)' },
-              { accent: '#ea580c', bg: 'rgba(234, 88, 12, 0.06)', border: 'rgba(234, 88, 12, 0.18)' },
-              { accent: '#0d9488', bg: 'rgba(13, 148, 136, 0.06)', border: 'rgba(13, 148, 136, 0.18)' },
-              { accent: '#db2777', bg: 'rgba(219, 39, 119, 0.06)', border: 'rgba(219, 39, 119, 0.18)' },
-            ];
-            const theme = colors[idx % colors.length];
-
+        {/* 2-Column Independent FAQ Grid */}
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 items-start">
+          {[items.slice(0, Math.ceil(items.length / 2)), items.slice(Math.ceil(items.length / 2))].map((colItems, colIdx) => {
+            const offset = colIdx === 0 ? 0 : Math.ceil(items.length / 2);
             return (
-              <div
-                key={idx}
-                className="relative rounded-2xl transition-all duration-300 overflow-hidden"
-                style={{
-                  background: isOpen ? theme.bg : 'rgba(255,255,255,0.9)',
-                  border: `1.5px solid ${isOpen ? theme.accent : theme.border}`,
-                  boxShadow: isOpen ? `0 8px 24px ${theme.border}` : '0 1px 4px rgba(0,0,0,0.03)',
-                }}
-              >
-                {/* Left Accent Bar */}
-                <div
-                  aria-hidden="true"
-                  className="absolute left-0 top-0 bottom-0 transition-all duration-300 pointer-events-none"
-                  style={{
-                    width: isOpen ? '4px' : '0px',
-                    background: theme.accent,
-                  }}
-                />
+              <div key={colIdx} className="flex flex-col gap-4 sm:gap-5 min-w-0">
+                {colItems.map((item, i) => {
+                  const idx = offset + i;
+                  const isOpen = openIndex === idx;
+                  const colors = [
+                    { accent: '#007a55', bg: 'rgba(0, 122, 85, 0.06)', border: 'rgba(0, 122, 85, 0.18)' },
+                    { accent: '#2563eb', bg: 'rgba(37, 99, 235, 0.06)', border: 'rgba(37, 99, 235, 0.18)' },
+                    { accent: '#7c3aed', bg: 'rgba(124, 58, 237, 0.06)', border: 'rgba(124, 58, 237, 0.18)' },
+                    { accent: '#ea580c', bg: 'rgba(234, 88, 12, 0.06)', border: 'rgba(234, 88, 12, 0.18)' },
+                    { accent: '#0d9488', bg: 'rgba(13, 148, 136, 0.06)', border: 'rgba(13, 148, 136, 0.18)' },
+                    { accent: '#db2777', bg: 'rgba(219, 39, 119, 0.06)', border: 'rgba(219, 39, 119, 0.18)' },
+                  ];
+                  const theme = colors[idx % colors.length];
 
-                <button
-                  type="button"
-                  onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  aria-expanded={isOpen}
-                  className="w-full flex items-center justify-between gap-3 py-4 px-5 sm:px-6 text-left cursor-pointer"
-                >
-                  <div className="flex items-center gap-3 min-w-0 flex-1">
-                    <span
-                      className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 text-xs font-bold transition-all duration-300"
+                  return (
+                    <div
+                      key={idx}
+                      className="relative rounded-2xl transition-all duration-300 overflow-hidden"
                       style={{
-                        fontFamily: 'var(--font-space-grotesk)',
-                        background: isOpen ? theme.accent : `${theme.accent}12`,
-                        color: isOpen ? '#ffffff' : theme.accent,
+                        background: isOpen ? theme.bg : 'rgba(255,255,255,0.9)',
+                        border: `1.5px solid ${isOpen ? theme.accent : theme.border}`,
+                        boxShadow: isOpen ? `0 12px 28px ${theme.border}` : `0 6px 20px ${theme.border}`,
                       }}
                     >
-                      {String(idx + 1).padStart(2, '0')}
-                    </span>
-                    <span
-                      className="font-space font-bold text-sm sm:text-base leading-snug transition-colors"
-                      style={{ color: isOpen ? theme.accent : '#0f172a' }}
-                    >
-                      {item.q}
-                    </span>
-                  </div>
+                      {/* Left Accent Bar */}
+                      <div
+                        aria-hidden="true"
+                        className="absolute left-0 top-0 bottom-0 transition-all duration-300 pointer-events-none"
+                        style={{
+                          width: isOpen ? '4px' : '0px',
+                          background: theme.accent,
+                        }}
+                      />
 
-                  <div
-                    className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300"
-                    style={{
-                      background: isOpen ? theme.accent : `${theme.accent}10`,
-                      color: isOpen ? '#ffffff' : theme.accent,
-                      transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                    }}
-                  >
-                    <ChevronDown size={16} strokeWidth={2.5} />
-                  </div>
-                </button>
+                      <button
+                        type="button"
+                        data-faq-btn
+                        onClick={() => setOpenIndex(isOpen ? null : idx)}
+                        aria-expanded={isOpen}
+                        className="w-full min-h-20 md:min-h-24 flex items-center justify-between gap-3 py-3.5 lg:py-4 px-5 sm:px-6 text-left cursor-pointer"
+                      >
+                        <div className="flex items-center gap-3 min-w-0 flex-1">
+                          <span
+                            className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 text-xs font-bold transition-all duration-300"
+                            style={{
+                              fontFamily: 'var(--font-space-grotesk)',
+                              background: isOpen ? theme.accent : `${theme.accent}12`,
+                              color: isOpen ? '#ffffff' : theme.accent,
+                            }}
+                          >
+                            {String(idx + 1).padStart(2, '0')}
+                          </span>
+                          <span
+                            className="font-space font-bold text-base lg:text-lg leading-snug transition-colors"
+                            style={{ color: isOpen ? theme.accent : '#0f172a' }}
+                          >
+                            {item.q}
+                          </span>
+                        </div>
 
-                {isOpen && (
-                  <div
-                    className="px-5 sm:px-6 pb-5 pt-2"
-                    style={{ borderTop: `1px solid ${theme.border}` }}
-                  >
-                    <p className="leading-relaxed">{item.a}</p>
-                  </div>
-                )}
+                        <div
+                          className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300"
+                          style={{
+                            background: isOpen ? theme.accent : `${theme.accent}10`,
+                            color: isOpen ? '#ffffff' : theme.accent,
+                            transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                          }}
+                        >
+                          <ChevronDown size={16} strokeWidth={2.5} />
+                        </div>
+                      </button>
+
+                      <div
+                        aria-hidden={!isOpen}
+                        className={`faq-accordion ${isOpen ? 'is-open' : ''}`}
+                      >
+                        <div className="faq-accordion-inner">
+                          <div
+                            className="px-5 sm:px-6 pb-5 pt-3"
+                            style={{ borderTop: `1px solid ${theme.border}` }}
+                          >
+                            <p className="leading-relaxed">{item.a}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             );
           })}
@@ -669,7 +688,7 @@ function ContactBanner() {
       <div className="site-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           {/* Left: Get In Touch */}
-          <div className="rounded-2xl bg-gradient-to-br from-[#002617] via-[#003d27] to-[#002214] border border-emerald-500/30 p-6 sm:p-8 relative overflow-hidden shadow-xl">
+          <div data-aos="fade-right" data-aos-duration="700" className="rounded-2xl bg-gradient-to-br from-[#002617] via-[#003d27] to-[#002214] border border-emerald-500/30 p-6 sm:p-8 relative overflow-hidden shadow-xl">
             <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-emerald-400/10 rounded-full blur-3xl pointer-events-none" />
             <div className="absolute inset-0 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none" />
 
@@ -709,7 +728,7 @@ function ContactBanner() {
           </div>
 
           {/* Right: Data Control CTA */}
-          <div className="rounded-2xl bg-gradient-to-br from-white via-slate-50 to-emerald-50/30 border border-slate-200/80 p-6 sm:p-8 shadow-lg shadow-slate-900/5 space-y-5">
+          <div data-aos="fade-left" data-aos-delay="120" data-aos-duration="700" className="rounded-2xl bg-gradient-to-br from-white via-slate-50 to-emerald-50/30 border border-slate-200/80 p-6 sm:p-8 shadow-lg shadow-slate-900/5 space-y-5">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-emerald-100 text-[#007a55] flex items-center justify-center shrink-0">
                 <UserCheck size={20} />
@@ -758,7 +777,7 @@ function ContactBanner() {
 function WorkWithUsBanner() {
   return (
     <section className="section-padding-sm relative overflow-hidden bg-gradient-to-r from-emerald-50/80 via-white to-blue-50/50 border-t border-slate-200/60">
-      <div className="site-container text-center space-y-4">
+      <div data-aos="fade-up" data-aos-duration="700" className="site-container text-center space-y-4">
         <span className="section-eyebrow">WORK WITH US</span>
         <h2>{renderTitleWithGradient('Ready to build something secure and scalable?')}</h2>
         <p className="max-w-2xl mx-auto">

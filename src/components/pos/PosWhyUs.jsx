@@ -83,7 +83,7 @@ export default function PosWhyUs() {
       <div className="site-container">
         
         {/* Section Header */}
-        <div className="text-center mb-14 lg:mb-18">
+        <div data-aos="fade-up" data-aos-duration="600" className="text-center mb-14 lg:mb-18">
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-amber-500/10 border border-emerald-300/60 text-[#059669] font-bold text-xs uppercase tracking-widest mb-4 shadow-2xs">
             <span className="w-2 h-2 rounded-full bg-[#059669] animate-pulse" />
             Why Choose ISARVA
@@ -104,6 +104,9 @@ export default function PosWhyUs() {
           {cards.map((c, idx) => (
             <div
               key={idx}
+              data-aos="fade-up"
+              data-aos-delay={(idx % 3) * 100 + 100}
+              data-aos-duration="600"
               className="p-6 sm:p-7 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:border-emerald-300 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group text-center"
             >
               <div className="flex flex-col items-center">

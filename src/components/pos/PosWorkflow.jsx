@@ -87,9 +87,9 @@ export default function PosWorkflow() {
   return (
     <section id="workflow" className="section-padding bg-white border-b border-gray-200 scroll-mt-20">
       <div className="site-container">
-        
+
         {/* Section Header */}
-        <div className="text-center mb-14 lg:mb-18">
+        <div data-aos="fade-up" data-aos-duration="600" className="text-center mb-14 lg:mb-18">
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-amber-500/10 border border-emerald-300/60 text-[#059669] font-bold text-xs uppercase tracking-widest mb-4 shadow-2xs">
             <span className="w-2 h-2 rounded-full bg-[#059669] animate-pulse" />
             Service Lifecycle
@@ -110,6 +110,9 @@ export default function PosWorkflow() {
           {steps.map((s, idx) => (
             <div
               key={idx}
+              data-aos="fade-up"
+              data-aos-delay={idx * 90 + 100}
+              data-aos-duration="600"
               className={`pt-9 px-6 pb-6 rounded-2xl bg-slate-50/70 border border-gray-200/90 shadow-2xs ${s.hoverBorder} hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative overflow-visible`}
             >
               {/* Icon centered on the card top border */}

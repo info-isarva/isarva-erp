@@ -1,5 +1,6 @@
 import './globals.css';
 import { Inter, Space_Grotesk } from 'next/font/google';
+import AosInitializer from '../components/AosInitializer';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -62,6 +63,7 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon.png" sizes="any" />
       </head>
       <body className="antialiased bg-slate-50 text-slate-900 min-h-screen">
+        <AosInitializer />
         {children}
       </body>
     </html>

@@ -1,10 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { useSyncedFaqHeights } from '../../hooks/useSyncedFaqHeights';
 
 export default function PosFaq({ onOpenDemoModal }) {
   const [openIndex, setOpenIndex] = useState(0);
+  const gridRef = useRef(null);
 
   const faqs = [
     {
@@ -45,12 +47,20 @@ export default function PosFaq({ onOpenDemoModal }) {
     setOpenIndex(openIndex === idx ? -1 : idx);
   };
 
+  useSyncedFaqHeights(gridRef, faqs.length);
+
+  const mid = Math.ceil(faqs.length / 2);
+  const columns = [
+    faqs.slice(0, mid).map((faq, i) => ({ faq, idx: i })),
+    faqs.slice(mid).map((faq, i) => ({ faq, idx: mid + i })),
+  ];
+
   return (
     <section id="faq" className="section-padding bg-slate-50/70 border-b border-gray-200 scroll-mt-20">
-      <div className="w-full max-w-4xl mx-auto px-5 sm:px-6">
-        
+      <div className="site-container">
+
         {/* Section Header */}
-        <div className="text-center mb-10 sm:mb-14">
+        <div data-aos="fade-up" data-aos-duration="600" className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-amber-500/10 border border-emerald-300/60 text-[#059669] font-bold text-xs uppercase tracking-widest mb-4 shadow-2xs">
             <span className="w-2 h-2 rounded-full bg-[#059669] animate-pulse" />
             Got Questions?
@@ -68,47 +78,55 @@ export default function PosFaq({ onOpenDemoModal }) {
           </p>
         </div>
 
-        {/* FAQ Accordion List */}
-        <div className="space-y-3.5">
-          {faqs.map((faq, idx) => {
-            const isOpen = openIndex === idx;
-            return (
-              <div
-                key={idx}
-                className={`bg-white rounded-2xl border transition-all duration-300 overflow-hidden ${
-                  isOpen
-                    ? 'card-shadow-emerald border-[#007a55] ring-1 ring-[#007a55]/20'
-                    : 'border-slate-200/90 hover:border-emerald-300 hover:shadow-[0_8px_24px_rgba(0,122,85,0.14)]'
-                }`}
-              >
-                <button
-                  type="button"
-                  onClick={() => toggleFaq(idx)}
-                  className="w-full flex items-center justify-between p-5 sm:p-6 text-left cursor-pointer hover:bg-slate-50/60 transition-colors"
-                  aria-expanded={isOpen}
-                >
-                  <span className="text-base sm:text-lg font-bold text-slate-900 pr-4">
-                    {faq.q}
-                  </span>
+        {/* FAQ Accordion List — 2 Independent Columns on Desktop */}
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 items-start">
+          {columns.map((col, colIdx) => (
+            <div key={colIdx} className="flex flex-col gap-4 sm:gap-5 min-w-0">
+              {col.map(({ faq, idx }) => {
+                const isOpen = openIndex === idx;
+                return (
                   <div
-                    className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${
-                      isOpen ? 'rotate-180 bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'
-                    }`}
+                    key={idx}
+                    className={`bg-white rounded-2xl border transition-all duration-300 overflow-hidden ${isOpen
+                        ? 'card-shadow-emerald border-[#007a55] ring-1 ring-[#007a55]/20'
+                        : 'border-emerald-200/80 shadow-[0_6px_20px_rgba(0,122,85,0.09)] hover:border-emerald-300 hover:shadow-[0_10px_28px_rgba(0,122,85,0.16)]'
+                      }`}
                   >
-                    <ChevronDown size={18} />
-                  </div>
-                </button>
+                    <button
+                      type="button"
+                      data-faq-btn
+                      onClick={() => toggleFaq(idx)}
+                      className="w-full min-h-20 md:min-h-24 flex items-center justify-between gap-4 py-3.5 lg:py-4 px-5 sm:px-6 text-left cursor-pointer hover:bg-slate-50/60 transition-colors"
+                      aria-expanded={isOpen}
+                    >
+                      <span className="text-base lg:text-lg font-bold text-slate-900 leading-snug">
+                        {faq.q}
+                      </span>
+                      <div
+                        className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'
+                          }`}
+                      >
+                        <ChevronDown size={18} />
+                      </div>
+                    </button>
 
-                {isOpen && (
-                  <div className="px-5 sm:px-6 pb-6 pt-1 text-slate-600 text-sm sm:text-base border-t border-gray-100 animate-in fade-in duration-200">
-                    <p>
-                      {faq.a}
-                    </p>
+                    <div
+                      aria-hidden={!isOpen}
+                      className={`faq-accordion ${isOpen ? 'is-open' : ''}`}
+                    >
+                      <div className="faq-accordion-inner">
+                        <div className="px-5 sm:px-6 pb-6 pt-3 text-slate-600 text-sm sm:text-base border-t border-gray-100">
+                          <p>
+                            {faq.a}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                )}
-              </div>
-            );
-          })}
+                );
+              })}
+            </div>
+          ))}
         </div>
 
         {/* Bottom CTA Button */}

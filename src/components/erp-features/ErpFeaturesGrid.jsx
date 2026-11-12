@@ -207,7 +207,7 @@ export default function ErpFeaturesGrid() {
       <div className="site-container">
 
         {/* ── Section Header (Isarva Real Content) ── */}
-        <div className="text-center max-w-4xl mx-auto mb-12 lg:mb-16">
+        <div data-aos="fade-up" data-aos-duration="600" className="text-center max-w-4xl mx-auto mb-12 lg:mb-16">
           <span className="section-eyebrow">ISARVA ERP Modules</span>
           <h2 className="mt-3 mb-6">
             Key Modules and Features of an ERP System

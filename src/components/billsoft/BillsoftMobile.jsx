@@ -11,7 +11,7 @@ export default function BillsoftMobile({ onOpenLightbox }) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             {/* Left Content Column */}
-            <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
+            <div data-aos="fade-right" data-aos-duration="700" className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100 text-[#2563eb] font-bold text-xs mb-4">
                 BillSoft Mobile ERP &amp; Field Invoicing
               </div>
@@ -46,7 +46,7 @@ export default function BillsoftMobile({ onOpenLightbox }) {
             </div>
 
             {/* Right Graphic Column */}
-            <div className="lg:col-span-5 flex items-center justify-center">
+            <div data-aos="fade-left" data-aos-delay="150" data-aos-duration="700" className="lg:col-span-5 flex items-center justify-center">
               <div
                 className="relative cursor-pointer group w-full max-w-[480px]"
                 onClick={() => onOpenLightbox('/images/billsoft/billsoft-mobile-mockup.jpg', 'BillSoft Mobile ERP Invoicing & Tablet Dashboard')}

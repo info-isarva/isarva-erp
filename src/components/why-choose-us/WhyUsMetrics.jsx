@@ -54,6 +54,9 @@ export default function WhyUsMetrics() {
             return (
               <div
                 key={idx}
+                data-aos="fade-up"
+                data-aos-delay={idx * 90 + 80}
+                data-aos-duration="600"
                 className="p-6 rounded-2xl bg-white border border-emerald-200/80 hover:border-emerald-400 card-shadow-emerald transition-all duration-300 group flex flex-col justify-between hover:-translate-y-1"
               >
                 <div>

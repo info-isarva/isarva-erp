@@ -1,12 +1,12 @@
 'use client';
 
 import React from 'react';
-import { 
-  FileText, 
-  PackageCheck, 
-  FileCheck2, 
-  CreditCard, 
-  PieChart 
+import {
+  FileText,
+  PackageCheck,
+  FileCheck2,
+  CreditCard,
+  PieChart
 } from 'lucide-react';
 
 export default function BillsoftWorkflow() {
@@ -71,9 +71,9 @@ export default function BillsoftWorkflow() {
   return (
     <section id="workflow" className="section-padding bg-slate-50 border-b border-gray-200 scroll-mt-20">
       <div className="site-container">
-        
+
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-14 sm:mb-20">
+        <div data-aos="fade-up" data-aos-duration="600" className="max-w-3xl mx-auto text-center mb-14 sm:mb-20">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 mb-4">
             <span className="w-2 h-2 rounded-full bg-[#2563eb]" />
             <span className="section-eyebrow text-[#2563eb]">FINANCIAL SERVICE WORKFLOW</span>
@@ -91,6 +91,9 @@ export default function BillsoftWorkflow() {
           {steps.map((item, index) => (
             <div
               key={index}
+              data-aos="fade-up"
+              data-aos-delay={index * 90 + 100}
+              data-aos-duration="600"
               className={`group flex flex-col justify-between pt-9 px-5 sm:px-6 pb-5 sm:pb-6 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:shadow-xl transition-all duration-300 relative overflow-visible ${item.hoverBorder}`}
             >
               {/* Icon centered on the card top border */}

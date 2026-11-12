@@ -42,7 +42,7 @@ export default function WhyUsHero({ onOpenModal }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
           {/* Left Column: Copy & Value Proposition */}
           <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-[#007a55]">
+            <div data-aos="fade-down" data-aos-duration="600" className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-[#007a55]">
               <span className="w-2 h-2 rounded-full bg-[#007a55] animate-pulse" />
               <span className="section-eyebrow text-[#007a55] tracking-wider">
                 WHY CHOOSE ISARVA ERP
@@ -50,7 +50,7 @@ export default function WhyUsHero({ onOpenModal }) {
             </div>
 
             {/* Space Grotesk h1 - uses global base styling */}
-            <h1>
+            <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
               Engineered for Modern Enterprises That{' '}
               <span className="text-[#007a55]">
                 Refuse to Settle
@@ -58,14 +58,14 @@ export default function WhyUsHero({ onOpenModal }) {
             </h1>
 
             {/* Standard Paragraph */}
-            <p className="max-w-2xl mx-auto lg:mx-0">
+            <p data-aos="fade-up" data-aos-delay="200" data-aos-duration="700" className="max-w-2xl mx-auto lg:mx-0">
               Tired of fragmented SaaS tools, rigid legacy ERP architectures, and exorbitant per-user pricing?
               ISARVA ERP unites operational intelligence, real-time inventory, human capital, and statutory compliance
               across India and Saudi Arabia into a single, cohesive business core.
             </p>
 
             {/* Action CTAs */}
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-4 w-full sm:w-auto">
+            <div data-aos="fade-up" data-aos-delay="300" data-aos-duration="700" className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-4 w-full sm:w-auto">
               <button
                 type="button"
                 onClick={() => onOpenModal?.('demo', 'Why Choose ISARVA')}
@@ -85,7 +85,7 @@ export default function WhyUsHero({ onOpenModal }) {
             </div>
 
             {/* Value Checkpoints Strip */}
-            <div className="pt-4 border-t border-emerald-100 w-full flex justify-center lg:justify-start">
+            <div data-aos="fade-up" data-aos-delay="400" data-aos-duration="700" className="pt-4 border-t border-emerald-100 w-full flex justify-center lg:justify-start">
               <div className="flex flex-col items-start sm:flex-row sm:flex-wrap sm:items-center justify-center lg:justify-start gap-2.5 sm:gap-5">
                 <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 whitespace-nowrap">
                   <CheckCircle2 className="w-4 h-4 text-[#007a55] shrink-0" />
@@ -104,7 +104,7 @@ export default function WhyUsHero({ onOpenModal }) {
           </div>
 
           {/* Right Column: 3D Isometric Visual & Floating Indicators */}
-          <div className="lg:col-span-5 relative">
+          <div data-aos="fade-left" data-aos-delay="150" data-aos-duration="800" className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-lg lg:max-w-none">
               {/* Outer Decorative Gradient Ring */}
               <div className="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-emerald-300/40 via-teal-200/30 to-transparent blur-xl opacity-75" />

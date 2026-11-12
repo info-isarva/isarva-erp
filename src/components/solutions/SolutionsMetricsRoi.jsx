@@ -49,7 +49,7 @@ export default function SolutionsMetricsRoi() {
     <section className="section-padding bg-gradient-to-b from-white via-[#f3faf6] to-white relative overflow-hidden">
       <div className="site-container">
         {/* Section Header */}
-        <div className="section-header text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+        <div data-aos="fade-up" data-aos-duration="600" className="section-header text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="section-eyebrow">QUANTIFIED VALUE</div>
           <h2>
             <span>Measurable Business Impact Across Every Department</span>
@@ -66,6 +66,9 @@ export default function SolutionsMetricsRoi() {
             return (
               <div
                 key={idx}
+                data-aos="fade-up"
+                data-aos-delay={idx * 90 + 80}
+                data-aos-duration="600"
                 className={`card-ecosystem rounded-2xl p-6 bg-white border ${stat.cardShadow} text-center flex flex-col items-center justify-between`}
               >
                 <div
@@ -95,7 +98,7 @@ export default function SolutionsMetricsRoi() {
         </div>
 
         {/* Executive Endorsement Banner - Full width of site-container */}
-        <div className="w-full rounded-3xl p-7 sm:p-9 bg-gradient-to-br from-[#002617] via-[#003d27] to-[#002214] text-white border border-emerald-400/30 card-shadow-dark-emerald relative overflow-hidden">
+        <div data-aos="fade-up" data-aos-duration="700" className="w-full rounded-3xl p-7 sm:p-9 bg-gradient-to-br from-[#002617] via-[#003d27] to-[#002214] text-white border border-emerald-400/30 card-shadow-dark-emerald relative overflow-hidden">
           <Quote className="absolute right-6 bottom-4 w-24 h-24 text-white/5 pointer-events-none" />
           <div className="relative z-10 flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
             <div className="w-16 h-16 rounded-2xl bg-white/10 border border-white/20 p-2 flex items-center justify-center shrink-0 shadow-inner">

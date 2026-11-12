@@ -70,7 +70,7 @@ export default function ErpBusinessControl() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-16 items-center">
 
           {/* Left: Text + Feature List */}
-          <div className="flex flex-col gap-6">
+          <div data-aos="fade-right" data-aos-duration="700" className="flex flex-col gap-6">
             <span className="section-eyebrow">Why These Features Matter</span>
             <h2 className="text-white">
               Built for Better{' '}
@@ -105,7 +105,7 @@ export default function ErpBusinessControl() {
           </div>
 
           {/* Right: Office Monitor Image */}
-          <div className="relative">
+          <div data-aos="fade-left" data-aos-delay="150" data-aos-duration="700" className="relative">
             {/* "Turn Data into Growth" label */}
             <div
               className="absolute -right-2 top-1/2 -translate-y-1/2 z-10 hidden xl:flex flex-col items-center gap-0.5"

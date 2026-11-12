@@ -32,7 +32,7 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
 
       <div className="site-container relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
+        <div data-aos="fade-up" data-aos-duration="600" className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200/70 mb-3">
             <span className="section-eyebrow">
               THE ISARVA ADVANTAGE
@@ -53,7 +53,7 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
         </div>
 
         {/* 4-Column Bento Grid with Dense Auto-Packing */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 [grid-auto-flow:dense]">
+        <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="700" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 [grid-auto-flow:dense]">
 
           {/* Card 1: Large 2x2 - Native Dual-Region Regulatory Mastery */}
           <div

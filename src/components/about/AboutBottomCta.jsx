@@ -17,7 +17,7 @@ export default function AboutBottomCta() {
         />
       </div>
 
-      <div className="site-container text-center relative z-10 section-animate">
+      <div data-aos="fade-up" data-aos-duration="700" className="site-container text-center relative z-10 section-animate">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-white mb-8 capitalize">
             Ready to shape the digital future?

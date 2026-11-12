@@ -90,9 +90,9 @@ export default function PosModules({ onOpenLightbox }) {
   return (
     <section id="modules" className="section-padding bg-white border-b border-gray-200 scroll-mt-20">
       <div className="site-container">
-        
+
         {/* Section Header */}
-        <div className="text-center mb-14 lg:mb-20">
+        <div data-aos="fade-up" data-aos-duration="600" className="text-center mb-14 lg:mb-20">
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-amber-500/10 border border-emerald-300/60 text-[#059669] font-bold text-xs uppercase tracking-widest mb-4 shadow-2xs">
             <span className="w-2 h-2 rounded-full bg-[#059669] animate-pulse" />
             Module Deep-Dive
@@ -113,12 +113,15 @@ export default function PosModules({ onOpenLightbox }) {
           {modules.map((m, idx) => (
             <div
               key={idx}
-              className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center ${
-                m.reverse ? 'lg:flex-row-reverse' : ''
-              }`}
+              className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center ${m.reverse ? 'lg:flex-row-reverse' : ''
+                }`}
             >
               {/* Text Information Column */}
-              <div className={`lg:col-span-6 flex flex-col items-start ${m.reverse ? 'lg:order-2' : 'lg:order-1'}`}>
+              <div
+                data-aos={m.reverse ? 'fade-left' : 'fade-right'}
+                data-aos-duration="700"
+                className={`lg:col-span-6 flex flex-col items-start ${m.reverse ? 'lg:order-2' : 'lg:order-1'}`}
+              >
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider bg-emerald-100 text-emerald-800 border border-emerald-200 mb-4">
                   <span>{m.num}</span>
                   <span>·</span>
@@ -161,7 +164,12 @@ export default function PosModules({ onOpenLightbox }) {
               </div>
 
               {/* Graphic / Screenshot Column */}
-              <div className={`lg:col-span-6 flex justify-center ${m.reverse ? 'lg:order-1' : 'lg:order-2'}`}>
+              <div
+                data-aos={m.reverse ? 'fade-right' : 'fade-left'}
+                data-aos-delay="150"
+                data-aos-duration="700"
+                className={`lg:col-span-6 flex justify-center ${m.reverse ? 'lg:order-1' : 'lg:order-2'}`}
+              >
                 <div
                   className="relative cursor-pointer group w-full rounded-2xl overflow-hidden border border-gray-200/90 shadow-lg hover:shadow-2xl transition-all duration-300 bg-slate-900"
                   onClick={() => onOpenLightbox(m.image, m.alt)}

@@ -19,9 +19,9 @@ export default function PosOutlets() {
   return (
     <section id="outlets" className="section-padding bg-slate-50/70 border-b border-gray-200 scroll-mt-20">
       <div className="site-container">
-        
+
         {/* Section Header */}
-        <div className="text-center mb-12 lg:mb-16">
+        <div data-aos="fade-up" data-aos-duration="600" className="text-center mb-12 lg:mb-16">
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-amber-500/10 border border-emerald-300/60 text-[#059669] font-bold text-xs uppercase tracking-widest mb-4 shadow-2xs">
             <span className="w-2 h-2 rounded-full bg-[#059669] animate-pulse" />
             Tailored Formats
@@ -42,6 +42,9 @@ export default function PosOutlets() {
           {outlets.map((outlet, idx) => (
             <div
               key={idx}
+              data-aos="fade-up"
+              data-aos-delay={(idx % 5) * 70 + 80}
+              data-aos-duration="600"
               className="flex flex-col items-center text-center p-3.5 sm:p-5 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:border-emerald-300 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
             >
               <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-3 border-emerald-100 shadow-md mb-4 bg-emerald-50 shrink-0">

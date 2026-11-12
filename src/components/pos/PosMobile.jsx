@@ -11,7 +11,7 @@ export default function PosMobile({ onOpenLightbox }) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 
             {/* Left Content Column */}
-            <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
+            <div data-aos="fade-right" data-aos-duration="700" className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 text-[#059669] font-bold text-xs mb-4">
                 Mobile Captain &amp; Waiter Handheld
               </div>
@@ -46,7 +46,7 @@ export default function PosMobile({ onOpenLightbox }) {
             </div>
 
             {/* Right Graphic Mockup */}
-            <div className="lg:col-span-5 flex justify-center">
+            <div data-aos="fade-left" data-aos-delay="150" data-aos-duration="700" className="lg:col-span-5 flex justify-center">
               <div
                 className="relative cursor-pointer group max-w-[420px] w-full rounded-2xl overflow-hidden border border-emerald-200 shadow-xl bg-slate-900"
                 onClick={() => onOpenLightbox?.('/images/pos/pos-mobile-mockup.jpg', 'ISARVA Restaurant POS Handheld Waiter App')}

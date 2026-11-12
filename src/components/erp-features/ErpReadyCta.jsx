@@ -32,7 +32,7 @@ export default function ErpReadyCta({ onOpenModal }) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
           {/* ── Left: CTA Content ── */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-6 max-w-xl mx-auto lg:mx-0">
+          <div data-aos="fade-right" data-aos-duration="700" className="flex flex-col items-center lg:items-start text-center lg:text-left gap-6 max-w-xl mx-auto lg:mx-0">
             <span className="section-eyebrow">Experience All Features</span>
 
             <h2>
@@ -77,7 +77,7 @@ export default function ErpReadyCta({ onOpenModal }) {
           </div>
 
           {/* ── Right: Team Photo ── */}
-          <div className="relative">
+          <div data-aos="fade-left" data-aos-delay="150" data-aos-duration="700" className="relative">
             {/* Floating label */}
             <div
               className="absolute -top-5 right-4 z-10 hidden sm:block bg-white rounded-xl px-4 py-2.5"

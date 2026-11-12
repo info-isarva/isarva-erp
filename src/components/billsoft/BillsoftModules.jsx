@@ -92,7 +92,7 @@ export default function BillsoftModules({ onOpenLightbox }) {
       <div className="site-container">
         
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-14 sm:mb-20">
+        <div data-aos="fade-up" data-aos-duration="600" className="max-w-3xl mx-auto text-center mb-14 sm:mb-20">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 mb-4">
             <span className="w-2 h-2 rounded-full bg-[#2563eb]" />
             <span className="section-eyebrow text-[#2563eb]">MODULAR SOFTWARE ENGINE</span>
@@ -116,7 +116,11 @@ export default function BillsoftModules({ onOpenLightbox }) {
             >
               
               {/* Text Description Column */}
-              <div className={`lg:col-span-6 ${mod.reverse ? 'lg:order-2' : 'lg:order-1'}`}>
+              <div
+                data-aos={mod.reverse ? 'fade-left' : 'fade-right'}
+                data-aos-duration="700"
+                className={`lg:col-span-6 ${mod.reverse ? 'lg:order-2' : 'lg:order-1'}`}
+              >
                 
                 {/* Number Badge & Tag */}
                 <div className="flex items-center gap-3 mb-4">
@@ -165,16 +169,21 @@ export default function BillsoftModules({ onOpenLightbox }) {
               </div>
 
               {/* Screenshot Graphic Column */}
-              <div className={`lg:col-span-6 ${mod.reverse ? 'lg:order-1' : 'lg:order-2'}`}>
+              <div
+                data-aos={mod.reverse ? 'fade-right' : 'fade-left'}
+                data-aos-delay="150"
+                data-aos-duration="700"
+                className={`lg:col-span-6 ${mod.reverse ? 'lg:order-1' : 'lg:order-2'}`}
+              >
                 <div
                   className="relative group cursor-pointer rounded-2xl overflow-hidden border border-gray-200/90 bg-white shadow-xl hover:shadow-2xl hover:border-blue-300 transition-all duration-300"
                   onClick={() => onOpenLightbox(mod.image, mod.alt)}
                 >
-                  <div className="relative aspect-video sm:aspect-auto overflow-hidden bg-slate-900">
+                  <div className="relative overflow-hidden bg-white">
                     <img
                       src={mod.image}
                       alt={mod.alt}
-                      className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                      className="w-full h-auto block object-cover group-hover:scale-[1.02] transition-transform duration-500"
                     />
                     
                     {/* Hover Zoom Overlay */}

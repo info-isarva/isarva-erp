@@ -85,7 +85,7 @@ export default function EeatPillars() {
       />
       <div className="site-container relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
+        <div data-aos="fade-up" data-aos-duration="600" className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200/70 mb-3">
             <span className="section-eyebrow">
               TRUST, GOVERNANCE &amp; INTEGRITY
@@ -117,6 +117,9 @@ export default function EeatPillars() {
             return (
               <div
                 key={index}
+                data-aos="fade-up"
+                data-aos-delay={(index % 2) * 120 + 80}
+                data-aos-duration="600"
                 className={`rounded-2xl bg-white border p-8 sm:p-9 flex flex-col justify-between transition-all duration-300 group ${shadowClasses}`}
               >
                 <div>

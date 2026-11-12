@@ -26,7 +26,7 @@ export default function PosHero({ onOpenDemoModal, onOpenBrochureModal, onOpenLi
           <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left w-full">
 
             {/* Live Indicator Eyebrow Tag */}
-            <div className="inline-flex items-center gap-3 px-5 sm:px-6 py-2.5 rounded-full bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-amber-500/10 border border-emerald-300/60 mb-6 shadow-2xs">
+            <div data-aos="fade-down" data-aos-duration="600" className="inline-flex items-center gap-3 px-5 sm:px-6 py-2.5 rounded-full bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-amber-500/10 border border-emerald-300/60 mb-6 shadow-2xs">
               <span className="relative flex h-2 w-2 shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#059669] opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#059669]" />
@@ -37,7 +37,7 @@ export default function PosHero({ onOpenDemoModal, onOpenBrochureModal, onOpenLi
             </div>
 
             {/* Headline with Space Grotesk via @layer base and emerald gradient */}
-            <h1 className="mb-5 sm:mb-6 capitalize max-w-2xl w-full">
+            <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="700" className="mb-5 sm:mb-6 capitalize max-w-2xl w-full">
               Restaurant POS That Runs Your{' '}
               <span className="bg-gradient-to-r from-[#059669] via-[#007a55] to-[#0d9488] bg-clip-text text-transparent">
                 Floor &amp; Billing Itself
@@ -46,32 +46,32 @@ export default function PosHero({ onOpenDemoModal, onOpenBrochureModal, onOpenLi
             </h1>
 
             {/* Paragraph with Inter via @layer base */}
-            <p className="mb-6 max-w-xl mx-auto lg:mx-0 w-full">
+            <p data-aos="fade-up" data-aos-delay="200" data-aos-duration="700" className="mb-6 max-w-xl mx-auto lg:mx-0 w-full">
               One connected system for modern food businesses: interactive dining table layouts, paperless kitchen display tickets, split counter billing, online aggregator sync, and ZATCA / GST-ready invoicing.
             </p>
 
             {/* 4 Category Highlight Pills */}
-            <div className="flex flex-wrap gap-2 sm:gap-2.5 mb-8 justify-center lg:justify-start max-w-xl w-full">
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-semibold shadow-2xs">
+            <div data-aos="fade-up" data-aos-delay="300" data-aos-duration="700" className="flex flex-wrap gap-2 sm:gap-2.5 mb-8 justify-center lg:justify-start max-w-xl w-full">
+              <span data-aos="zoom-in" data-aos-delay="350" className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-semibold shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-[#059669] shrink-0" />
                 <span>Live Floor Plan</span>
               </span>
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs sm:text-sm font-semibold shadow-2xs">
+              <span data-aos="zoom-in" data-aos-delay="400" className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs sm:text-sm font-semibold shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-[#2563eb] shrink-0" />
                 <span>Touch Billing &amp; Split</span>
               </span>
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs sm:text-sm font-semibold shadow-2xs">
+              <span data-aos="zoom-in" data-aos-delay="450" className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs sm:text-sm font-semibold shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-[#d97706] shrink-0" />
                 <span>Kitchen Display (KDS)</span>
               </span>
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-50 border border-purple-200 text-purple-700 text-xs sm:text-sm font-semibold shadow-2xs">
+              <span data-aos="zoom-in" data-aos-delay="500" className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-50 border border-purple-200 text-purple-700 text-xs sm:text-sm font-semibold shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-[#7c3aed] shrink-0" />
                 <span>ZATCA &amp; GST Ready</span>
               </span>
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 sm:gap-4 mb-5 sm:mb-6 w-full sm:w-auto">
+            <div data-aos="fade-up" data-aos-delay="450" data-aos-duration="700" className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 sm:gap-4 mb-5 sm:mb-6 w-full sm:w-auto">
               <button
                 type="button"
                 onClick={onOpenDemoModal}
@@ -96,7 +96,7 @@ export default function PosHero({ onOpenDemoModal, onOpenBrochureModal, onOpenLi
 
             {/* 3 Trust Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 w-full self-stretch">
-              <div className="w-full flex items-center text-left gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:border-emerald-300 hover:shadow-md transition-all">
+              <div data-aos="fade-up" data-aos-delay="500" data-aos-duration="600" className="w-full flex items-center text-left gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:border-emerald-300 hover:shadow-md transition-all">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-100/80 text-[#059669]">
                   <WifiOff size={22} className="text-[#059669]" />
                 </div>
@@ -106,7 +106,7 @@ export default function PosHero({ onOpenDemoModal, onOpenBrochureModal, onOpenLi
                 </div>
               </div>
 
-              <div className="w-full flex items-center text-left gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:border-emerald-300 hover:shadow-md transition-all">
+              <div data-aos="fade-up" data-aos-delay="600" data-aos-duration="600" className="w-full flex items-center text-left gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:border-emerald-300 hover:shadow-md transition-all">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-100/80 text-[#059669]">
                   <RefreshCw size={20} className="text-[#059669]" />
                 </div>
@@ -116,7 +116,7 @@ export default function PosHero({ onOpenDemoModal, onOpenBrochureModal, onOpenLi
                 </div>
               </div>
 
-              <div className="w-full flex items-center text-left gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:border-emerald-300 hover:shadow-md transition-all">
+              <div data-aos="fade-up" data-aos-delay="700" data-aos-duration="600" className="w-full flex items-center text-left gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:border-emerald-300 hover:shadow-md transition-all">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-100/80 text-[#059669]">
                   <Headphones size={22} className="text-[#059669]" />
                 </div>
@@ -130,7 +130,7 @@ export default function PosHero({ onOpenDemoModal, onOpenBrochureModal, onOpenLi
           </div>
 
           {/* Right Hero Column Graphic */}
-          <div className="lg:col-span-5 flex items-center justify-center">
+          <div data-aos="fade-left" data-aos-delay="200" data-aos-duration="800" className="lg:col-span-5 flex items-center justify-center">
             <div
               className="relative cursor-pointer group w-full max-w-[540px]"
               onClick={() => onOpenLightbox('/images/pos/feature-floor-tables.png', 'ISARVA Restaurant POS Live Floor Plan')}

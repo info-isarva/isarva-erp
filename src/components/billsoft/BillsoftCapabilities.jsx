@@ -1,13 +1,13 @@
 'use client';
 
 import React from 'react';
-import { 
-  FileCheck2, 
-  Truck, 
-  Network, 
-  Users2, 
-  BarChart3, 
-  Palette 
+import {
+  FileCheck2,
+  Truck,
+  Network,
+  Users2,
+  BarChart3,
+  Palette
 } from 'lucide-react';
 
 export default function BillsoftCapabilities() {
@@ -71,9 +71,9 @@ export default function BillsoftCapabilities() {
   return (
     <section id="capabilities" className="section-padding bg-white border-b border-gray-200 scroll-mt-20">
       <div className="site-container">
-        
+
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
+        <div data-aos="fade-up" data-aos-duration="600" className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 mb-4">
             <span className="w-2 h-2 rounded-full bg-[#2563eb]" />
             <span className="section-eyebrow text-[#2563eb]">CORE ERP CAPABILITIES</span>
@@ -91,6 +91,9 @@ export default function BillsoftCapabilities() {
           {capabilities.map((item, index) => (
             <div
               key={index}
+              data-aos="fade-up"
+              data-aos-delay={(index % 3) * 100 + 100}
+              data-aos-duration="600"
               className={`group flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:shadow-xl transition-all duration-300 text-center ${item.hoverBorder}`}
             >
               <div className="flex flex-col items-center">
@@ -100,11 +103,11 @@ export default function BillsoftCapabilities() {
                 <span className={`inline-flex px-2.5 py-1 rounded-full text-xs font-bold border mb-5 ${item.tagColor}`}>
                   {item.tag}
                 </span>
-                
+
                 <h3 className="mb-2.5">
                   {item.title}
                 </h3>
-                
+
                 <p>
                   {item.description}
                 </p>

@@ -80,7 +80,7 @@ export default function ContactNextSteps({ onOpenDemoModal }) {
 
       <div className="site-container relative z-10">
         {/* Section Header */}
-        <div className="section-header items-center mb-12 sm:mb-16">
+        <div data-aos="fade-up" data-aos-duration="600" className="section-header items-center mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 mb-3 shadow-2xs w-fit mx-auto">
             <span className="w-2 h-2 rounded-full bg-[#007a55] animate-pulse" />
             <span className="section-eyebrow">What Happens Next</span>
@@ -98,11 +98,14 @@ export default function ContactNextSteps({ onOpenDemoModal }) {
 
         {/* 4-Step Connected Cards with Floating Top-Border Icons */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 pt-6">
-          {ONBOARDING_STEPS.map((item) => {
+          {ONBOARDING_STEPS.map((item, idx) => {
             const Icon = item.icon;
             return (
               <div
                 key={item.step}
+                data-aos="fade-up"
+                data-aos-delay={idx * 90 + 80}
+                data-aos-duration="600"
                 className={`relative overflow-visible rounded-2xl pt-9 px-6 pb-6 bg-white border ${item.cardShadow} flex flex-col justify-between group text-left`}
               >
                 {/* Floating Icon centered on top border */}
@@ -143,7 +146,7 @@ export default function ContactNextSteps({ onOpenDemoModal }) {
         </div>
 
         {/* Enterprise Regional Support & SLA Bento Card */}
-        <div className="mt-12 sm:mt-16 rounded-3xl bg-gradient-to-br from-[#062e23] via-[#093b2d] to-[#0b1a30] p-7 sm:p-10 lg:p-12 border card-shadow-dark-emerald relative overflow-hidden">
+        <div data-aos="fade-up" data-aos-duration="700" className="mt-12 sm:mt-16 rounded-3xl bg-gradient-to-br from-[#062e23] via-[#093b2d] to-[#0b1a30] p-7 sm:p-10 lg:p-12 border card-shadow-dark-emerald relative overflow-hidden">
           <div className="absolute -top-24 -right-24 w-80 h-80 bg-emerald-400/20 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-teal-400/15 rounded-full blur-3xl pointer-events-none" />
 

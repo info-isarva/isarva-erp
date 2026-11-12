@@ -97,7 +97,7 @@ export default function ContactContent() {
             <div className="max-w-7xl mx-auto px-6 relative z-10">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
                 {/* Left Column: Form Card (order-2 lg:order-1) */}
-                <div className="relative order-2 lg:order-1 h-full">
+                <div data-aos="fade-up" data-aos-duration="700" className="relative order-2 lg:order-1 h-full">
                   <div className="h-full rounded-3xl p-8 lg:p-10 bg-white/80 backdrop-blur-sm border-2 border-emerald-100 shadow-2xl card-shadow-emerald transition-all duration-300 relative overflow-hidden flex flex-col">
                     <div className="absolute -top-10 -right-10 w-40 h-40 bg-emerald-200/30 rounded-full blur-3xl pointer-events-none" />
                     <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-green-200/30 rounded-full blur-3xl pointer-events-none" />
@@ -118,17 +118,17 @@ export default function ContactContent() {
                   >
                     <div className="space-y-8 transition-transform duration-100 ease-out" style={{ transform: 'translateY(0px)' }}>
                       <div className="mb-6 lg:text-left text-center">
-                        <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/40 backdrop-blur-md text-emerald-800 font-semibold text-sm mb-6 border border-white/60 shadow-lg">
+                        <div data-aos="fade-down" data-aos-duration="600" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/40 backdrop-blur-md text-emerald-800 font-semibold text-sm mb-6 border border-white/60 shadow-lg">
                           <span className="w-2 h-2 bg-emerald-600 rounded-full animate-pulse" />
                           Let&#39;s Connect
                         </div>
-                        <h1 className="mb-4">Get in Touch</h1>
-                        <p className="leading-relaxed">
+                        <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="700" className="mb-4">Get in Touch</h1>
+                        <p data-aos="fade-up" data-aos-delay="200" data-aos-duration="700" className="leading-relaxed">
                           Have a project in mind? We&#39;d love to hear about it. Send us a message and we&#39;ll respond within 24 hours.
                         </p>
                       </div>
 
-                      <div className="rounded-3xl lg:text-left text-center p-8 bg-gradient-to-br from-emerald-50 to-green-50 border border-emerald-100 card-shadow-emerald">
+                      <div data-aos="fade-up" data-aos-delay="300" data-aos-duration="700" className="rounded-3xl lg:text-left text-center p-8 bg-gradient-to-br from-emerald-50 to-green-50 border border-emerald-100 card-shadow-emerald">
                         <h3 className="mb-4">Follow Us</h3>
                         <p className="mb-6">
                           Stay connected with us on social media for updates, insights, and more.
@@ -189,7 +189,7 @@ export default function ContactContent() {
               {/* Bottom 3 Contact Cards */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12 lg:mt-20">
                 {/* Email Us */}
-                <div className="relative rounded-3xl p-8 bg-white border border-gray-100 shadow-lg hover:shadow-2xl card-shadow-emerald transition-all duration-300 group overflow-hidden">
+                <div data-aos="fade-up" data-aos-delay="80" data-aos-duration="600" className="relative rounded-3xl p-8 bg-white border border-gray-100 shadow-lg hover:shadow-2xl card-shadow-emerald transition-all duration-300 group overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                   <div className="relative lg:text-left text-center flex items-center flex-col">
                     <div className="w-14 h-14 rounded-2xl lg:mx-0 mx-auto bg-gradient-to-br from-emerald-400 to-green-500 flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300 text-white">
@@ -206,7 +206,7 @@ export default function ContactContent() {
                 </div>
 
                 {/* Call Us */}
-                <div className="relative rounded-3xl p-8 bg-white border border-gray-100 shadow-lg hover:shadow-2xl card-shadow-emerald transition-all duration-300 group overflow-hidden">
+                <div data-aos="fade-up" data-aos-delay="160" data-aos-duration="600" className="relative rounded-3xl p-8 bg-white border border-gray-100 shadow-lg hover:shadow-2xl card-shadow-emerald transition-all duration-300 group overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                   <div className="relative lg:text-left text-center flex items-center col flex-col">
                     <div className="w-14 h-14 rounded-2xl lg:mx-0 mx-auto bg-gradient-to-br from-emerald-400 to-green-500 flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300 text-white">
@@ -223,7 +223,7 @@ export default function ContactContent() {
                 </div>
 
                 {/* Working Hours */}
-                <div className="relative rounded-3xl p-8 bg-white border border-gray-100 shadow-lg hover:shadow-2xl card-shadow-emerald transition-all duration-300 group overflow-hidden">
+                <div data-aos="fade-up" data-aos-delay="240" data-aos-duration="600" className="relative rounded-3xl p-8 bg-white border border-gray-100 shadow-lg hover:shadow-2xl card-shadow-emerald transition-all duration-300 group overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                   <div className="relative lg:text-left text-center flex items-center col flex-col">
                     <div className="w-14 h-14 rounded-2xl lg:mx-0 mx-auto bg-gradient-to-br from-emerald-400 to-green-500 flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300 text-white">

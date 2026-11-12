@@ -10,7 +10,7 @@ export default function AboutForefrontStats() {
       <div className="flex flex-col lg:flex-row">
 
         {/* Left Column: Dark Green Stats Bar */}
-        <div className="w-full lg:w-[350px] bg-[#16423C] text-white p-8 md:p-16 flex flex-col justify-center items-center lg:items-start space-y-10 md:space-y-16 section-animate">
+        <div data-aos="fade-right" data-aos-duration="700" className="w-full lg:w-[350px] bg-[#16423C] text-white p-8 md:p-16 flex flex-col justify-center items-center lg:items-start space-y-10 md:space-y-16 section-animate">
           <div className="flex flex-col items-center lg:items-start">
             <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center mb-6">
               <TrendingUp className="w-6 h-6 text-[#10b981]" />
@@ -43,7 +43,7 @@ export default function AboutForefrontStats() {
         </div>
 
         {/* Right Column: Cream Content Area with Full-Width Image */}
-        <div className="flex-1 bg-[#FDF8F2] p-6 md:p-16 lg:p-20 section-animate" style={{ animationDelay: '0.2s' }}>
+        <div data-aos="fade-left" data-aos-delay="120" data-aos-duration="700" className="flex-1 bg-[#FDF8F2] p-6 md:p-16 lg:p-20 section-animate" style={{ animationDelay: '0.2s' }}>
           <h2 className="lg:text-left text-center text-[#16423C] mb-6 lg:mb-12 max-w-4xl capitalize">
             Standing at the forefront of digital transformation.
           </h2>

@@ -1854,6 +1854,24 @@
   border-color: #007a55;
 }
 
+/* Smooth CSS Grid FAQ Expand / Collapse Animation */
+.faq-accordion {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
+}
+
+.faq-accordion.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.faq-accordion-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
 /* ISARVA Contact Page Mesh, Noise & 3D Illusion Utilities */
 .bg-mesh-green {
   background-image: linear-gradient(rgba(16, 185, 129, 0.05) 1.5px, transparent 1.5px), linear-gradient(90deg, rgba(16, 185, 129, 0.05) 1.5px, transparent 1.5px);

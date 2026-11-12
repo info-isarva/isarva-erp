@@ -11,7 +11,7 @@ export default function AboutPhilosophyGlobe() {
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center">
           
           {/* Left Column: Text & CTAs */}
-          <div className="w-full lg:w-1/2 section-animate lg:text-left text-center">
+          <div data-aos="fade-right" data-aos-duration="700" className="w-full lg:w-1/2 section-animate lg:text-left text-center">
             <h2 className="text-[#1a1f24] mb-8 capitalize">
               Technology should create opportunity —{' '}
               <span className="italic text-[#10b981]">not just efficiency.</span>
@@ -74,7 +74,7 @@ export default function AboutPhilosophyGlobe() {
           </div>
 
           {/* Right Column: Globe Visual */}
-          <div className="w-full lg:w-1/2 relative section-animate" style={{ animationDelay: '0.2s' }}>
+          <div data-aos="fade-left" data-aos-delay="150" data-aos-duration="700" className="w-full lg:w-1/2 relative section-animate" style={{ animationDelay: '0.2s' }}>
             <div className="relative w-full rounded-[4rem] overflow-hidden shadow-2xl ring-1 ring-[#10b981]/10">
               <div className="pb-[100%] lg:pb-[95%]" />
               <div className="absolute inset-0">

@@ -75,7 +75,7 @@ export default function IndustrySolutionsMatrix({ onOpenModal }) {
     <section className="section-padding bg-[#f8faf9] border-t border-slate-200/70 relative">
       <div className="site-container">
         {/* Section Header */}
-        <div className="section-header text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+        <div data-aos="fade-up" data-aos-duration="600" className="section-header text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="section-eyebrow">BY INDUSTRY</div>
           <h2>
             <span>Engineered for Your Specific Industry Requirements</span>
@@ -92,6 +92,9 @@ export default function IndustrySolutionsMatrix({ onOpenModal }) {
             return (
               <div
                 key={idx}
+                data-aos="fade-up"
+                data-aos-delay={(idx % 3) * 100 + 80}
+                data-aos-duration="600"
                 className="card-ecosystem rounded-2xl p-6 bg-white border border-emerald-600/25 shadow-[0_12px_32px_-4px_rgba(0,122,85,0.16),0_4px_14px_-2px_rgba(0,122,85,0.08)] hover:border-[#007a55]/60 hover:shadow-[0_24px_50px_-4px_rgba(0,122,85,0.28)] transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>

@@ -13,7 +13,7 @@ export default function AboutHeroShowcase() {
 
       <div className="site-container relative z-10 text-center">
         {/* Eyebrow & Main Headings */}
-        <div className="inline-flex flex-col items-center mb-6 md:mb-10 section-animate">
+        <div data-aos="fade-up" data-aos-duration="700" className="inline-flex flex-col items-center mb-6 md:mb-10 section-animate">
           <span className="text-[#10b981] font-black tracking-[0.2em] capitalize text-xs sm:text-sm mb-4">
             Isarva Infotech
           </span>

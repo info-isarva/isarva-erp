@@ -120,7 +120,7 @@ export default function CoreSolutionsGrid({ activeTab, onTabChange, onOpenModal 
     <section id="core-modules" className="pt-12 pb-16 sm:pt-14 sm:pb-20 bg-white relative scroll-mt-20">
       <div className="site-container">
         {/* Section Header */}
-        <div className="section-header text-center max-w-3xl mx-auto mb-8 sm:mb-10">
+        <div data-aos="fade-up" data-aos-duration="600" className="section-header text-center max-w-3xl mx-auto mb-8 sm:mb-10">
           <div className="section-eyebrow">CORE MODULES</div>
           <h2>
             <span>Modular by Design. Powerful as One.</span>

@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { ChevronDown, Sparkles } from 'lucide-react';
 import { renderTitleWithGradient } from '../lib/render-title';
+import { useSyncedFaqHeights } from '../hooks/useSyncedFaqHeights';
 
 const FAQ_THEMES = [
   {
@@ -103,36 +104,7 @@ const FAQ_THEMES = [
   },
 ];
 
-// Explicit static Tailwind classes for row-locking across desktop columns
-const GRID_POSITION_CLASSES = {
-  // Column 1 (Left):
-  '0-1': 'md:col-start-1 md:row-start-1',
-  '1-1': 'md:col-start-1 md:row-start-2',
-  '2-1': 'md:col-start-1 md:row-start-3',
-  '3-1': 'md:col-start-1 md:row-start-4',
-  '4-1': 'md:col-start-1 md:row-start-5',
-  '5-1': 'md:col-start-1 md:row-start-6',
-
-  // Column 2 (Right):
-  '0-2': 'md:col-start-2 md:row-start-1',
-  '1-2': 'md:col-start-2 md:row-start-2',
-  '2-2': 'md:col-start-2 md:row-start-3',
-  '3-2': 'md:col-start-2 md:row-start-4',
-  '4-2': 'md:col-start-2 md:row-start-5',
-  '5-2': 'md:col-start-2 md:row-start-6',
-};
-
-function getGridPosClass(index, total) {
-  const midPoint = Math.ceil(total / 2);
-  if (index < midPoint) {
-    return GRID_POSITION_CLASSES[`${index}-1`] || '';
-  } else {
-    const row = index - midPoint;
-    return GRID_POSITION_CLASSES[`${row}-2`] || '';
-  }
-}
-
-function FaqCard({ item, index, isOpen, onToggle, gridClass = '' }) {
+function FaqCard({ item, index, isOpen, onToggle }) {
   const theme = FAQ_THEMES[index % FAQ_THEMES.length];
   const [isHovered, setIsHovered] = useState(false);
 
@@ -140,7 +112,7 @@ function FaqCard({ item, index, isOpen, onToggle, gridClass = '' }) {
     <div
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`relative rounded-2xl transition-all duration-300 overflow-hidden min-w-0 w-full ${gridClass}`}
+      className="relative rounded-2xl transition-all duration-300 overflow-hidden min-w-0 w-full"
       style={{
         background: isOpen ? theme.cardBgOpen : (isHovered ? theme.cardBgHover : theme.cardBg),
         border: `1.5px solid ${isOpen || isHovered ? theme.cardBorderHover : theme.cardBorder}`,
@@ -164,11 +136,12 @@ function FaqCard({ item, index, isOpen, onToggle, gridClass = '' }) {
 
       <button
         type="button"
+        data-faq-btn
         onClick={onToggle}
         aria-expanded={isOpen}
         aria-controls={`faq-answer-${index}`}
         id={`faq-btn-${index}`}
-        className="w-full min-h-[84px] sm:min-h-[92px] md:min-h-[96px] flex items-center justify-between gap-3 sm:gap-4 py-3.5 sm:py-4 px-4 sm:px-6 text-left cursor-pointer transition-colors"
+        className="w-full min-h-20 sm:min-h-24 flex items-center justify-between gap-3 sm:gap-4 py-3.5 sm:py-4 px-4 sm:px-6 text-left cursor-pointer transition-colors"
       >
         <div className="flex items-center gap-3 sm:gap-3.5 min-w-0 flex-1">
           {/* Number Badge with Theme Color */}
@@ -211,27 +184,34 @@ function FaqCard({ item, index, isOpen, onToggle, gridClass = '' }) {
         </div>
       </button>
 
-      {isOpen && (
-        <div
-          id={`faq-answer-${index}`}
-          role="region"
-          aria-labelledby={`faq-btn-${index}`}
-          className="px-5 sm:px-6 pb-6 pt-2"
-          style={{
-            borderTop: `1px solid ${theme.pillBorder}`,
-          }}
-        >
-          <p className="leading-relaxed">
-            {item.a}
-          </p>
+      <div
+        id={`faq-answer-${index}`}
+        role="region"
+        aria-labelledby={`faq-btn-${index}`}
+        aria-hidden={!isOpen}
+        className={`faq-accordion ${isOpen ? 'is-open' : ''}`}
+      >
+        <div className="faq-accordion-inner">
+          <div
+            className="px-5 sm:px-6 pb-6 pt-3"
+            style={{
+              borderTop: `1px solid ${theme.pillBorder}`,
+            }}
+          >
+            <p className="leading-relaxed">
+              {item.a}
+            </p>
+          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }
 
 export default function FaqSection({ faqs }) {
   const [openIndex, setOpenIndex] = useState(null);
+  const gridRef = useRef(null);
+  useSyncedFaqHeights(gridRef, faqs?.items?.length || 0);
 
   if (!faqs || !faqs.items || faqs.items.length === 0) {
     return null;
@@ -242,6 +222,11 @@ export default function FaqSection({ faqs }) {
   };
 
   const total = faqs.items.length;
+  const midPoint = Math.ceil(total / 2);
+  const columns = [
+    faqs.items.slice(0, midPoint).map((item, idx) => ({ item, idx })),
+    faqs.items.slice(midPoint).map((item, idx) => ({ item, idx: midPoint + idx })),
+  ];
 
   // Structured Data Schema for Google FAQ rich snippet
   const faqSchema = {
@@ -294,21 +279,21 @@ export default function FaqSection({ faqs }) {
           )}
         </div>
 
-        {/* 2-Column Row-Locked FAQ Grid */}
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 items-start">
-          {faqs.items.map((item, idx) => {
-            const gridClass = getGridPosClass(idx, total);
-            return (
-              <FaqCard
-                key={idx}
-                item={item}
-                index={idx}
-                isOpen={openIndex === idx}
-                onToggle={() => toggleAccordion(idx)}
-                gridClass={gridClass}
-              />
-            );
-          })}
+        {/* 2 Independent Columns (prevents open cards from stretching opposite column rows) */}
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 items-start">
+          {columns.map((colItems, colIdx) => (
+            <div key={colIdx} className="flex flex-col gap-4 sm:gap-5 min-w-0">
+              {colItems.map(({ item, idx }) => (
+                <FaqCard
+                  key={idx}
+                  item={item}
+                  index={idx}
+                  isOpen={openIndex === idx}
+                  onToggle={() => toggleAccordion(idx)}
+                />
+              ))}
+            </div>
+          ))}
         </div>
       </div>
     </section>

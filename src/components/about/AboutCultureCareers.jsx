@@ -9,7 +9,7 @@ export default function AboutCultureCareers() {
   return (
     <section className="section-padding bg-[#FDF8F2] relative overflow-hidden">
       <div className="site-container relative z-10">
-        <div className="bg-white rounded-[4rem] p-10 lg:p-20 shadow-2xl border border-[#10b981]/5 flex flex-col lg:flex-row items-center justify-between gap-12">
+        <div data-aos="fade-up" data-aos-duration="700" className="bg-white rounded-[4rem] p-10 lg:p-20 shadow-2xl border border-[#10b981]/5 flex flex-col lg:flex-row items-center justify-between gap-12">
           
           {/* Left Text Area */}
           <div className="lg:w-3/5 text-center lg:text-left">

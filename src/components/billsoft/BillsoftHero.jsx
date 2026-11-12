@@ -21,12 +21,12 @@ export default function BillsoftHero({ onOpenDemoModal, onOpenBrochureModal, onO
 
       <div className="site-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center w-full">
-          
+
           {/* Left Hero Column */}
           <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left w-full">
-            
+
             {/* Live Indicator Eyebrow Tag */}
-            <div className="inline-flex items-center gap-3 px-5 sm:px-6 py-2.5 rounded-full bg-gradient-to-r from-blue-500/10 via-sky-500/10 to-indigo-500/10 border border-blue-300/60 mb-6 shadow-2xs">
+            <div data-aos="fade-down" data-aos-duration="600" className="inline-flex items-center gap-3 px-5 sm:px-6 py-2.5 rounded-full bg-gradient-to-r from-blue-500/10 via-sky-500/10 to-indigo-500/10 border border-blue-300/60 mb-6 shadow-2xs">
               <span className="relative flex h-2 w-2 shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#2563eb] opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#2563eb]" />
@@ -37,7 +37,7 @@ export default function BillsoftHero({ onOpenDemoModal, onOpenBrochureModal, onO
             </div>
 
             {/* Headline with Space Grotesk via @layer base and blue gradient */}
-            <h1 className="mb-5 sm:mb-6 capitalize max-w-2xl w-full">
+            <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="700" className="mb-5 sm:mb-6 capitalize max-w-2xl w-full">
               Empower Your Business With{' '}
               <span className="bg-gradient-to-r from-[#2563eb] via-[#1d4ed8] to-[#0284c7] bg-clip-text text-transparent">
                 BillSoft Accounting Software
@@ -46,32 +46,32 @@ export default function BillsoftHero({ onOpenDemoModal, onOpenBrochureModal, onO
             </h1>
 
             {/* Paragraph with Inter via @layer base */}
-            <p className="mb-6 max-w-xl mx-auto lg:mx-0 w-full">
+            <p data-aos="fade-up" data-aos-delay="200" data-aos-duration="700" className="mb-6 max-w-xl mx-auto lg:mx-0 w-full">
               Transform billing, statutory GST/E-Invoicing, automated E-Way bills, multi-branch inventory, and AI financial reporting with our intuitive, fast, and feature-rich accounting solution designed for modern enterprises in India and Saudi Arabia.
             </p>
 
             {/* 4 Category Highlight Pills */}
-            <div className="flex flex-wrap gap-2 sm:gap-2.5 mb-8 justify-center lg:justify-start max-w-xl w-full">
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-800 text-xs sm:text-sm font-semibold shadow-2xs">
+            <div data-aos="fade-up" data-aos-delay="300" data-aos-duration="700" className="flex flex-wrap gap-2 sm:gap-2.5 mb-8 justify-center lg:justify-start max-w-xl w-full">
+              <span data-aos="zoom-in" data-aos-delay="350" className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-800 text-xs sm:text-sm font-semibold shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-[#2563eb] shrink-0" />
                 <span>E-Invoicing &amp; E-Way Bill</span>
               </span>
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-semibold shadow-2xs">
+              <span data-aos="zoom-in" data-aos-delay="400" className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm font-semibold shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-[#059669] shrink-0" />
                 <span>Multi-Branch &amp; Stock Sync</span>
               </span>
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs sm:text-sm font-semibold shadow-2xs">
+              <span data-aos="zoom-in" data-aos-delay="450" className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs sm:text-sm font-semibold shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-[#d97706] shrink-0" />
                 <span>Sub-Second POS Billing</span>
               </span>
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-50 border border-purple-200 text-purple-700 text-xs sm:text-sm font-semibold shadow-2xs">
+              <span data-aos="zoom-in" data-aos-delay="500" className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-50 border border-purple-200 text-purple-700 text-xs sm:text-sm font-semibold shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-[#7c3aed] shrink-0" />
                 <span>ZATCA Phase 2 &amp; GST Ready</span>
               </span>
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 sm:gap-4 mb-5 sm:mb-6 w-full sm:w-auto">
+            <div data-aos="fade-up" data-aos-delay="450" data-aos-duration="700" className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 sm:gap-4 mb-5 sm:mb-6 w-full sm:w-auto">
               <button
                 type="button"
                 onClick={onOpenDemoModal}
@@ -96,7 +96,7 @@ export default function BillsoftHero({ onOpenDemoModal, onOpenBrochureModal, onO
 
             {/* 3 Trust Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 w-full self-stretch">
-              <div className="w-full flex items-center text-left gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:border-blue-300 hover:shadow-md transition-all">
+              <div data-aos="fade-up" data-aos-delay="500" data-aos-duration="600" className="w-full flex items-center text-left gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:border-blue-300 hover:shadow-md transition-all">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-100/80 text-[#2563eb]">
                   <ShieldCheck size={22} className="text-[#2563eb]" />
                 </div>
@@ -106,7 +106,7 @@ export default function BillsoftHero({ onOpenDemoModal, onOpenBrochureModal, onO
                 </div>
               </div>
 
-              <div className="w-full flex items-center text-left gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:border-blue-300 hover:shadow-md transition-all">
+              <div data-aos="fade-up" data-aos-delay="600" data-aos-duration="600" className="w-full flex items-center text-left gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:border-blue-300 hover:shadow-md transition-all">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-100/80 text-[#2563eb]">
                   <Zap size={20} className="text-[#2563eb]" />
                 </div>
@@ -116,7 +116,7 @@ export default function BillsoftHero({ onOpenDemoModal, onOpenBrochureModal, onO
                 </div>
               </div>
 
-              <div className="w-full flex items-center text-left gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:border-blue-300 hover:shadow-md transition-all">
+              <div data-aos="fade-up" data-aos-delay="700" data-aos-duration="600" className="w-full flex items-center text-left gap-3.5 p-3.5 sm:p-4 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:border-blue-300 hover:shadow-md transition-all">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-100/80 text-[#2563eb]">
                   <Building2 size={22} className="text-[#2563eb]" />
                 </div>
@@ -130,7 +130,7 @@ export default function BillsoftHero({ onOpenDemoModal, onOpenBrochureModal, onO
           </div>
 
           {/* Right Hero Column Graphic — desktop browser with one tab */}
-          <div className="lg:col-span-5 flex items-center justify-center w-full">
+          <div data-aos="fade-left" data-aos-delay="200" data-aos-duration="800" className="lg:col-span-5 flex items-center justify-center w-full">
             <div
               className="relative cursor-pointer group w-full max-w-xl"
               onClick={() => onOpenLightbox('/images/billsoft/dashboard.png', 'BillSoft AI Business Dashboard & Financial Analytics')}

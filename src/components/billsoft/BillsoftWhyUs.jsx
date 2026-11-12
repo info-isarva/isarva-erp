@@ -1,13 +1,13 @@
 'use client';
 
 import React from 'react';
-import { 
-  ShieldCheck, 
-  Zap, 
-  Building2, 
-  KeyRound, 
-  Palette, 
-  MessageSquare 
+import {
+  ShieldCheck,
+  Zap,
+  Building2,
+  KeyRound,
+  Palette,
+  MessageSquare
 } from 'lucide-react';
 
 export default function BillsoftWhyUs() {
@@ -65,9 +65,9 @@ export default function BillsoftWhyUs() {
   return (
     <section id="why-us" className="section-padding bg-white border-b border-gray-200 scroll-mt-20">
       <div className="site-container">
-        
+
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
+        <div data-aos="fade-up" data-aos-duration="600" className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 mb-4">
             <span className="w-2 h-2 rounded-full bg-[#2563eb]" />
             <span className="section-eyebrow text-[#2563eb]">ENTERPRISE VALUE PILLARS</span>
@@ -85,6 +85,9 @@ export default function BillsoftWhyUs() {
           {cards.map((card, idx) => (
             <div
               key={idx}
+              data-aos="fade-up"
+              data-aos-delay={(idx % 3) * 100 + 100}
+              data-aos-duration="600"
               className="flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-white border border-gray-200/90 shadow-2xs hover:shadow-xl hover:border-blue-300 transition-all duration-300 group text-center"
             >
               <div className="flex flex-col items-center">

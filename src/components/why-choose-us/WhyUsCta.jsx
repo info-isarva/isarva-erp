@@ -8,7 +8,7 @@ export default function WhyUsCta({ onOpenModal }) {
   return (
     <section className="section-padding bg-gradient-to-b from-white via-[#f0f9f4] to-[#e6f5ee] relative overflow-hidden">
       <div className="site-container relative z-10">
-        <div className="rounded-3xl bg-gradient-to-br from-[#e8f8f1] via-[#d6f2e4] to-[#eaf7f0] p-8 sm:p-14 lg:p-16 border border-emerald-300/80 shadow-2xl relative overflow-hidden card-shadow-emerald">
+        <div data-aos="fade-up" data-aos-duration="700" className="rounded-3xl bg-gradient-to-br from-[#e8f8f1] via-[#d6f2e4] to-[#eaf7f0] p-8 sm:p-14 lg:p-16 border border-emerald-300/80 shadow-2xl relative overflow-hidden card-shadow-emerald">
           {/* Subtle background glow */}
           <div className="absolute top-0 right-0 w-[450px] h-[450px] bg-emerald-300/35 rounded-full blur-[130px] pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-teal-300/25 rounded-full blur-[120px] pointer-events-none" />
