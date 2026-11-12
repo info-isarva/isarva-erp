@@ -51,9 +51,9 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
   const normalizedQuery = searchQuery.trim().toLowerCase();
   const searchResults = normalizedQuery
     ? SITE_SEARCH_PAGES.filter((page) => {
-        const haystack = `${page.label} ${page.keywords}`.toLowerCase();
-        return haystack.includes(normalizedQuery);
-      })
+      const haystack = `${page.label} ${page.keywords}`.toLowerCase();
+      return haystack.includes(normalizedQuery);
+    })
     : SITE_SEARCH_PAGES;
 
   const closeSearch = () => {
@@ -107,18 +107,6 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
     };
   }, [isSearchOpen]);
 
-  // Lock body scroll when mobile menu is open so menu can scroll freely
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isMobileMenuOpen]);
-
   // Auto-close mobile menu if window resizes to desktop
   useEffect(() => {
     function handleResize() {
@@ -134,7 +122,7 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
       <div className="site-container">
         <div className="flex items-center justify-between h-20">
-          
+
           {/* Brand Logo */}
           <Link href="/" className="flex items-center group shrink-0">
             <img
@@ -167,7 +155,7 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
 
               {/* Solutions Dropdown Menu */}
               {isSolutionsOpen && (
-                <div 
+                <div
                   className="absolute top-full -left-4 w-80 bg-white rounded-2xl shadow-xl border border-slate-100 p-2.5 z-50 animate-fadeIn space-y-1"
                   onMouseEnter={() => setIsSolutionsOpen(true)}
                 >
@@ -254,7 +242,7 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
 
           {/* Right Action Bar */}
           <div className="hidden lg:flex items-center gap-2 xl:gap-3.5 shrink-0">
-            
+
             {/* Country & Language Selector Dropdown */}
             <div className="relative shrink-0" ref={countryRef}>
               <button
@@ -279,9 +267,8 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
                         setIsCountryOpen(false);
                       }}
 
-                      className={`w-full flex items-center justify-between px-3.5 py-2.5 text-sm transition-colors text-left group ${
-                        selectedCountry.code === country.code ? 'bg-emerald-50/60 text-[#007a55]' : 'text-slate-700 hover:bg-slate-50'
-                      }`}
+                      className={`w-full flex items-center justify-between px-3.5 py-2.5 text-sm transition-colors text-left group ${selectedCountry.code === country.code ? 'bg-emerald-50/60 text-[#007a55]' : 'text-slate-700 hover:bg-slate-50'
+                        }`}
                     >
                       <div className="flex items-center gap-3">
                         <FlagIcon code={country.code} className="w-6 h-4" />
@@ -403,7 +390,10 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
             </button>
             <button
               type="button"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              onClick={() => {
+                setIsSearchOpen(false);
+                setIsMobileMenuOpen((prev) => !prev);
+              }}
               className="h-10 w-10 inline-flex items-center justify-center text-slate-700 rounded-lg hover:bg-slate-100"
               aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
             >
@@ -415,7 +405,7 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
 
       {/* Mobile Search Panel */}
       {isSearchOpen && (
-        <div ref={mobileSearchRef} className="lg:hidden border-t border-slate-100 bg-white px-4 py-3 shadow-md">
+        <div ref={mobileSearchRef} className="lg:hidden absolute left-0 right-0 top-full z-50 border-t border-slate-100 bg-white px-4 py-3 shadow-lg">
           <div className="flex items-center h-11 rounded-xl border border-slate-200 bg-slate-50 focus-within:bg-white focus-within:border-[#007a55] focus-within:ring-2 focus-within:ring-[#007a55]/15">
             <span className="pl-3 text-slate-400 shrink-0">
               <Search size={16} className="w-4 h-4" />
@@ -467,7 +457,7 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
 
       {/* Mobile Menu Dropdown with Smooth Scrolling */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden border-t border-slate-100 bg-white px-4 pt-3 pb-8 space-y-3 max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain shadow-2xl">
+        <div className="lg:hidden absolute left-0 right-0 top-full z-50 border-t border-slate-100 bg-white px-4 pt-3 pb-8 space-y-3 max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain shadow-2xl">
           <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-slate-800">
             Home
           </Link>
@@ -519,11 +509,10 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
                     onSelectCountry?.(country);
                     setIsMobileMenuOpen(false);
                   }}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold border transition-all ${
-                    selectedCountry.code === country.code
+                  className={`flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold border transition-all ${selectedCountry.code === country.code
                       ? 'border-[#007a55] bg-emerald-50 text-[#007a55]'
                       : 'border-slate-200 bg-slate-50 text-slate-700'
-                  }`}
+                    }`}
                 >
                   <FlagIcon code={country.code} className="w-5 h-3.5" />
                   <span>{country.name}</span>

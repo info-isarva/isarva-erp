@@ -214,9 +214,9 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
                 Powering multi-branch retail chains, wholesale FMCG distributors, manufacturing plants, and service providers.
               </p>
             </div>
-            <div className="mt-4 pt-3 border-t border-emerald-200/70 text-xs text-slate-600 flex items-center justify-between gap-2">
-              <span className="whitespace-nowrap">Across IN &amp; GCC</span>
-              <span className="text-[#007a55] font-bold whitespace-nowrap">99.2% Retention</span>
+            <div className="mt-4 pt-3 border-t border-emerald-200/70 text-xs text-slate-600 flex flex-wrap items-center justify-between gap-x-2 gap-y-1">
+              <span>Across IN &amp; GCC</span>
+              <span className="text-[#007a55] font-bold">99.2% Retention</span>
             </div>
           </div>
 
@@ -238,9 +238,9 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
                 Tier-IV enterprise data center redundancy with ISO 27001 grade encryption and automated hourly snapshot backups.
               </p>
             </div>
-            <div className="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500 flex items-center justify-between gap-2">
-              <span className="whitespace-nowrap">Sub-second failover</span>
-              <span className="text-blue-600 font-semibold whitespace-nowrap">Continuous Mirroring</span>
+            <div className="mt-4 pt-3 border-t border-slate-100 text-xs text-slate-500 flex flex-wrap items-center justify-between gap-x-2 gap-y-1">
+              <span>Sub-second failover</span>
+              <span className="text-blue-600 font-semibold">Continuous Mirroring</span>
             </div>
           </div>
 
@@ -310,17 +310,17 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
             </div>
 
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-4 border-t border-slate-100 text-center">
-              <div className="p-2.5 rounded-lg bg-slate-50 flex sm:flex-col items-center justify-between sm:justify-center px-3">
-                <div className="text-xs text-slate-500 font-medium whitespace-nowrap">Month-End Close</div>
-                <div className="text-sm font-bold text-slate-900 whitespace-nowrap mt-0.5">4.2x Faster</div>
+              <div className="p-2.5 rounded-lg bg-slate-50 flex sm:flex-col items-center justify-between sm:justify-center px-3 gap-1">
+                <div className="text-xs text-slate-500 font-medium">Month-End Close</div>
+                <div className="text-sm font-bold text-slate-900 mt-0.5">4.2x Faster</div>
               </div>
-              <div className="p-2.5 rounded-lg bg-slate-50 flex sm:flex-col items-center justify-between sm:justify-center px-3">
-                <div className="text-xs text-slate-500 font-medium whitespace-nowrap">Reconciliation</div>
-                <div className="text-sm font-bold text-slate-900 whitespace-nowrap mt-0.5">100% Automated</div>
+              <div className="p-2.5 rounded-lg bg-slate-50 flex sm:flex-col items-center justify-between sm:justify-center px-3 gap-1">
+                <div className="text-xs text-slate-500 font-medium">Reconciliation</div>
+                <div className="text-sm font-bold text-slate-900 mt-0.5">100% Automated</div>
               </div>
-              <div className="p-2.5 rounded-lg bg-slate-50 flex sm:flex-col items-center justify-between sm:justify-center px-3">
-                <div className="text-xs text-slate-500 font-medium whitespace-nowrap">Data Integrity</div>
-                <div className="text-sm font-bold text-[#007a55] whitespace-nowrap mt-0.5">Auditor Ready</div>
+              <div className="p-2.5 rounded-lg bg-slate-50 flex sm:flex-col items-center justify-between sm:justify-center px-3 gap-1">
+                <div className="text-xs text-slate-500 font-medium">Data Integrity</div>
+                <div className="text-sm font-bold text-[#007a55] mt-0.5">Auditor Ready</div>
               </div>
             </div>
           </div>

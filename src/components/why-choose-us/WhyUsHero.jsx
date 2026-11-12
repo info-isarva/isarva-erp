@@ -85,18 +85,20 @@ export default function WhyUsHero({ onOpenModal }) {
             </div>
 
             {/* Value Checkpoints Strip */}
-            <div className="pt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 border-t border-emerald-100 w-full">
-              <div className="flex items-center justify-center sm:justify-start gap-2 text-xs sm:text-sm text-slate-700 whitespace-nowrap">
-                <CheckCircle2 className="w-4 h-4 text-[#007a55] shrink-0" />
-                <span>Zero Per-User Penalty</span>
-              </div>
-              <div className="flex items-center justify-center sm:justify-start gap-2 text-xs sm:text-sm text-slate-700 whitespace-nowrap">
-                <ShieldCheck className="w-4 h-4 text-[#007a55] shrink-0" />
-                <span>GST &amp; ZATCA Phase 2</span>
-              </div>
-              <div className="flex items-center justify-center sm:justify-start gap-2 text-xs sm:text-sm text-slate-700 whitespace-nowrap">
-                <Zap className="w-4 h-4 text-[#007a55] shrink-0" />
-                <span>2-4 Weeks Rapid Go-Live</span>
+            <div className="pt-4 border-t border-emerald-100 w-full flex justify-center lg:justify-start">
+              <div className="flex flex-col items-start sm:flex-row sm:flex-wrap sm:items-center justify-center lg:justify-start gap-2.5 sm:gap-5">
+                <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 whitespace-nowrap">
+                  <CheckCircle2 className="w-4 h-4 text-[#007a55] shrink-0" />
+                  <span>Zero Per-User Penalty</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 whitespace-nowrap">
+                  <ShieldCheck className="w-4 h-4 text-[#007a55] shrink-0" />
+                  <span>GST &amp; ZATCA Phase 2</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 whitespace-nowrap">
+                  <Zap className="w-4 h-4 text-[#007a55] shrink-0" />
+                  <span>2-4 Weeks Rapid Go-Live</span>
+                </div>
               </div>
             </div>
           </div>
