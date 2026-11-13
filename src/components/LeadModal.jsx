@@ -462,11 +462,10 @@ export default function LeadModal({ isOpen, onClose, modalType = 'demo', selecte
                           onChange={handlePhoneChange}
                           onBlur={handlePhoneBlur}
                           aria-invalid={Boolean(phoneError)}
-                          className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl border bg-slate-50/50 text-slate-900 text-sm placeholder:text-slate-400 focus:bg-white focus:ring-2 focus:outline-none transition-all ${
-                            phoneError
+                          className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl border bg-slate-50/50 text-slate-900 text-sm placeholder:text-slate-400 focus:bg-white focus:ring-2 focus:outline-none transition-all ${phoneError
                               ? 'border-rose-400 focus:border-rose-500 focus:ring-rose-500/15'
                               : 'border-slate-200 focus:border-[#009b55] focus:ring-[#009b55]/15'
-                          }`}
+                            }`}
                         />
                       </div>
                       {phoneError && (
@@ -508,11 +507,10 @@ export default function LeadModal({ isOpen, onClose, modalType = 'demo', selecte
                       aria-haspopup="listbox"
                       aria-expanded={productMenuOpen}
                       onClick={() => setProductMenuOpen((open) => !open)}
-                      className={`relative w-full pl-10 pr-10 py-2.5 rounded-xl border text-left text-sm transition-all flex items-center focus:outline-none disabled:opacity-60 disabled:cursor-wait ${
-                        productMenuOpen
+                      className={`relative w-full pl-10 pr-10 py-2.5 rounded-xl border text-left text-sm transition-all flex items-center focus:outline-none disabled:opacity-60 disabled:cursor-wait ${productMenuOpen
                           ? 'bg-white border-[#009b55] ring-2 ring-[#009b55]/15'
                           : 'border-slate-200 bg-slate-50/50 hover:bg-white focus:bg-white focus:border-[#009b55] focus:ring-2 focus:ring-[#009b55]/15'
-                      }`}
+                        }`}
                     >
                       <span className="absolute left-3.5 text-slate-400 pointer-events-none">
                         <LayoutGrid size={16} />
@@ -560,11 +558,10 @@ export default function LeadModal({ isOpen, onClose, modalType = 'demo', selecte
                                     role="option"
                                     aria-selected={isActive}
                                     onClick={() => selectCategory(category)}
-                                    className={`w-full px-3.5 py-2.5 text-left text-sm flex items-center justify-between gap-2 transition-colors ${
-                                      isActive
+                                    className={`w-full px-3.5 py-2.5 text-left text-sm flex items-center justify-between gap-2 transition-colors ${isActive
                                         ? 'bg-emerald-50 text-[#009b55] font-semibold'
                                         : 'text-slate-800 hover:bg-slate-50'
-                                    }`}
+                                      }`}
                                   >
                                     <span className="truncate">{category.category_name}</span>
                                     {isActive && <Check size={15} className="shrink-0 text-[#009b55]" />}
@@ -608,7 +605,7 @@ export default function LeadModal({ isOpen, onClose, modalType = 'demo', selecte
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-gradient-to-r from-[#00b05b] via-[#009b55] to-[#008048] hover:from-[#009e51] hover:to-[#00703e] text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-emerald-700/25 active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer text-sm sm:text-base disabled:opacity-60"
+                    className="btn-brand-primary w-full py-3.5 px-6 text-sm sm:text-base disabled:opacity-60"
                   >
                     <span>{loading ? 'Submitting...' : 'Submit Request'}</span>
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -679,7 +676,7 @@ export default function LeadModal({ isOpen, onClose, modalType = 'demo', selecte
             <button
               onClick={handleClose}
               type="button"
-              className="py-3 px-8 rounded-xl bg-[#009b55] hover:bg-[#008048] text-white font-bold text-sm transition-all mt-4 cursor-pointer shadow-md shadow-emerald-700/20"
+              className="btn-brand-primary py-3 px-8 text-sm mt-4"
             >
               Done
             </button>

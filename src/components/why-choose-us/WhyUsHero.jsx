@@ -69,16 +69,16 @@ export default function WhyUsHero({ onOpenModal }) {
               <button
                 type="button"
                 onClick={() => onOpenModal?.('demo', 'Why Choose ISARVA')}
-                className="group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-bold text-white bg-[#007a55] hover:bg-[#006546] shadow-lg shadow-[#007a55]/25 hover:shadow-xl hover:shadow-[#007a55]/35 hover:-translate-y-0.5 transition-all duration-200 text-sm sm:text-base cursor-pointer"
+                className="btn-brand-primary text-sm sm:text-base px-4 sm:px-7 py-3 sm:py-3.5 w-full sm:w-auto"
               >
                 <span>Book a 1-on-1 Consultation</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4" />
               </button>
 
               <button
                 type="button"
                 onClick={scrollToComparison}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-slate-800 bg-white hover:bg-slate-50 border border-slate-200/90 hover:border-emerald-300 transition-all duration-200 text-sm sm:text-base shadow-xs cursor-pointer"
+                className="btn-brand-secondary text-sm sm:text-base px-4 sm:px-6 py-3 sm:py-3.5 w-full sm:w-auto"
               >
                 <span>Compare with Legacy ERPs</span>
               </button>

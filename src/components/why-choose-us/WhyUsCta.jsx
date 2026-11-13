@@ -40,15 +40,15 @@ export default function WhyUsCta({ onOpenModal }) {
               <button
                 type="button"
                 onClick={() => onOpenModal?.('demo', 'Why Choose Us Bottom CTA')}
-                className="group inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl font-bold text-white bg-[#007a55] hover:bg-[#006546] shadow-lg shadow-[#007a55]/25 hover:shadow-xl hover:shadow-[#007a55]/35 hover:-translate-y-0.5 transition-all duration-200 text-sm sm:text-base cursor-pointer"
+                className="btn-brand-primary text-sm sm:text-base px-5 sm:px-8 py-3.5 sm:py-4"
               >
                 <span>Book a Free 30-Minute Consultation</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4" />
               </button>
 
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl font-semibold text-slate-800 bg-white hover:bg-slate-50 border border-slate-200/90 hover:border-emerald-300 transition-all duration-200 text-sm sm:text-base shadow-xs backdrop-blur-md cursor-pointer"
+                className="btn-brand-secondary text-sm sm:text-base px-5 sm:px-7 py-3.5 sm:py-4"
               >
                 <Headphones className="w-4 h-4 text-[#007a55]" />
                 <span>Talk to an Architect</span>

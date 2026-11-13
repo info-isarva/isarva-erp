@@ -152,11 +152,11 @@ export default function Footer({
                   <button
                     type="button"
                     onClick={() => onOpenModal ? onOpenModal('demo') : null}
-                    className="relative overflow-hidden w-full py-3 sm:py-3.5 px-4 sm:px-6 rounded-full bg-gradient-to-r from-emerald-300 via-emerald-400 to-teal-300 hover:from-emerald-200 hover:via-emerald-300 hover:to-teal-200 text-slate-950 font-bold text-xs sm:text-sm border-t border-white/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.7),0_8px_24px_-4px_rgba(52,211,153,0.45)] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_12px_28px_-4px_rgba(52,211,153,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer whitespace-nowrap"
+                    className="relative overflow-hidden w-full h-11 sm:h-12 px-4 sm:px-6 rounded-full bg-gradient-to-r from-emerald-300 via-emerald-400 to-teal-300 hover:from-emerald-200 hover:via-emerald-300 hover:to-teal-200 text-slate-950 font-bold text-xs sm:text-sm border border-transparent border-t-white/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.7),0_8px_24px_-4px_rgba(52,211,153,0.45)] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_12px_28px_-4px_rgba(52,211,153,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer"
                   >
                     {/* Dynamic Light Sweep Shimmer Effect */}
                     <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none" />
-                    <span className="relative z-10 flex items-center justify-center gap-2 whitespace-nowrap">
+                    <span className="relative z-10 flex items-center justify-center gap-2">
                       <span>Book a Free Demo</span>
                       <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform duration-200 shrink-0" />
                     </span>
@@ -165,7 +165,7 @@ export default function Footer({
                   {/* Secondary Action Link */}
                   <Link
                     href="/contact"
-                    className="w-full py-2.5 sm:py-3 px-4 sm:px-6 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold text-xs sm:text-sm border border-white/25 hover:border-white/40 shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"
+                    className="w-full h-11 sm:h-12 px-4 sm:px-6 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold text-xs sm:text-sm border border-white/25 hover:border-white/50 hover:-translate-y-0.5 active:scale-[0.98] shadow-xs hover:shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer text-center"
                   >
                     <span>Talk to Our Team</span>
                   </Link>
@@ -283,20 +283,16 @@ export default function Footer({
                   <button
                     type="button"
                     onClick={() => onOpenModal ? onOpenModal('demo') : null}
-                    className="relative overflow-hidden w-full py-3 sm:py-3.5 px-4 sm:px-6 rounded-full bg-gradient-to-r from-[#009c6c] via-[#007a55] to-[#005f42] hover:from-[#00b07a] hover:via-[#008960] hover:to-[#006e4d] text-white font-bold text-xs sm:text-sm border-t border-white/35 shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_8px_20px_-4px_rgba(0,122,85,0.45)] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_12px_28px_-4px_rgba(0,122,85,0.55)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer whitespace-nowrap"
+                    className="btn-brand-primary w-full h-11 sm:h-12 px-4 sm:px-6 text-xs sm:text-sm font-bold"
                   >
-                    {/* Dynamic Light Sweep Shimmer Effect */}
-                    <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none" />
-                    <span className="relative z-10 flex items-center justify-center gap-2 whitespace-nowrap">
-                      <span>Book a Free Demo</span>
-                      <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform duration-200 shrink-0" />
-                    </span>
+                    <span>Book a Free Demo</span>
+                    <ArrowRight size={15} className="shrink-0" />
                   </button>
 
                   {/* Secondary Action Link */}
                   <Link
                     href="/contact"
-                    className="w-full py-2.5 sm:py-3 px-4 sm:px-6 rounded-full bg-slate-100/90 hover:bg-slate-100 text-slate-800 font-semibold text-xs sm:text-sm border border-slate-200/90 shadow-2xs hover:shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"
+                    className="btn-brand-secondary w-full h-11 sm:h-12 px-4 sm:px-6 text-xs sm:text-sm font-semibold"
                   >
                     <span>Talk to Our Team</span>
                   </Link>

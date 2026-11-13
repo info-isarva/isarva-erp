@@ -199,7 +199,7 @@ export default function ErpComparisonTable({ onOpenModal }) {
             <button
               type="button"
               onClick={() => onOpenModal?.('demo', 'Why Choose Us Comparison Table')}
-              className="px-5 py-2.5 rounded-xl bg-[#007a55] hover:bg-[#006546] text-white font-bold text-xs sm:text-sm shadow-md shadow-[#007a55]/25 hover:shadow-lg transition-all inline-flex items-center gap-2 cursor-pointer"
+              className="btn-brand-primary text-xs sm:text-sm px-5 py-2.5"
             >
               <span>Request Custom TCO Audit</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -217,33 +217,30 @@ export default function ErpComparisonTable({ onOpenModal }) {
             <button
               type="button"
               onClick={() => setMobileFilter('all')}
-              className={`flex-1 py-2 px-1 text-center text-xs font-bold rounded-xl transition-all cursor-pointer ${
-                mobileFilter === 'all'
-                  ? 'bg-[#007a55] text-white shadow-sm'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-              }`}
+              className={`flex-1 py-2 px-1 text-center text-xs font-bold rounded-xl transition-all cursor-pointer ${mobileFilter === 'all'
+                ? 'bg-[#007a55] text-white shadow-sm'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                }`}
             >
               All Breakdown
             </button>
             <button
               type="button"
               onClick={() => setMobileFilter('fragmented')}
-              className={`flex-1 py-2 px-1 text-center text-xs font-bold rounded-xl transition-all cursor-pointer ${
-                mobileFilter === 'fragmented'
-                  ? 'bg-[#007a55] text-white shadow-sm'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-              }`}
+              className={`flex-1 py-2 px-1 text-center text-xs font-bold rounded-xl transition-all cursor-pointer ${mobileFilter === 'fragmented'
+                ? 'bg-[#007a55] text-white shadow-sm'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                }`}
             >
               vs. Spreadsheets
             </button>
             <button
               type="button"
               onClick={() => setMobileFilter('legacy')}
-              className={`flex-1 py-2 px-1 text-center text-xs font-bold rounded-xl transition-all cursor-pointer ${
-                mobileFilter === 'legacy'
-                  ? 'bg-[#007a55] text-white shadow-sm'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-              }`}
+              className={`flex-1 py-2 px-1 text-center text-xs font-bold rounded-xl transition-all cursor-pointer ${mobileFilter === 'legacy'
+                ? 'bg-[#007a55] text-white shadow-sm'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                }`}
             >
               vs. Legacy ERPs
             </button>
@@ -344,7 +341,7 @@ export default function ErpComparisonTable({ onOpenModal }) {
             <button
               type="button"
               onClick={() => onOpenModal?.('demo', 'Why Choose Us Comparison Table Mobile')}
-              className="w-full sm:w-auto px-8 py-3 rounded-xl bg-[#007a55] hover:bg-[#006546] text-white font-bold text-sm shadow-md shadow-[#007a55]/25 hover:shadow-lg transition-all inline-flex items-center justify-center gap-2 cursor-pointer"
+              className="btn-brand-primary w-full sm:w-auto text-xs sm:text-sm px-4 sm:px-8 py-3"
             >
               <span>Request Custom TCO Audit</span>
               <ArrowRight className="w-4 h-4" />

@@ -279,7 +279,7 @@ export default function ContactForm({ selectedCountry = 'IN' }) {
         type="submit"
         aria-label="Send message"
         disabled={status === 'submitting'}
-        className="press-illusion-btn-orange bg-orange-500 text-white md:mx-0 mx-auto font-bold px-8 w-fit py-4 text-lg items-center space-x-2 flex disabled:opacity-50 disabled:cursor-not-allowed justify-center"
+        className="btn-shimmer press-illusion-btn-orange bg-orange-500 text-white md:mx-0 mx-auto font-bold px-8 w-fit py-4 text-lg items-center space-x-2 flex disabled:opacity-50 disabled:cursor-not-allowed justify-center"
       >
         <span>{status === 'submitting' ? 'Sending Message...' : 'Send Message'}</span>
         {status === 'submitting' ? (

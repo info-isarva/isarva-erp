@@ -285,6 +285,7 @@
 }
 
 @media (min-width: 640px) {
+
   .section-padding-sm,
   .hero-padding {
     padding-top: 4rem;
@@ -295,6 +296,7 @@
 }
 
 @media (min-width: 1024px) {
+
   .section-padding-sm,
   .hero-padding {
     padding-top: 4.5rem;
@@ -350,27 +352,126 @@
 
 /* Buttons */
 .btn-brand-primary {
+  position: relative;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background-color: #007a55;
+  background: linear-gradient(135deg, #009c6c 0%, #007a55 50%, #005f42 100%);
   color: #ffffff;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.925rem;
-  padding: 0.685rem 1.4rem;
+  line-height: 1.3;
+  box-sizing: border-box;
+  padding: 0.65rem 1.15rem;
   border-radius: 9999px;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 14px rgba(0, 122, 85, 0.25);
   border: 1px solid transparent;
+  border-top-color: rgba(255, 255, 255, 0.35);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 8px 20px -4px rgba(0, 122, 85, 0.45);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-  white-space: nowrap;
+  max-width: 100%;
+  text-align: center;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+@media (min-width: 640px) {
+  .btn-brand-primary {
+    padding: 0.685rem 1.4rem;
+  }
+}
+
+/* Dynamic Light Sweep Shimmer Effect */
+.btn-brand-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.35) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
 }
 
 .btn-brand-primary:hover {
-  background-color: #006546;
+  background: linear-gradient(135deg, #00b07a 0%, #008960 50%, #006e4d 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 12px 28px -4px rgba(0, 122, 85, 0.55);
+}
+
+.btn-brand-primary:hover::after {
+  transform: translateX(100%);
+}
+
+.btn-brand-primary:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Trailing arrow icon nudge on hover */
+.btn-brand-primary svg {
+  transition: transform 0.2s ease;
+}
+
+.btn-brand-primary:hover svg:last-child {
+  transform: translateX(3px);
+}
+
+.btn-brand-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #ffffff;
+  color: #334155;
+  font-weight: 700;
+  font-size: 0.925rem;
+  line-height: 1.3;
+  box-sizing: border-box;
+  padding: 0.65rem 1.15rem;
+  border-radius: 9999px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  max-width: 100%;
+  text-align: center;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+@media (min-width: 640px) {
+  .btn-brand-secondary {
+    padding: 0.685rem 1.4rem;
+  }
+}
+
+.btn-brand-secondary:hover {
+  background-color: #f8fafc;
+  border-color: #94a3b8;
+  color: #0f172a;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 122, 85, 0.35);
+  box-shadow: 0 8px 20px -3px rgba(15, 23, 42, 0.1), 0 3px 6px -1px rgba(15, 23, 42, 0.05);
+}
+
+.btn-brand-secondary:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-brand-secondary svg {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.btn-brand-secondary:hover svg:last-child {
+  transform: translateX(3px);
+}
+
+.btn-brand-secondary:hover svg:first-child:not(:last-child) {
+  transform: scale(1.08);
 }
 
 .btn-brand-outline {
@@ -380,146 +481,368 @@
   gap: 0.5rem;
   background-color: #ffffff;
   color: #007a55;
-  border: 1.5px solid #007a55;
-  font-weight: 600;
+  border: 1px solid #007a55;
+  font-weight: 700;
   font-size: 0.925rem;
-  padding: 0.65rem 1.35rem;
+  line-height: 1.3;
+  box-sizing: border-box;
+  padding: 0.65rem 1.15rem;
   border-radius: 9999px;
-  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 122, 85, 0.08);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-  white-space: nowrap;
+  max-width: 100%;
+  text-align: center;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+@media (min-width: 640px) {
+  .btn-brand-outline {
+    padding: 0.685rem 1.4rem;
+  }
 }
 
 .btn-brand-outline:hover {
-  background-color: #ecfdf5;
-  transform: translateY(-1px);
+  background-color: #007a55;
+  color: #ffffff;
+  border-color: #007a55;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -3px rgba(0, 122, 85, 0.35);
+}
+
+.btn-brand-outline:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-brand-outline svg {
+  transition: transform 0.2s ease;
+}
+
+.btn-brand-outline:hover svg:last-child {
+  transform: translateX(3px);
 }
 
 /* Product Category Action Buttons */
 .btn-pos {
+  position: relative;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background-color: #078356;
+  background: linear-gradient(135deg, #059669 0%, #078356 50%, #046c46 100%);
   color: #ffffff;
   font-weight: 700;
   font-size: 0.925rem;
   padding: 0.85rem 1.25rem;
   border-radius: 0.85rem;
   width: 100%;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(7, 131, 86, 0.2);
+  border: 1px solid transparent;
+  border-top-color: rgba(255, 255, 255, 0.35);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(7, 131, 86, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.btn-pos::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.35) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
 }
 
 .btn-pos:hover {
-  background-color: #056d47;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(7, 131, 86, 0.3);
+  background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 10px 24px -4px rgba(7, 131, 86, 0.5);
+}
+
+.btn-pos:hover::after {
+  transform: translateX(100%);
+}
+
+.btn-pos:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-pos svg {
+  transition: transform 0.2s ease;
+}
+
+.btn-pos:hover svg:last-child {
+  transform: translateX(3px);
 }
 
 .btn-billsoft {
+  position: relative;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background-color: #1d4ed8;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 50%, #1e40af 100%);
   color: #ffffff;
   font-weight: 700;
   font-size: 0.925rem;
   padding: 0.85rem 1.25rem;
   border-radius: 0.85rem;
   width: 100%;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(29, 78, 216, 0.2);
+  border: 1px solid transparent;
+  border-top-color: rgba(255, 255, 255, 0.35);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(29, 78, 216, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.btn-billsoft::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.35) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
 }
 
 .btn-billsoft:hover {
-  background-color: #1e40af;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(29, 78, 216, 0.3);
+  background: linear-gradient(135deg, #60a5fa 0%, #2563eb 50%, #1d4ed8 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 10px 24px -4px rgba(29, 78, 216, 0.5);
+}
+
+.btn-billsoft:hover::after {
+  transform: translateX(100%);
+}
+
+.btn-billsoft:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-billsoft svg {
+  transition: transform 0.2s ease;
+}
+
+.btn-billsoft:hover svg:last-child {
+  transform: translateX(3px);
 }
 
 .btn-hrms {
+  position: relative;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background-color: #7c3aed;
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 50%, #6d28d9 100%);
   color: #ffffff;
   font-weight: 700;
   font-size: 0.925rem;
   padding: 0.85rem 1.25rem;
   border-radius: 0.85rem;
   width: 100%;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.2);
+  border: 1px solid transparent;
+  border-top-color: rgba(255, 255, 255, 0.35);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(124, 58, 237, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.btn-hrms::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.35) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
 }
 
 .btn-hrms:hover {
-  background-color: #6d28d9;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.3);
+  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 50%, #7c3aed 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 10px 24px -4px rgba(124, 58, 237, 0.5);
+}
+
+.btn-hrms:hover::after {
+  transform: translateX(100%);
+}
+
+.btn-hrms:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-hrms svg {
+  transition: transform 0.2s ease;
+}
+
+.btn-hrms:hover svg:last-child {
+  transform: translateX(3px);
 }
 
 .btn-crm {
+  position: relative;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background-color: #ea580c;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #c2410c 100%);
   color: #ffffff;
   font-weight: 700;
   font-size: 0.925rem;
   padding: 0.85rem 1.25rem;
   border-radius: 0.85rem;
   width: 100%;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(234, 88, 12, 0.2);
+  border: 1px solid transparent;
+  border-top-color: rgba(255, 255, 255, 0.35);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(234, 88, 12, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.btn-crm::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.35) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
 }
 
 .btn-crm:hover {
-  background-color: #c2410c;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(234, 88, 12, 0.3);
+  background: linear-gradient(135deg, #fb923c 0%, #f97316 50%, #ea580c 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 10px 24px -4px rgba(234, 88, 12, 0.5);
+}
+
+.btn-crm:hover::after {
+  transform: translateX(100%);
+}
+
+.btn-crm:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-crm svg {
+  transition: transform 0.2s ease;
+}
+
+.btn-crm:hover svg:last-child {
+  transform: translateX(3px);
 }
 
 .btn-industry {
+  position: relative;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background-color: #0284c7;
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 50%, #0369a1 100%);
   color: #ffffff;
   font-weight: 700;
   font-size: 0.925rem;
-  padding: 0.85rem 1.25rem;
+  line-height: 1.3;
+  padding: 0.75rem 1.25rem;
   border-radius: 0.85rem;
   width: 100%;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.2);
-  white-space: nowrap;
+  max-width: 100%;
+  border: 1px solid transparent;
+  border-top-color: rgba(255, 255, 255, 0.35);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(2, 132, 199, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  text-align: center;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.btn-industry::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.35) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
 }
 
 .btn-industry:hover {
-  background-color: #0369a1;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.3);
+  background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 50%, #0284c7 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 10px 24px -4px rgba(2, 132, 199, 0.5);
+}
+
+.btn-industry:hover::after {
+  transform: translateX(100%);
+}
+
+.btn-industry:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-industry svg {
+  transition: transform 0.2s ease;
+}
+
+.btn-industry:hover svg:last-child {
+  transform: translateX(3px);
+}
+
+/* Universal Light Sweep Shimmer Utility */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.35) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.btn-shimmer:hover::after {
+  transform: translateX(100%);
 }
 
 /* Dedicated CRM Landing CTA Buttons */
 .crm-primary-btn-orange {
   height: 48px;
   min-height: 48px;
-  background: #f97316;
-  border: none;
-  border-bottom: 3px solid #ea580c;
-  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.25);
+  background: linear-gradient(135deg, #fb923c 0%, #f97316 50%, #ea580c 100%);
+  border: 1px solid transparent;
+  border-top-color: rgba(255, 255, 255, 0.4);
+  border-bottom: 3px solid #c2410c;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(234, 88, 12, 0.25);
   cursor: pointer;
   border-radius: 0.75rem;
   padding: 0 1.5rem;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  overflow: hidden;
   color: #ffffff;
   font-weight: 700;
   display: inline-flex;
@@ -527,58 +850,114 @@
   justify-content: center;
   gap: 0.5rem;
   font-size: 0.95rem;
-  white-space: nowrap;
+  line-height: 1.3;
+  max-width: 100%;
+  text-align: center;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.crm-primary-btn-orange::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.35) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
 }
 
 .crm-primary-btn-orange:hover {
-  background: #ea580c;
+  background: linear-gradient(135deg, #fdba74 0%, #fb923c 50%, #ea580c 100%);
+  transform: translateY(-2px) scale(1.02);
   border-bottom-width: 2px;
-  box-shadow: 0 2px 8px rgba(234, 88, 12, 0.2);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 10px 24px -4px rgba(234, 88, 12, 0.5);
+}
+
+.crm-primary-btn-orange:hover::after {
+  transform: translateX(100%);
 }
 
 .crm-primary-btn-orange:active {
   border-bottom-width: 0px;
+  transform: translateY(0) scale(0.98);
+}
+
+.crm-primary-btn-orange svg {
+  transition: transform 0.2s ease;
+}
+
+.crm-primary-btn-orange:hover svg:last-child {
+  transform: translateX(3px);
 }
 
 .crm-secondary-btn-white {
-  height: 48px;
   min-height: 48px;
+  height: auto;
   border: 1.5px solid #cbd5e1;
   background: #ffffff;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
   cursor: pointer;
   border-radius: 0.75rem;
-  padding: 0 1.5rem;
-  transition: all 0.2s ease-in-out;
-  position: relative;
-  color: #0f172a;
+  padding: 0.65rem 1.25rem;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #1e293b;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   font-size: 0.95rem;
-  white-space: nowrap;
+  line-height: 1.3;
+  max-width: 100%;
+  text-align: center;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 .crm-secondary-btn-white:hover {
-  background: #f8fafc;
-  border-color: #94a3b8;
+  background: #fff7ed;
+  border-color: #ea580c;
+  color: #ea580c;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -3px rgba(234, 88, 12, 0.15);
+}
+
+.crm-secondary-btn-white:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.crm-secondary-btn-white svg {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.crm-secondary-btn-white:hover svg:last-child {
+  transform: translateX(3px);
+}
+
+.crm-secondary-btn-white:hover svg:first-child:not(:last-child) {
+  transform: scale(1.08);
 }
 
 /* Dedicated HRMS & Payroll Landing CTA Buttons */
 .hrms-primary-btn-purple {
   height: 48px;
   min-height: 48px;
-  background: #7c3aed;
-  border: none;
-  border-bottom: 3px solid #6d28d9;
-  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.25);
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 50%, #6d28d9 100%);
+  border: 1px solid transparent;
+  border-top-color: rgba(255, 255, 255, 0.4);
+  border-bottom: 3px solid #5b21b6;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(124, 58, 237, 0.25);
   cursor: pointer;
   border-radius: 0.75rem;
   padding: 0 1.5rem;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  overflow: hidden;
   color: #ffffff;
   font-weight: 700;
   display: inline-flex;
@@ -586,59 +965,114 @@
   justify-content: center;
   gap: 0.5rem;
   font-size: 0.95rem;
-  white-space: nowrap;
+  line-height: 1.3;
+  max-width: 100%;
+  text-align: center;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.hrms-primary-btn-purple::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.35) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
 }
 
 .hrms-primary-btn-purple:hover {
-  background: #6d28d9;
+  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 50%, #7c3aed 100%);
+  transform: translateY(-2px) scale(1.02);
   border-bottom-width: 2px;
-  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.2);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 10px 24px -4px rgba(124, 58, 237, 0.5);
+}
+
+.hrms-primary-btn-purple:hover::after {
+  transform: translateX(100%);
 }
 
 .hrms-primary-btn-purple:active {
   border-bottom-width: 0px;
+  transform: translateY(0) scale(0.98);
+}
+
+.hrms-primary-btn-purple svg {
+  transition: transform 0.2s ease;
+}
+
+.hrms-primary-btn-purple:hover svg:last-child {
+  transform: translateX(3px);
 }
 
 .hrms-secondary-btn-white {
-  height: 48px;
   min-height: 48px;
+  height: auto;
   border: 1.5px solid #cbd5e1;
   background: #ffffff;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
   cursor: pointer;
   border-radius: 0.75rem;
-  padding: 0 1.5rem;
-  transition: all 0.2s ease-in-out;
-  position: relative;
-  color: #0f172a;
+  padding: 0.65rem 1.25rem;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #1e293b;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   font-size: 0.95rem;
-  white-space: nowrap;
+  line-height: 1.3;
+  max-width: 100%;
+  text-align: center;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 .hrms-secondary-btn-white:hover {
   background: #faf5ff;
-  border-color: #c084fc;
-  color: #7c3aed;
+  border-color: #7c3aed;
+  color: #6d28d9;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -3px rgba(124, 58, 237, 0.15);
+}
+
+.hrms-secondary-btn-white:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.hrms-secondary-btn-white svg {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.hrms-secondary-btn-white:hover svg:last-child {
+  transform: translateX(3px);
+}
+
+.hrms-secondary-btn-white:hover svg:first-child:not(:last-child) {
+  transform: scale(1.08);
 }
 
 /* Dedicated Restaurant POS Landing CTA Buttons */
 .pos-primary-btn-emerald {
   height: 48px;
   min-height: 48px;
-  background: #059669;
-  border: none;
-  border-bottom: 3px solid #047857;
-  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.25);
+  background: linear-gradient(135deg, #059669 0%, #047857 50%, #065f46 100%);
+  border: 1px solid transparent;
+  border-top-color: rgba(255, 255, 255, 0.4);
+  border-bottom: 3px solid #064e3b;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(5, 150, 105, 0.25);
   cursor: pointer;
   border-radius: 0.75rem;
   padding: 0 1.5rem;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  overflow: hidden;
   color: #ffffff;
   font-weight: 700;
   display: inline-flex;
@@ -646,58 +1080,114 @@
   justify-content: center;
   gap: 0.5rem;
   font-size: 0.95rem;
-  white-space: nowrap;
+  line-height: 1.3;
+  max-width: 100%;
+  text-align: center;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.pos-primary-btn-emerald::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.35) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
 }
 
 .pos-primary-btn-emerald:hover {
-  background: #047857;
+  background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
+  transform: translateY(-2px) scale(1.02);
   border-bottom-width: 2px;
-  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.2);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 10px 24px -4px rgba(5, 150, 105, 0.5);
+}
+
+.pos-primary-btn-emerald:hover::after {
+  transform: translateX(100%);
 }
 
 .pos-primary-btn-emerald:active {
   border-bottom-width: 0px;
+  transform: translateY(0) scale(0.98);
+}
+
+.pos-primary-btn-emerald svg {
+  transition: transform 0.2s ease;
+}
+
+.pos-primary-btn-emerald:hover svg:last-child {
+  transform: translateX(3px);
 }
 
 .pos-secondary-btn-white {
-  height: 48px;
   min-height: 48px;
+  height: auto;
   border: 1.5px solid #cbd5e1;
   background: #ffffff;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
   cursor: pointer;
   border-radius: 0.75rem;
-  padding: 0 1.5rem;
-  transition: all 0.2s ease-in-out;
-  position: relative;
-  color: #0f172a;
+  padding: 0.65rem 1.25rem;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #1e293b;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   font-size: 0.95rem;
-  white-space: nowrap;
+  line-height: 1.3;
+  max-width: 100%;
+  text-align: center;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 .pos-secondary-btn-white:hover {
-  background: #f8fafc;
+  background: #f0fdf4;
   border-color: #059669;
+  color: #047857;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -3px rgba(5, 150, 105, 0.15);
+}
+
+.pos-secondary-btn-white:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.pos-secondary-btn-white svg {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.pos-secondary-btn-white:hover svg:last-child {
+  transform: translateX(3px);
+}
+
+.pos-secondary-btn-white:hover svg:first-child:not(:last-child) {
+  transform: scale(1.08);
 }
 
 /* Dedicated BillSoft Accounting Landing CTA Buttons */
 .billsoft-primary-btn-blue {
   height: 48px;
   min-height: 48px;
-  background: #2563eb;
-  border: none;
-  border-bottom: 3px solid #1d4ed8;
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+  border: 1px solid transparent;
+  border-top-color: rgba(255, 255, 255, 0.4);
+  border-bottom: 3px solid #1e3a8a;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(37, 99, 235, 0.25);
   cursor: pointer;
   border-radius: 0.75rem;
   padding: 0 1.5rem;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  overflow: hidden;
   color: #ffffff;
   font-weight: 700;
   display: inline-flex;
@@ -705,43 +1195,97 @@
   justify-content: center;
   gap: 0.5rem;
   font-size: 0.95rem;
-  white-space: nowrap;
+  line-height: 1.3;
+  max-width: 100%;
+  text-align: center;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.billsoft-primary-btn-blue::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.35) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
 }
 
 .billsoft-primary-btn-blue:hover {
-  background: #1d4ed8;
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%);
+  transform: translateY(-2px) scale(1.02);
   border-bottom-width: 2px;
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 10px 24px -4px rgba(37, 99, 235, 0.5);
+}
+
+.billsoft-primary-btn-blue:hover::after {
+  transform: translateX(100%);
 }
 
 .billsoft-primary-btn-blue:active {
   border-bottom-width: 0px;
+  transform: translateY(0) scale(0.98);
+}
+
+.billsoft-primary-btn-blue svg {
+  transition: transform 0.2s ease;
+}
+
+.billsoft-primary-btn-blue:hover svg:last-child {
+  transform: translateX(3px);
 }
 
 .billsoft-secondary-btn-white {
-  height: 48px;
   min-height: 48px;
+  height: auto;
   border: 1.5px solid #cbd5e1;
   background: #ffffff;
-  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
   cursor: pointer;
   border-radius: 0.75rem;
-  padding: 0 1.5rem;
-  transition: all 0.2s ease-in-out;
-  position: relative;
-  color: #0f172a;
+  padding: 0.65rem 1.25rem;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #1e293b;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   font-size: 0.95rem;
-  white-space: nowrap;
+  line-height: 1.3;
+  max-width: 100%;
+  text-align: center;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 .billsoft-secondary-btn-white:hover {
-  background: #f8fafc;
+  background: #eff6ff;
   border-color: #2563eb;
+  color: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -3px rgba(37, 99, 235, 0.15);
+}
+
+.billsoft-secondary-btn-white:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.billsoft-secondary-btn-white svg {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.billsoft-secondary-btn-white:hover svg:last-child {
+  transform: translateX(3px);
+}
+
+.billsoft-secondary-btn-white:hover svg:first-child:not(:last-child) {
+  transform: scale(1.08);
 }
 
 /* Responsive Guard: Ensure all landing buttons never cause horizontal overflow on mobile viewports */
@@ -757,6 +1301,7 @@
 }
 
 @media (max-width: 640px) {
+
   .pos-primary-btn-emerald,
   .pos-secondary-btn-white,
   .billsoft-primary-btn-blue,

@@ -408,7 +408,7 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
         </div>
 
         {/* Bottom Banner Trigger */}
-        <div className="mt-14 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50/70 border border-emerald-200/80 flex flex-col sm:flex-row items-center justify-between gap-6 card-shadow-emerald">
+        <div className="mt-14 p-4 sm:p-8 rounded-2xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50/70 border border-emerald-200/80 flex flex-col sm:flex-row items-center justify-between gap-5 sm:gap-6 card-shadow-emerald">
           <div className="space-y-1 text-center sm:text-left">
             <div className="text-base sm:text-lg font-bold text-slate-900 font-heading">
               Ready to see how ISARVA ERP fits into your operations?
@@ -420,7 +420,7 @@ export default function BentoBenefitsGrid({ onOpenModal }) {
           <button
             type="button"
             onClick={() => onOpenModal?.('demo', 'Why Choose Us Bento Banner')}
-            className="shrink-0 w-full sm:w-auto text-center px-6 py-3 rounded-xl bg-[#007a55] hover:bg-[#006546] text-white font-bold text-xs sm:text-sm shadow-md shadow-[#007a55]/25 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
+            className="btn-brand-primary w-full sm:w-auto sm:shrink-0 text-xs sm:text-sm px-4 sm:px-6 py-3 sm:py-3.5"
           >
             Request Custom Architecture Walkthrough
           </button>

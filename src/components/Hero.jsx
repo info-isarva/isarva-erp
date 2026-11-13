@@ -444,20 +444,18 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                     tabButtonRefs.current[index] = el;
                   }}
                   onClick={() => handleTabClick(index)}
-                  className={`group shrink-0 relative flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap cursor-pointer transition-all duration-300 ${
-                    isActive
+                  className={`group shrink-0 relative flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap cursor-pointer transition-all duration-300 ${isActive
                       ? 'bg-white text-slate-900 shadow-md shadow-slate-900/10 scale-[1.02] border'
                       : 'bg-white/60 hover:bg-white text-slate-600 hover:text-slate-900 border border-slate-200/60'
-                  }`}
+                    }`}
                   style={{
                     borderColor: isActive ? slide.themeColor : undefined
                   }}
                 >
                   {/* Color dot / icon */}
                   <span
-                    className={`w-6 h-6 rounded-full flex items-center justify-center transition-colors pointer-events-none ${
-                      isActive ? 'text-white' : 'text-slate-500 group-hover:text-slate-900'
-                    }`}
+                    className={`w-6 h-6 rounded-full flex items-center justify-center transition-colors pointer-events-none ${isActive ? 'text-white' : 'text-slate-500 group-hover:text-slate-900'
+                      }`}
                     style={{
                       backgroundColor: isActive ? slide.themeColor : 'rgba(148, 163, 184, 0.15)'
                     }}
@@ -474,7 +472,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
 
         {/* HERO MAIN CONTENT GRID */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
-          
+
           {/* LEFT COLUMN: Expansive & Prominent Product Information, Highlights & CTAs */}
           <div
             className="lg:col-span-7 xl:col-span-7 relative z-10 w-full min-h-[460px] sm:min-h-[440px] lg:min-h-[480px]"
@@ -486,11 +484,10 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
               return (
                 <div
                   key={slide.id}
-                  className={`w-full flex flex-col items-center lg:items-start text-center lg:text-left space-y-5 sm:space-y-6 hero-slide-transition ${
-                    isActive
+                  className={`w-full flex flex-col items-center lg:items-start text-center lg:text-left space-y-5 sm:space-y-6 hero-slide-transition ${isActive
                       ? 'opacity-100 translate-y-0 relative z-10 pointer-events-auto'
                       : 'opacity-0 translate-y-6 absolute top-0 left-0 right-0 z-0 pointer-events-none'
-                  }`}
+                    }`}
                 >
                   {/* Category Eyebrow Tag */}
                   <div data-aos="fade-down" data-aos-delay="100" className="inline-block">
@@ -561,7 +558,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                     ) : slide.id === 'pos' || slide.id === 'restaurant-pos' ? (
                       <Link
                         href="/restaurant-pos"
-                        className="w-full sm:w-auto px-8 py-3.5 rounded-full text-white font-bold text-base shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5"
+                        className="btn-shimmer border border-transparent border-t-white/40 w-full sm:w-auto px-8 py-3.5 rounded-full text-white font-bold text-base shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5"
                         style={{
                           backgroundColor: slide.themeColor,
                           boxShadow: `0 10px 25px -5px ${slide.themeColor}40`
@@ -573,7 +570,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                     ) : slide.id === 'billsoft' ? (
                       <Link
                         href="/billsoft"
-                        className="w-full sm:w-auto px-8 py-3.5 rounded-full text-white font-bold text-base shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5"
+                        className="btn-shimmer border border-transparent border-t-white/40 w-full sm:w-auto px-8 py-3.5 rounded-full text-white font-bold text-base shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5"
                         style={{
                           backgroundColor: slide.themeColor,
                           boxShadow: `0 10px 25px -5px ${slide.themeColor}40`
@@ -585,7 +582,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                     ) : slide.id === 'hrms' ? (
                       <Link
                         href="/hrms"
-                        className="w-full sm:w-auto px-8 py-3.5 rounded-full text-white font-bold text-base shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5"
+                        className="btn-shimmer border border-transparent border-t-white/40 w-full sm:w-auto px-8 py-3.5 rounded-full text-white font-bold text-base shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5"
                         style={{
                           backgroundColor: slide.themeColor,
                           boxShadow: `0 10px 25px -5px ${slide.themeColor}40`
@@ -597,7 +594,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                     ) : (
                       <button
                         onClick={() => onOpenModal(slide.modalType, slide.productName)}
-                        className="w-full sm:w-auto px-8 py-3.5 rounded-full text-white font-bold text-base shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5"
+                        className="btn-shimmer border border-transparent border-t-white/40 w-full sm:w-auto px-8 py-3.5 rounded-full text-white font-bold text-base shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5"
                         style={{
                           backgroundColor: slide.themeColor,
                           boxShadow: `0 10px 25px -5px ${slide.themeColor}40`
@@ -610,7 +607,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
 
                     <button
                       onClick={() => onOpenModal('demo', slide.productName)}
-                      className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-white/90 hover:bg-white text-slate-900 font-bold text-base border border-slate-200 shadow-xs hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2.5"
+                      className="btn-brand-secondary w-full sm:w-auto px-7 py-3.5 text-base font-bold text-slate-900 border border-slate-200"
                     >
                       <span
                         className="w-6 h-6 rounded-full text-white flex items-center justify-center text-xs pl-0.5"
@@ -661,7 +658,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
             data-aos-easing="ease-out-cubic"
             className="lg:col-span-5 xl:col-span-5 relative flex flex-col items-center justify-center w-full"
           >
-            
+
             {/* Slider Image Card Container with ISARVA Floating Effect */}
             <div
               className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/90 bg-white shadow-2xl shadow-slate-900/10 group select-none floating-module"
@@ -677,11 +674,10 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                   return (
                     <div
                       key={slide.id}
-                      className={`w-full h-full hero-slide-transition ${
-                        isActive
+                      className={`w-full h-full hero-slide-transition ${isActive
                           ? 'opacity-100 translate-y-0 scale-100 relative z-10 pointer-events-auto'
                           : 'opacity-0 translate-y-5 scale-95 absolute inset-0 z-0 pointer-events-none'
-                      }`}
+                        }`}
                     >
                       {/* Slide Image */}
                       <img
@@ -778,7 +774,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
 
             {/* Slider Navigation Bar (Dots & Active Product Pill) */}
             <div className="flex items-center justify-between w-full mt-3.5 px-1.5">
-              
+
               {/* Dot Indicators */}
               <div className="flex items-center gap-1.5">
                 {slides.map((slide, idx) => (
@@ -790,11 +786,10 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
                       pauseAutoSlide();
                     }}
                     aria-label={`Go to slide ${idx + 1}`}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      idx === activeSlideIndex
+                    className={`h-2 rounded-full transition-all duration-300 ${idx === activeSlideIndex
                         ? 'w-7 shadow-xs'
                         : 'w-2 bg-slate-300 hover:bg-slate-400'
-                    }`}
+                      }`}
                     style={{
                       backgroundColor: idx === activeSlideIndex ? currentSlide.themeColor : undefined
                     }}

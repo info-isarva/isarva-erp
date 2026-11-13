@@ -140,11 +140,10 @@ export default function CoreSolutionsGrid({ activeTab, onTabChange, onOpenModal 
                   key={tab.id}
                   type="button"
                   onClick={() => onTabChange(tab.id)}
-                  className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer ${
-                    isActive
+                  className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer ${isActive
                       ? 'bg-[#007a55] text-white shadow-sm'
                       : 'bg-slate-50 text-slate-700 hover:bg-emerald-50 hover:text-[#007a55] border border-slate-200'
-                  }`}
+                    }`}
                 >
                   {tab.label}
                 </button>
@@ -155,11 +154,10 @@ export default function CoreSolutionsGrid({ activeTab, onTabChange, onOpenModal 
 
         {/* 4 Core Solutions Grid - Aligned to full site-container width (no extra left/right whitespace) */}
         <div
-          className={`grid gap-6 sm:gap-8 items-stretch w-full ${
-            filteredSolutions.length === 1
+          className={`grid gap-6 sm:gap-8 items-stretch w-full ${filteredSolutions.length === 1
               ? 'grid-cols-1 max-w-2xl mx-auto'
               : 'grid-cols-1 md:grid-cols-2'
-          }`}
+            }`}
         >
           {filteredSolutions.map((sol) => {
             const Icon = sol.icon;
@@ -223,7 +221,7 @@ export default function CoreSolutionsGrid({ activeTab, onTabChange, onOpenModal 
                 <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center gap-3">
                   <Link
                     href={sol.link}
-                    className="w-full sm:flex-1 inline-flex items-center justify-center gap-1.5 py-3 px-5 rounded-xl text-xs sm:text-sm font-bold text-white transition-all shadow-md hover:scale-[1.01]"
+                    className="btn-shimmer border border-transparent border-t-white/40 w-full sm:flex-1 inline-flex items-center justify-center gap-1.5 py-3 px-5 rounded-xl text-xs sm:text-sm font-bold text-white transition-all shadow-md hover:scale-[1.01]"
                     style={{ background: sol.accent }}
                   >
                     <span>{sol.actionText}</span>
@@ -233,7 +231,7 @@ export default function CoreSolutionsGrid({ activeTab, onTabChange, onOpenModal 
                   <button
                     type="button"
                     onClick={() => onOpenModal?.('demo', sol.title)}
-                    className="w-full sm:w-auto inline-flex items-center justify-center py-3 px-5 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-colors whitespace-nowrap cursor-pointer"
+                    className="btn-brand-secondary w-full sm:w-auto py-3 px-5 text-xs sm:text-sm font-semibold whitespace-nowrap cursor-pointer"
                   >
                     Demo
                   </button>

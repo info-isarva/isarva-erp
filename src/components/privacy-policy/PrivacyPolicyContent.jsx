@@ -396,14 +396,14 @@ function PrinciplesSection() {
                 data-aos="fade-up"
                 data-aos-delay={(idx % 3) * 90 + 80}
                 data-aos-duration="600"
-                className="group relative rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1"
+                className="group relative rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 flex flex-col items-center text-center"
                 style={{
                   background: principle.bg,
                   border: `1.5px solid ${principle.border}`,
                 }}
               >
                 <div
-                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110"
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 shadow-xs"
                   style={{ background: `${principle.color}15`, color: principle.color }}
                 >
                   <Icon size={22} />
@@ -419,52 +419,73 @@ function PrinciplesSection() {
   );
 }
 
-function TableOfContents() {
+function useTableOfContents() {
   const [activeId, setActiveId] = useState('information-we-collect');
+  const isClickingRef = useRef(false);
+  const clickTimeoutRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Offset taking sticky header (80px) + spacing into account
-      const scrollPosition = window.scrollY + 160;
+      if (isClickingRef.current) return;
 
-      for (let i = TABLE_OF_CONTENTS.length - 1; i >= 0; i--) {
-        const item = TABLE_OF_CONTENTS[i];
+      const headerOffset = 180;
+      let currentId = TABLE_OF_CONTENTS[0].id;
+
+      for (const item of TABLE_OF_CONTENTS) {
         const el = document.getElementById(item.id);
         if (el) {
-          const top = el.offsetTop;
-          if (scrollPosition >= top) {
-            setActiveId(item.id);
-            break;
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= headerOffset) {
+            currentId = item.id;
           }
         }
       }
+
+      setActiveId(currentId);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
+    };
   }, []);
 
   const handleNavClick = (e, id) => {
     e.preventDefault();
     const el = document.getElementById(id);
     if (el) {
-      const headerOffset = 100;
+      isClickingRef.current = true;
+      setActiveId(id);
+
+      const headerOffset = 110;
       const elementPosition = el.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth',
       });
-      setActiveId(id);
+
+      if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
+      clickTimeoutRef.current = setTimeout(() => {
+        isClickingRef.current = false;
+      }, 800);
     }
   };
 
+  return { activeId, handleNavClick };
+}
+
+function TableOfContents({ activeId, onNavClick }) {
   return (
     <div className="sticky top-24 w-full">
-      <div className="rounded-2xl bg-white border border-slate-200/80 shadow-lg shadow-slate-900/5 p-5 space-y-3 max-h-[calc(100vh-7rem)] overflow-y-auto">
-        <h4>On This Page</h4>
-        <nav className="space-y-1">
+      <div className="rounded-2xl bg-white border border-slate-200/80 shadow-lg shadow-slate-900/5 p-4 sm:p-5 space-y-3 max-h-[calc(100vh-7rem)] overflow-y-auto">
+        <div className="pb-3 border-b border-slate-100 text-center">
+          <h4>On This Page</h4>
+        </div>
+        <nav className="space-y-1.5">
           {TABLE_OF_CONTENTS.map((item) => {
             const Icon = item.icon;
             const isActive = activeId === item.id;
@@ -472,17 +493,18 @@ function TableOfContents() {
               <a
                 key={item.id}
                 href={`#${item.id}`}
-                onClick={(e) => handleNavClick(e, item.id)}
-                className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium transition-all group border-l-2 ${isActive
-                  ? 'bg-emerald-50/90 text-[#007a55] font-bold border-[#007a55] shadow-2xs'
-                  : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 border-transparent'
+                onClick={(e) => onNavClick(e, item.id)}
+                className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs transition-all duration-200 cursor-pointer ${isActive
+                    ? 'bg-[#007a55] text-white font-semibold shadow-md shadow-[#007a55]/20 scale-[1.02]'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80 font-medium'
                   }`}
               >
-                <Icon
-                  size={14}
-                  className={`shrink-0 transition-colors ${isActive ? 'text-[#007a55]' : 'text-slate-400 group-hover:text-slate-600'
+                <div
+                  className={`w-6 h-6 rounded-lg flex items-center justify-center shrink-0 transition-colors ${isActive ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-500'
                     }`}
-                />
+                >
+                  <Icon size={13} />
+                </div>
                 <span className="truncate">{item.label}</span>
               </a>
             );
@@ -490,16 +512,47 @@ function TableOfContents() {
         </nav>
 
         {/* Contact Quick Card */}
-        <div className="pt-3 border-t border-slate-100 space-y-2">
+        <div className="pt-3 border-t border-slate-100 space-y-2 text-center flex flex-col items-center">
           <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">Questions?</div>
           <a
             href="mailto:marketing@isarvait.com"
-            className="flex items-center gap-2 text-xs font-semibold text-[#007a55] hover:underline"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-[#007a55] hover:underline"
           >
             <Mail size={13} />
             marketing@isarvait.com
           </a>
         </div>
+      </div>
+    </div>
+  );
+}
+
+function MobileTableOfContents({ activeId, onNavClick }) {
+  return (
+    <div className="rounded-2xl bg-white border border-slate-200/80 p-4 shadow-sm space-y-2.5">
+      <div className="flex items-center justify-between pb-2 border-b border-slate-100">
+        <h4>On This Page</h4>
+        <span className="text-xs text-slate-400">Scroll to explore</span>
+      </div>
+      <div className="flex gap-2 overflow-x-auto pb-1 pt-0.5 scrollbar-none">
+        {TABLE_OF_CONTENTS.map((item) => {
+          const Icon = item.icon;
+          const isActive = activeId === item.id;
+          return (
+            <button
+              key={item.id}
+              type="button"
+              onClick={(e) => onNavClick(e, item.id)}
+              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs whitespace-nowrap shrink-0 transition-all duration-200 cursor-pointer ${isActive
+                  ? 'bg-[#007a55] text-white font-semibold shadow-xs'
+                  : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200/80 font-medium'
+                }`}
+            >
+              <Icon size={13} className={isActive ? 'text-white' : 'text-slate-400'} />
+              <span>{item.label}</span>
+            </button>
+          );
+        })}
       </div>
     </div>
   );
@@ -686,85 +739,107 @@ function ContactBanner() {
   return (
     <section className="section-padding relative overflow-hidden bg-white border-t border-slate-200/60">
       <div className="site-container">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
           {/* Left: Get In Touch */}
-          <div data-aos="fade-right" data-aos-duration="700" className="rounded-2xl bg-gradient-to-br from-[#002617] via-[#003d27] to-[#002214] border border-emerald-500/30 p-6 sm:p-8 relative overflow-hidden shadow-xl">
+          <div
+            data-aos="fade-right"
+            data-aos-duration="700"
+            style={{ '--text-main': '#ffffff' }}
+            className="rounded-2xl bg-gradient-to-br from-[#002617] via-[#003d27] to-[#002214] border border-emerald-500/30 p-6 sm:p-8 relative overflow-hidden card-shadow-dark-emerald flex flex-col justify-between"
+          >
             <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-emerald-400/10 rounded-full blur-3xl pointer-events-none" />
             <div className="absolute inset-0 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none" />
 
-            <div className="relative z-10 space-y-5">
+            <div className="relative z-10 space-y-5 text-white">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/30">
                 <MessageSquare size={13} className="text-emerald-300" />
                 <span className="section-eyebrow !text-emerald-300">GET IN TOUCH</span>
               </div>
 
-              <h3 className="!text-white">Privacy Questions?</h3>
+              <h3>
+                <span style={{ color: '#ffffff' }}>Privacy Questions?</span>
+              </h3>
 
-              <p className="!text-emerald-100/80 max-w-md">
-                If you have any questions about this Privacy Policy, want to exercise your data rights, or have concerns about how we handle your information, our team is here to help.
-              </p>
+              <div className="max-w-md">
+                <p>
+                  <span style={{ color: '#ecfdf5' }}>
+                    If you have any questions about this Privacy Policy, want to exercise your data rights, or have concerns about how we handle your information, our team is here to help.
+                  </span>
+                </p>
+              </div>
 
               <div className="space-y-3 pt-2">
                 <a href="mailto:marketing@isarvait.com" className="flex items-center gap-3 text-sm font-semibold text-white hover:text-emerald-300 transition-colors">
                   <div className="w-8 h-8 rounded-lg bg-emerald-400/20 text-emerald-300 flex items-center justify-center shrink-0">
                     <Mail size={15} />
                   </div>
-                  marketing@isarvait.com
+                  <span style={{ color: '#ffffff' }}>marketing@isarvait.com</span>
                 </a>
                 <a href="tel:+919902863697" className="flex items-center gap-3 text-sm font-semibold text-white hover:text-emerald-300 transition-colors">
                   <div className="w-8 h-8 rounded-lg bg-emerald-400/20 text-emerald-300 flex items-center justify-center shrink-0">
                     <Phone size={15} />
                   </div>
-                  +91 99028 63697
+                  <span style={{ color: '#ffffff' }}>+91 99028 63697</span>
                 </a>
                 <div className="flex items-center gap-3 text-sm font-medium text-emerald-200/90">
                   <div className="w-8 h-8 rounded-lg bg-emerald-400/20 text-emerald-300 flex items-center justify-center shrink-0">
                     <MapPin size={15} />
                   </div>
-                  Isarva Infotech, Mangalore, Karnataka, India
+                  <span style={{ color: '#a7f3d0' }}>Isarva Infotech, Mangalore, Karnataka, India</span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right: Data Control CTA */}
-          <div data-aos="fade-left" data-aos-delay="120" data-aos-duration="700" className="rounded-2xl bg-gradient-to-br from-white via-slate-50 to-emerald-50/30 border border-slate-200/80 p-6 sm:p-8 shadow-lg shadow-slate-900/5 space-y-5">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-emerald-100 text-[#007a55] flex items-center justify-center shrink-0">
-                <UserCheck size={20} />
+          {/* Right: Data Control CTA (Light Ambient Card with Colored Box Shadow) */}
+          <div
+            data-aos="fade-left"
+            data-aos-delay="120"
+            data-aos-duration="700"
+            className="rounded-2xl bg-gradient-to-br from-emerald-50/50 via-white to-slate-50 border border-emerald-200/80 p-6 sm:p-8 relative overflow-hidden card-shadow-emerald flex flex-col justify-between"
+          >
+            <div className="absolute top-0 right-0 w-[240px] h-[240px] bg-emerald-400/10 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="relative z-10 space-y-5">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 shadow-2xs">
+                <UserCheck size={13} className="text-[#007a55]" />
+                <span className="section-eyebrow">DATA PRIVACY &amp; CONTROL</span>
               </div>
+
               <h3>Your data, your control.</h3>
-            </div>
 
-            <p>
-              Want to update, access, or delete your personal information? Contact us and we will respond within 30 days as required by applicable law.
-            </p>
-
-            <div className="flex flex-wrap gap-3 pt-1">
-              <Link
-                href="https://www.isarvait.com/contact"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-brand-primary text-sm"
-              >
-                Contact Us
-                <ArrowRight size={15} />
-              </Link>
-            </div>
-
-            {/* Trust badges */}
-            <div className="flex flex-wrap items-center gap-2.5 pt-2 border-t border-slate-200/70">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-slate-200/80 text-xs font-semibold text-slate-600 shadow-2xs">
-                <Check size={12} className="text-[#007a55]" />
-                30-day response
+              <div className="max-w-md">
+                <p>
+                  Want to update, access, or delete your personal information? Contact us and we will respond within 30 days as required by applicable law.
+                </p>
               </div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-slate-200/80 text-xs font-semibold text-slate-600 shadow-2xs">
-                <Check size={12} className="text-[#007a55]" />
-                GDPR compliant
+
+              <div className="flex flex-wrap gap-3 pt-1">
+                <Link
+                  href="https://www.isarvait.com/contact"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-brand-primary text-sm"
+                >
+                  Contact Us
+                  <ArrowRight size={15} />
+                </Link>
               </div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-slate-200/80 text-xs font-semibold text-slate-600 shadow-2xs">
-                <Check size={12} className="text-[#007a55]" />
-                No data selling
+
+              {/* Trust badges */}
+              <div className="flex flex-wrap items-center gap-2.5 pt-3 border-t border-slate-200/70">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-emerald-200/80 text-xs font-semibold text-slate-700 shadow-2xs">
+                  <Check size={12} className="text-[#007a55] stroke-[2.5]" />
+                  <span>30-day response</span>
+                </div>
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-emerald-200/80 text-xs font-semibold text-slate-700 shadow-2xs">
+                  <Check size={12} className="text-[#007a55] stroke-[2.5]" />
+                  <span>GDPR compliant</span>
+                </div>
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-emerald-200/80 text-xs font-semibold text-slate-700 shadow-2xs">
+                  <Check size={12} className="text-[#007a55] stroke-[2.5]" />
+                  <span>No data selling</span>
+                </div>
               </div>
             </div>
           </div>
@@ -832,6 +907,7 @@ export default function PrivacyPolicyContent() {
   const [countryCode, setCountryCode] = useState('IN');
   const [content, setContent] = useState(() => getDefaultContentForCountry('IN'));
   const [modalState, setModalState] = useState({ isOpen: false, type: 'demo', product: null });
+  const { activeId: tocActiveId, handleNavClick: handleTocNavClick } = useTableOfContents();
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -888,11 +964,15 @@ export default function PrivacyPolicyContent() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
               {/* Sidebar Table of Contents (Desktop) */}
               <aside className="hidden lg:block lg:col-span-3">
-                <TableOfContents />
+                <TableOfContents activeId={tocActiveId} onNavClick={handleTocNavClick} />
               </aside>
 
               {/* Main Policy Content */}
               <div className="lg:col-span-9 space-y-12">
+                {/* Mobile Quick-Jump TOC (< lg) */}
+                <div className="lg:hidden">
+                  <MobileTableOfContents activeId={tocActiveId} onNavClick={handleTocNavClick} />
+                </div>
                 {POLICY_SECTIONS.map((section) => (
                   <PolicySection key={section.id} section={section} />
                 ))}

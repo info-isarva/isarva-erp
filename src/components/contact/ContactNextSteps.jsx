@@ -177,7 +177,7 @@ export default function ContactNextSteps({ onOpenDemoModal }) {
                   type="button"
                   id="contact-nextsteps-demo-btn"
                   onClick={() => onOpenDemoModal?.('demo', 'Contact Page Walkthrough')}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-bold text-sm sm:text-base shadow-lg shadow-emerald-500/25 hover:-translate-y-0.5 transition-all duration-200 cursor-pointer w-full sm:w-auto"
+                  className="btn-brand-primary text-sm sm:text-base px-6 py-3.5 w-full sm:w-auto"
                 >
                   <span>Book a Free 30-Min Demo</span>
                   <ArrowRight size={17} />
