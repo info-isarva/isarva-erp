@@ -28,7 +28,8 @@ async function sendToCrm(inquiryData) {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
+      signal: AbortSignal.timeout(4000)
     });
 
     const rawText = await res.text();
