@@ -51,7 +51,6 @@ export default function HrmsHero({ onOpenDemoModal, onOpenBrochureModal, onOpenL
               <span className="bg-gradient-to-r from-[#7c3aed] via-[#6366F1] to-[#059669] bg-clip-text text-transparent">
                 People Operations Itself
               </span>
-              .
             </h1>
 
             {/* Paragraph with Inter via @layer base */}

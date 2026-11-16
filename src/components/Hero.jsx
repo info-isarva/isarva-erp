@@ -74,8 +74,8 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
       themeColor: '#007a55',
       lightBg: 'rgba(0, 122, 85, 0.08)',
       badge: heroProp?.badge || 'ONE CONNECTED BUSINESS PLATFORM',
-      headlineMain: heroProp?.headlineMain || 'Every part of your business.',
-      headlineHighlight: heroProp?.headlineHighlight || 'Working as one.',
+      headlineMain: heroProp?.headlineMain || 'Every part of your business',
+      headlineHighlight: heroProp?.headlineHighlight || 'Working as one',
       subheadline:
         heroProp?.subheadline ||
         'ISARVA ERP connects your finance, inventory, sales, HRMS, CRM and restaurant POS in a single, easy to use platform. Streamline operations, improve visibility and make smarter decisions — from anywhere.',

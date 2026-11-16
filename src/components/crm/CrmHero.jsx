@@ -51,7 +51,6 @@ export default function CrmHero({ onOpenDemoModal, onOpenBrochureModal, onOpenLi
               <span className="bg-gradient-to-r from-[#008CDB] via-[#6366F1] to-[#0284C7] bg-clip-text text-transparent">
                 Sales Pipeline Itself
               </span>
-              .
             </h1>
 
             {/* Paragraph with Inter via @layer base */}

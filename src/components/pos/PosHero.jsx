@@ -42,7 +42,6 @@ export default function PosHero({ onOpenDemoModal, onOpenBrochureModal, onOpenLi
               <span className="bg-gradient-to-r from-[#059669] via-[#007a55] to-[#0d9488] bg-clip-text text-transparent">
                 Floor &amp; Billing Itself
               </span>
-              .
             </h1>
 
             {/* Paragraph with Inter via @layer base */}

@@ -3,8 +3,18 @@ import { addInquiry } from '../../../lib/content-store';
 
 export const dynamic = 'force-dynamic';
 const CRM_API_URL = process.env.CRM_API_URL || process.env.CRM_WEBHOOK_URL || 'https://crm.isarva.in/api/leads';
+const CRM_API_KEY = process.env.CRM_API_KEY || '82a5b93bbb3e774daedb1267eeeeb9aae9272d2e7f43fa5a';
 const CRM_CATEGORY_ID = parseInt(process.env.CRM_CATEGORY_ID || '1', 10);
 const CRM_LEAD_SOURCE = parseInt(process.env.CRM_LEAD_SOURCE || '11', 10);
+
+function formatMobileNumber(phone) {
+  if (!phone) return '';
+  const digitsOnly = String(phone).replace(/\D/g, '');
+  if (!digitsOnly) return String(phone);
+  if (digitsOnly.length === 10) return `+91${digitsOnly}`;
+  if (String(phone).startsWith('+')) return `+${digitsOnly}`;
+  return `+${digitsOnly}`;
+}
 
 async function sendToCrm(inquiryData) {
   try {
@@ -17,7 +27,7 @@ async function sendToCrm(inquiryData) {
       website: inquiryData.website || '',
       full_name: inquiryData.name,
       email: inquiryData.email || '',
-      mobile: inquiryData.phone,
+      mobile: formatMobileNumber(inquiryData.phone),
       categories: CRM_CATEGORY_ID,
       lead_source: CRM_LEAD_SOURCE
     };
@@ -26,7 +36,8 @@ async function sendToCrm(inquiryData) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'X-Api-Key': CRM_API_KEY
       },
       body: JSON.stringify(payload),
       signal: AbortSignal.timeout(4000)
@@ -45,6 +56,9 @@ async function sendToCrm(inquiryData) {
     }
 
     if (!res.ok) {
+      if (data?.duplicate && data?.lead) {
+        return { success: true, duplicate: true, crmResponse: data };
+      }
       console.error('CRM lead API rejected contact:', res.status, rawText.slice(0, 500));
       return { success: false, error: data?.message || `CRM API returned ${res.status}`, crmResponse: data };
     }

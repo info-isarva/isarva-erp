@@ -42,7 +42,6 @@ export default function BillsoftHero({ onOpenDemoModal, onOpenBrochureModal, onO
               <span className="bg-gradient-to-r from-[#2563eb] via-[#1d4ed8] to-[#0284c7] bg-clip-text text-transparent">
                 BillSoft Accounting Software
               </span>
-              .
             </h1>
 
             {/* Paragraph with Inter via @layer base */}

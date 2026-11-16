@@ -40,8 +40,8 @@ export default function ErpFeaturesHero({ onOpenModal }) {
 
             {/* Headline */}
             <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
-              Everything Your Business Needs.{' '}
-              <span style={{ color: '#0056d2' }}>All in One ERP.</span>
+              Everything Your Business Needs{' '}
+              <span style={{ color: '#0056d2' }}>All in One ERP</span>
             </h1>
 
             {/* Subtitle */}

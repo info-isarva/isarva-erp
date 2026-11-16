@@ -18,9 +18,9 @@ export default function AboutHeroShowcase() {
             Isarva Infotech
           </span>
           <h1 className="max-w-5xl mb-6">
-            Precision in <span className="italic text-[#10b981] font-bold">Technology.</span>
+            Precision in <span className="italic text-[#10b981] font-bold">Technology</span>
             <br />
-            Purpose in <span className="italic text-[#10b981] font-bold">Impact.</span>
+            Purpose in <span className="italic text-[#10b981] font-bold">Impact</span>
           </h1>
           <p className="mt-2 text-base lg:text-xl text-[#53606b] max-w-3xl mx-auto leading-relaxed font-medium">
             At Isarva Infotech, we are more than an IT consulting firm — we are a strategic technology partner and a catalyst for progress in an ever-evolving digital world.
