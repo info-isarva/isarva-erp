@@ -94,8 +94,17 @@ function getPhoneValidationError(value) {
 
 function getBrochureUrl(productName) {
   const needle = String(productName || '').toLowerCase();
+  if (needle.includes('pos') || needle.includes('restaurant')) {
+    return '/docs/Restaurant-POS-Brochure.pdf';
+  }
   if (needle.includes('crm') || needle.includes('sales')) {
     return '/docs/CRM-Brochure.pdf';
+  }
+  if (needle.includes('hrms') || needle.includes('payroll')) {
+    return '/docs/HRMS-Brochure.pdf';
+  }
+  if (needle.includes('billsoft') || needle.includes('billing') || needle.includes('accounting')) {
+    return '/docs/Billsoft-Brochure.pdf';
   }
   return '/docs/ISARVA-ERP-Brochure.pdf';
 }
