@@ -115,29 +115,29 @@ export default function WhyChooseSection({ whyChoose }) {
               return (
                 <div
                   key={item.id || realIdx}
+                  data-aos="fade-right"
+                  data-aos-delay={idx * 100 + 80}
+                  data-aos-duration="600"
                   onMouseEnter={() => setActiveIdx(realIdx)}
                   onMouseLeave={() => setActiveIdx(null)}
-                  className={`card-ecosystem relative rounded-2xl p-5 xl:p-6 transition-all duration-300 cursor-pointer bg-white border ${
-                    isHovered
+                  className={`card-ecosystem relative rounded-2xl p-5 xl:p-6 transition-all duration-300 cursor-pointer bg-white border ${isHovered
                       ? 'border-[#007a55]/70 shadow-[0_24px_50px_-4px_rgba(0,122,85,0.35),0_8px_20px_-2px_rgba(0,122,85,0.18)] -translate-x-1'
                       : 'border-emerald-600/25 shadow-[0_12px_32px_-4px_rgba(0,122,85,0.22),0_4px_14px_-2px_rgba(0,122,85,0.12)] hover:border-[#007a55]/60 hover:shadow-[0_24px_50px_-4px_rgba(0,122,85,0.35)]'
-                  } group`}
+                    } group`}
                 >
                   {/* Connection Indicator Stub towards Center Hub */}
                   <div
-                    className={`hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 w-3 h-[2px] transition-all duration-300 ${
-                      isHovered ? 'bg-[#007a55] shadow-xs' : 'bg-emerald-300/60'
-                    }`}
+                    className={`hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 w-3 h-[2px] transition-all duration-300 ${isHovered ? 'bg-[#007a55] shadow-xs' : 'bg-emerald-300/60'
+                      }`}
                   />
 
                   {/* Header Row: Icon + Node Badge */}
                   <div className="flex items-center justify-between mb-3.5">
                     <div
-                      className={`w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 ${
-                        isHovered
+                      className={`w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 ${isHovered
                           ? 'bg-[#007a55] text-white scale-105 shadow-md shadow-emerald-500/25'
                           : 'bg-[#dcf5e9] text-[#007a55] group-hover:bg-[#007a55] group-hover:text-white'
-                      }`}
+                        }`}
                     >
                       {getIcon(item.iconName)}
                     </div>
@@ -170,7 +170,7 @@ export default function WhyChooseSection({ whyChoose }) {
           </div>
 
           {/* CENTER COLUMN: Central ISARVA Core Engine Hub */}
-          <div className="lg:col-span-4 flex flex-col items-center justify-center relative py-6 z-10">
+          <div data-aos="zoom-in" data-aos-delay="150" data-aos-duration="700" className="lg:col-span-4 flex flex-col items-center justify-center relative py-6 z-10">
             {/* Concentric Animated Pulse Wave Rings */}
             <div className="absolute w-[360px] xl:w-[420px] aspect-square rounded-full border border-emerald-400/30 pointer-events-none animate-ecosystem-pulse-1" />
             <div className="absolute w-[360px] xl:w-[420px] aspect-square rounded-full border border-teal-400/25 pointer-events-none animate-ecosystem-pulse-2" />
@@ -193,11 +193,10 @@ export default function WhyChooseSection({ whyChoose }) {
 
             {/* Central Brand Core with ISARVA Emblem */}
             <div
-              className={`relative w-44 xl:w-52 aspect-square rounded-3xl bg-gradient-to-br from-[#007a55] via-[#006949] to-[#034d36] text-white border-2 ${
-                activeIdx !== null
+              className={`relative w-44 xl:w-52 aspect-square rounded-3xl bg-gradient-to-br from-[#007a55] via-[#006949] to-[#034d36] text-white border-2 ${activeIdx !== null
                   ? 'border-emerald-300 shadow-[0_12px_45px_rgba(0,122,85,0.35)] scale-105'
                   : 'border-emerald-400/50 shadow-[0_10px_35px_rgba(0,122,85,0.22)]'
-              } flex flex-col items-center justify-center p-5 text-center transition-all duration-300 group select-none`}
+                } flex flex-col items-center justify-center p-5 text-center transition-all duration-300 group select-none`}
             >
               {/* ISARVA Brand Emblem */}
               <div className="w-14 h-14 xl:w-16 xl:h-16 rounded-2xl bg-white/15 border border-white/20 p-2.5 flex items-center justify-center mb-2.5 shadow-inner group-hover:scale-105 transition-transform duration-300">
@@ -237,29 +236,29 @@ export default function WhyChooseSection({ whyChoose }) {
               return (
                 <div
                   key={item.id || realIdx}
+                  data-aos="fade-left"
+                  data-aos-delay={idx * 100 + 80}
+                  data-aos-duration="600"
                   onMouseEnter={() => setActiveIdx(realIdx)}
                   onMouseLeave={() => setActiveIdx(null)}
-                  className={`card-ecosystem relative rounded-2xl p-5 xl:p-6 transition-all duration-300 cursor-pointer bg-white border ${
-                    isHovered
+                  className={`card-ecosystem relative rounded-2xl p-5 xl:p-6 transition-all duration-300 cursor-pointer bg-white border ${isHovered
                       ? 'border-[#007a55]/70 shadow-[0_24px_50px_-4px_rgba(0,122,85,0.35),0_8px_20px_-2px_rgba(0,122,85,0.18)] translate-x-1'
                       : 'border-emerald-600/25 shadow-[0_12px_32px_-4px_rgba(0,122,85,0.22),0_4px_14px_-2px_rgba(0,122,85,0.12)] hover:border-[#007a55]/60 hover:shadow-[0_24px_50px_-4px_rgba(0,122,85,0.35)]'
-                  } group`}
+                    } group`}
                 >
                   {/* Connection Indicator Stub towards Center Hub */}
                   <div
-                    className={`hidden lg:block absolute -left-3 top-1/2 -translate-y-1/2 w-3 h-[2px] transition-all duration-300 ${
-                      isHovered ? 'bg-[#007a55] shadow-xs' : 'bg-emerald-300/60'
-                    }`}
+                    className={`hidden lg:block absolute -left-3 top-1/2 -translate-y-1/2 w-3 h-[2px] transition-all duration-300 ${isHovered ? 'bg-[#007a55] shadow-xs' : 'bg-emerald-300/60'
+                      }`}
                   />
 
                   {/* Header Row: Icon + Node Badge */}
                   <div className="flex items-center justify-between mb-3.5">
                     <div
-                      className={`w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 ${
-                        isHovered
+                      className={`w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 ${isHovered
                           ? 'bg-[#007a55] text-white scale-105 shadow-md shadow-emerald-500/25'
                           : 'bg-[#dcf5e9] text-[#007a55] group-hover:bg-[#007a55] group-hover:text-white'
-                      }`}
+                        }`}
                     >
                       {getIcon(item.iconName)}
                     </div>
@@ -299,7 +298,7 @@ export default function WhyChooseSection({ whyChoose }) {
         <div className="lg:hidden mt-8 space-y-6">
 
           {/* Responsive Hub Banner at Top */}
-          <div className="rounded-2xl p-6 bg-gradient-to-br from-[#007a55] via-[#006949] to-[#034d36] text-white border border-emerald-300/40 shadow-xl flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
+          <div data-aos="fade-up" data-aos-duration="600" className="rounded-2xl p-6 bg-gradient-to-br from-[#007a55] via-[#006949] to-[#034d36] text-white border border-emerald-300/40 shadow-xl flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
             <div className="w-14 h-14 rounded-2xl bg-white/15 border border-white/20 p-2.5 flex items-center justify-center shrink-0 shadow-inner">
               <img
                 src="/favicon.png"
@@ -333,6 +332,9 @@ export default function WhyChooseSection({ whyChoose }) {
             {items.map((item, idx) => (
               <div
                 key={item.id || idx}
+                data-aos="fade-up"
+                data-aos-delay={(idx % 2) * 100 + 80}
+                data-aos-duration="600"
                 className="card-ecosystem rounded-2xl p-5 bg-white border border-emerald-600/25 shadow-[0_12px_32px_-4px_rgba(0,122,85,0.22),0_4px_14px_-2px_rgba(0,122,85,0.12)] hover:border-[#007a55]/70 hover:shadow-[0_24px_50px_-4px_rgba(0,122,85,0.35),0_8px_20px_-2px_rgba(0,122,85,0.18)] transition-all duration-300"
               >
                 <div className="flex items-center justify-between mb-3">

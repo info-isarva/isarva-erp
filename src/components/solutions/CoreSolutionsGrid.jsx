@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 
 const SOLUTION_TABS = [
@@ -111,6 +111,15 @@ const SOLUTIONS_DATA = [
 ];
 
 export default function CoreSolutionsGrid({ activeTab, onTabChange, onOpenModal }) {
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      import('aos').then((m) => {
+        const aos = m.default || m;
+        aos?.refresh?.();
+      });
+    }
+  }, [activeTab]);
+
   const filteredSolutions =
     activeTab === 'all'
       ? SOLUTIONS_DATA
@@ -132,7 +141,7 @@ export default function CoreSolutionsGrid({ activeTab, onTabChange, onOpenModal 
 
         {/* Inline Module Filter Bar (Synced with Hero Pills) */}
         {onTabChange && (
-          <div className="mb-8 sm:mb-10 flex flex-wrap items-center justify-center gap-2">
+          <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="600" className="mb-8 sm:mb-10 flex flex-wrap items-center justify-center gap-2">
             {SOLUTION_TABS.map((tab) => {
               const isActive = activeTab === tab.id;
               return (
@@ -159,12 +168,15 @@ export default function CoreSolutionsGrid({ activeTab, onTabChange, onOpenModal 
               : 'grid-cols-1 md:grid-cols-2'
             }`}
         >
-          {filteredSolutions.map((sol) => {
+          {filteredSolutions.map((sol, idx) => {
             const Icon = sol.icon;
 
             return (
               <div
                 key={sol.id}
+                data-aos="fade-up"
+                data-aos-delay={(idx % 2) * 120 + 80}
+                data-aos-duration="600"
                 className={`card-ecosystem rounded-2xl p-6 sm:p-8 bg-white border ${sol.cardShadow} flex flex-col justify-between group`}
               >
                 <div>

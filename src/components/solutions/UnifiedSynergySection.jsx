@@ -57,7 +57,11 @@ export default function UnifiedSynergySection() {
         {/* Comparison Matrix (Fragmented vs Unified) - Full width of site-container */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 w-full mb-16">
           {/* Left: Fragmented Legacy Approach */}
-          <div data-aos="fade-right" data-aos-duration="700" className="rounded-3xl p-6 sm:p-8 bg-slate-50 border border-slate-200/90 flex flex-col justify-between">
+          <div
+            data-aos="fade-right"
+            data-aos-duration="700"
+            className="rounded-3xl p-6 sm:p-8 bg-slate-50 border border-slate-200/90 flex flex-col justify-between"
+          >
             <div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 text-red-700 text-xs font-bold font-mono mb-4">
                 <XCircle size={14} />
@@ -96,7 +100,12 @@ export default function UnifiedSynergySection() {
           </div>
 
           {/* Right: Unified ISARVA ERP Architecture */}
-          <div data-aos="fade-left" data-aos-delay="120" data-aos-duration="700" className="card-ecosystem rounded-3xl p-6 sm:p-8 bg-gradient-to-br from-[#007a55] via-[#006949] to-[#034d36] text-white border border-emerald-400/40 card-shadow-dark-emerald flex flex-col justify-between">
+          <div
+            data-aos="fade-left"
+            data-aos-delay="100"
+            data-aos-duration="700"
+            className="card-ecosystem rounded-3xl p-6 sm:p-8 bg-gradient-to-br from-[#007a55] via-[#006949] to-[#034d36] text-white border border-emerald-400/40 card-shadow-dark-emerald flex flex-col justify-between"
+          >
             <div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-400/20 text-emerald-200 text-xs font-bold font-mono mb-4 border border-emerald-300/30">
                 <CheckCircle2 size={14} />
@@ -137,7 +146,7 @@ export default function UnifiedSynergySection() {
 
         {/* 4-Step Synchronized Real-Time Event Sequence - Full width of site-container */}
         <div className="w-full">
-          <div className="text-center mb-8">
+          <div data-aos="fade-up" data-aos-duration="600" className="text-center mb-8">
             <span className="text-xs font-mono font-bold text-[#007a55] uppercase tracking-wider">
               HOW ONE EVENT PROPAGATES INSTANTLY
             </span>

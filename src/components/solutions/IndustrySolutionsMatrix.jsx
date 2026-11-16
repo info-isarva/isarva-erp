@@ -95,7 +95,7 @@ export default function IndustrySolutionsMatrix({ onOpenModal }) {
                 data-aos="fade-up"
                 data-aos-delay={(idx % 3) * 100 + 80}
                 data-aos-duration="600"
-                className="card-ecosystem rounded-2xl p-6 bg-white border border-emerald-600/25 shadow-[0_12px_32px_-4px_rgba(0,122,85,0.16),0_4px_14px_-2px_rgba(0,122,85,0.08)] hover:border-[#007a55]/60 hover:shadow-[0_24px_50px_-4px_rgba(0,122,85,0.28)] transition-all duration-300 flex flex-col justify-between group"
+                className="card-ecosystem rounded-2xl p-6 bg-white border card-shadow-emerald transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
                   <div className="flex items-center justify-between gap-3 mb-4">
@@ -114,7 +114,7 @@ export default function IndustrySolutionsMatrix({ onOpenModal }) {
                     <span>{ind.title}</span>
                   </h3>
 
-                  <p className="text-xs sm:text-sm leading-relaxed mb-5 text-slate-600">
+                  <p className="mb-5">
                     {ind.description}
                   </p>
 

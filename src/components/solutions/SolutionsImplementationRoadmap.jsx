@@ -78,7 +78,7 @@ export default function SolutionsImplementationRoadmap() {
                 data-aos="fade-up"
                 data-aos-delay={idx * 100 + 80}
                 data-aos-duration="600"
-                className="card-ecosystem relative overflow-visible rounded-2xl pt-9 px-6 pb-6 bg-white border border-emerald-600/25 shadow-[0_12px_32px_-4px_rgba(0,122,85,0.16),0_4px_14px_-2px_rgba(0,122,85,0.08)] hover:border-[#007a55]/60 hover:shadow-[0_24px_50px_-4px_rgba(0,122,85,0.28)] transition-all duration-300 flex flex-col justify-between group"
+                className="card-ecosystem relative overflow-visible rounded-2xl pt-9 px-6 pb-6 bg-white border card-shadow-emerald transition-all duration-300 flex flex-col justify-between group"
               >
                 {/* Icon centered on the card top border */}
                 <div className="absolute left-1/2 top-0 z-10 -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl p-1 shadow-xs group-hover:scale-110 transition-transform duration-300">
@@ -109,7 +109,7 @@ export default function SolutionsImplementationRoadmap() {
                     <span>{step.title}</span>
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-5">
+                  <p className="mb-5">
                     {step.description}
                   </p>
                 </div>

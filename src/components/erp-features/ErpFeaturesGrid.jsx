@@ -225,7 +225,7 @@ export default function ErpFeaturesGrid() {
         {/* ═════════════════════════════════════════════════════════════════════
             💻 DESKTOP LAYOUT (>= lg): Vertical Tabs on Left + Content & Visual
             ═════════════════════════════════════════════════════════════════════ */}
-        <div className="hidden lg:grid lg:grid-cols-12 gap-8 xl:gap-12 items-start">
+        <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="700" className="hidden lg:grid lg:grid-cols-12 gap-8 xl:gap-12 items-start">
 
           {/* Left Column: Vertical Tabset */}
           <div className="lg:col-span-4 xl:col-span-3 flex flex-col border-l-2 border-slate-200">
@@ -324,7 +324,7 @@ export default function ErpFeaturesGrid() {
         {/* ═════════════════════════════════════════════════════════════════════
             📱 MOBILE & TABLET LAYOUT (< lg): Interactive Collapsible Accordion
             ═════════════════════════════════════════════════════════════════════ */}
-        <div className="lg:hidden space-y-4">
+        <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="700" className="lg:hidden space-y-4">
           {ERP_MODULES.map((m) => {
             const isOpen = m.id === activeTab;
             return (

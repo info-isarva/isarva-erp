@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import {
@@ -40,13 +41,21 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [mounted, setMounted] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    setActiveIndex(0);
+  }, [searchQuery, isSearchOpen]);
 
   const solutionsRef = useRef(null);
   const countryRef = useRef(null);
   const searchRef = useRef(null);
-  const mobileSearchRef = useRef(null);
   const searchInputRef = useRef(null);
-  const mobileSearchInputRef = useRef(null);
 
   const normalizedQuery = searchQuery.trim().toLowerCase();
   const searchResults = normalizedQuery
@@ -76,11 +85,6 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
       if (countryRef.current && !countryRef.current.contains(event.target)) {
         setIsCountryOpen(false);
       }
-      const inDesktopSearch = searchRef.current?.contains(event.target);
-      const inMobileSearch = mobileSearchRef.current?.contains(event.target);
-      if (!inDesktopSearch && !inMobileSearch) {
-        closeSearch();
-      }
     }
 
     document.addEventListener('mousedown', handleClickOutside);
@@ -91,17 +95,35 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
     };
   }, []);
 
+  // Global Ctrl+K / Cmd+K shortcut
+  useEffect(() => {
+    const handleGlobalKey = (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setIsSearchOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleGlobalKey);
+    return () => window.removeEventListener('keydown', handleGlobalKey);
+  }, []);
+
+  // Lock body scroll, focus input, and handle Escape on search popup
   useEffect(() => {
     if (!isSearchOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
     const focusTimer = window.setTimeout(() => {
-      const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1024;
-      (isDesktop ? searchInputRef.current : mobileSearchInputRef.current)?.focus();
-    }, 0);
+      searchInputRef.current?.focus();
+    }, 50);
+
     const onKeyDown = (event) => {
       if (event.key === 'Escape') closeSearch();
     };
+
     document.addEventListener('keydown', onKeyDown);
     return () => {
+      document.body.style.overflow = prevOverflow;
       window.clearTimeout(focusTimer);
       document.removeEventListener('keydown', onKeyDown);
     };
@@ -119,7 +141,8 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
+    <>
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
       <div className="site-container">
         <div className="flex items-center justify-between h-20">
 
@@ -133,7 +156,7 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-3.5 xl:gap-6 2xl:gap-8 text-xs xl:text-sm font-semibold text-slate-600 whitespace-nowrap shrink-0">
+          <nav className="hidden lg:flex items-center gap-2.5 xl:gap-5 2xl:gap-7 text-xs xl:text-sm font-semibold text-slate-600 whitespace-nowrap shrink-0">
             <Link href="/" className="text-brand-500 hover:text-brand-600 transition-colors">
               Home
             </Link>
@@ -290,85 +313,26 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
               )}
             </div>
 
-            {/* Site Search */}
-            <div className="relative shrink-0" ref={searchRef}>
-              {isSearchOpen ? (
-                <div className="flex items-center h-9 w-56 xl:w-64 rounded-full border border-slate-200 bg-white shadow-sm overflow-hidden focus-within:border-[#007a55] focus-within:ring-2 focus-within:ring-[#007a55]/15">
-                  <span className="pl-3 text-slate-400 shrink-0">
-                    <Search size={15} className="w-3.5 h-3.5" />
-                  </span>
-                  <input
-                    ref={searchInputRef}
-                    type="search"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' && searchResults[0]) {
-                        e.preventDefault();
-                        goToSearchResult(searchResults[0].href);
-                      }
-                    }}
-                    placeholder="Search pages..."
-                    className="w-full h-full px-2 text-sm text-slate-800 placeholder:text-slate-400 bg-transparent border-0 outline-none focus:ring-0"
-                    aria-label="Search site pages"
-                  />
-                  <button
-                    type="button"
-                    onClick={closeSearch}
-                    className="h-9 w-9 flex items-center justify-center text-slate-400 hover:text-slate-700 shrink-0"
-                    aria-label="Close search"
-                  >
-                    <X size={15} className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              ) : (
-                <button
-                  type="button"
-                  onClick={() => {
-                    setIsCountryOpen(false);
-                    setIsSolutionsOpen(false);
-                    setIsSearchOpen(true);
-                  }}
-                  className="h-9 w-9 inline-flex items-center justify-center rounded-full border border-slate-200 bg-slate-50/90 text-slate-600 hover:text-[#007a55] hover:border-slate-300 hover:bg-slate-100 transition-colors"
-                  title="Search"
-                  aria-label="Open search"
-                >
-                  <Search size={16} className="w-4 h-4" />
-                </button>
-              )}
-
-              {isSearchOpen && (
-                <div className="hidden lg:block absolute right-0 top-full mt-2 w-72 xl:w-80 bg-white rounded-2xl shadow-xl border border-slate-100 py-2 z-50">
-                  <div className="px-3.5 pb-2 mb-1 border-b border-slate-100 text-xs font-bold text-slate-400 uppercase tracking-wider">
-                    {normalizedQuery ? 'Search results' : 'Popular pages'}
-                  </div>
-                  {searchResults.length === 0 ? (
-                    <div className="px-3.5 py-3 text-sm text-slate-500">No pages found.</div>
-                  ) : (
-                    <ul className="max-h-72 overflow-y-auto scrollbar-hide">
-                      {searchResults.map((page) => (
-                        <li key={page.href}>
-                          <button
-                            type="button"
-                            onClick={() => goToSearchResult(page.href)}
-                            className="w-full flex items-center justify-between gap-3 px-3.5 py-2.5 text-left text-sm text-slate-700 hover:bg-emerald-50/70 hover:text-[#007a55] transition-colors"
-                          >
-                            <span className="font-semibold truncate">{page.label}</span>
-                            <ArrowRight size={14} className="shrink-0 text-slate-300" />
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              )}
-            </div>
+            {/* Search Trigger Button (Static 36px circular button) */}
+            <button
+              type="button"
+              onClick={() => {
+                setIsCountryOpen(false);
+                setIsSolutionsOpen(false);
+                setIsSearchOpen(true);
+              }}
+              className="h-9 w-9 inline-flex items-center justify-center rounded-full border border-slate-200 bg-slate-50/90 text-slate-600 hover:text-[#007a55] hover:border-slate-300 hover:bg-slate-100 transition-colors cursor-pointer shrink-0"
+              title="Search pages (Ctrl+K)"
+              aria-label="Open search popup"
+            >
+              <Search size={16} className="w-4 h-4" />
+            </button>
 
             {/* Primary Action Button */}
             <button
               type="button"
               onClick={() => onOpenModal('demo')}
-              className="btn-brand-primary text-xs xl:text-sm px-3.5 xl:px-5 py-2 xl:py-2.5 whitespace-nowrap shrink-0"
+              className="btn-brand-primary text-xs xl:text-sm px-3.5 xl:px-5 py-2 xl:py-2.5 whitespace-nowrap shrink-0 cursor-pointer"
             >
               <span>Book a Free Demo</span>
               <ArrowRight size={15} className="shrink-0" />
@@ -380,10 +344,10 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
             <button
               type="button"
               onClick={() => {
-                setIsSearchOpen((open) => !open);
+                setIsSearchOpen(true);
                 setIsMobileMenuOpen(false);
               }}
-              className="h-10 w-10 inline-flex items-center justify-center text-slate-700 rounded-lg hover:bg-slate-100"
+              className="h-10 w-10 inline-flex items-center justify-center text-slate-700 rounded-lg hover:bg-slate-100 cursor-pointer"
               aria-label="Open search"
             >
               <Search size={20} className="w-5 h-5" />
@@ -394,7 +358,7 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
                 setIsSearchOpen(false);
                 setIsMobileMenuOpen((prev) => !prev);
               }}
-              className="h-10 w-10 inline-flex items-center justify-center text-slate-700 rounded-lg hover:bg-slate-100"
+              className="h-10 w-10 inline-flex items-center justify-center text-slate-700 rounded-lg hover:bg-slate-100 cursor-pointer"
               aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
             >
               {isMobileMenuOpen ? <X size={22} className="w-5.5 h-5.5" /> : <Menu size={22} className="w-5.5 h-5.5" />}
@@ -402,58 +366,6 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
           </div>
         </div>
       </div>
-
-      {/* Mobile Search Panel */}
-      {isSearchOpen && (
-        <div ref={mobileSearchRef} className="lg:hidden absolute left-0 right-0 top-full z-50 border-t border-slate-100 bg-white px-4 py-3 shadow-lg">
-          <div className="flex items-center h-11 rounded-xl border border-slate-200 bg-slate-50 focus-within:bg-white focus-within:border-[#007a55] focus-within:ring-2 focus-within:ring-[#007a55]/15">
-            <span className="pl-3 text-slate-400 shrink-0">
-              <Search size={16} className="w-4 h-4" />
-            </span>
-            <input
-              ref={mobileSearchInputRef}
-              type="search"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' && searchResults[0]) {
-                  e.preventDefault();
-                  goToSearchResult(searchResults[0].href);
-                }
-              }}
-              placeholder="Search pages..."
-              className="w-full h-full px-2 text-sm text-slate-800 placeholder:text-slate-400 bg-transparent border-0 outline-none"
-              aria-label="Search site pages"
-            />
-            <button
-              type="button"
-              onClick={closeSearch}
-              className="h-11 w-11 flex items-center justify-center text-slate-400 hover:text-slate-700 shrink-0"
-              aria-label="Close search"
-            >
-              <X size={16} className="w-4 h-4" />
-            </button>
-          </div>
-          <ul className="mt-2 max-h-64 overflow-y-auto scrollbar-hide rounded-xl border border-slate-100 divide-y divide-slate-50">
-            {searchResults.length === 0 ? (
-              <li className="px-3.5 py-3 text-sm text-slate-500">No pages found.</li>
-            ) : (
-              searchResults.map((page) => (
-                <li key={page.href}>
-                  <button
-                    type="button"
-                    onClick={() => goToSearchResult(page.href)}
-                    className="w-full flex items-center justify-between gap-3 px-3.5 py-3 text-left text-sm font-semibold text-slate-700 hover:bg-emerald-50 hover:text-[#007a55]"
-                  >
-                    <span>{page.label}</span>
-                    <ArrowRight size={14} className="text-slate-300" />
-                  </button>
-                </li>
-              ))
-            )}
-          </ul>
-        </div>
-      )}
 
       {/* Mobile Menu Dropdown with Smooth Scrolling */}
       {isMobileMenuOpen && (
@@ -535,5 +447,150 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
         </div>
       )}
     </header>
-  );
+
+    {/* ========================================================================= */}
+    {/* POPUP MODAL SEARCH DIALOG (Portalled directly to document.body)            */}
+    {/* ========================================================================= */}
+    {isSearchOpen && mounted && typeof document !== 'undefined' && createPortal(
+      <div
+        className="fixed inset-0 z-[9999] bg-slate-950/75 backdrop-blur-md flex items-start justify-center pt-14 sm:pt-20 md:pt-28 px-4 animate-fade-in"
+        onClick={(e) => {
+          if (e.target === e.currentTarget) closeSearch();
+        }}
+      >
+        <div
+          ref={searchRef}
+          onClick={(e) => e.stopPropagation()}
+          className="w-full max-w-xl bg-white rounded-2xl shadow-2xl border border-slate-200/90 overflow-hidden flex flex-col max-h-[82vh]"
+        >
+          {/* Top Search Input Bar */}
+          <div className="flex items-center h-14 sm:h-16 px-4 sm:px-5 border-b border-slate-100 gap-3 bg-white shrink-0">
+            <Search size={20} className="text-[#007a55] shrink-0" />
+            <input
+              ref={searchInputRef}
+              type="search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'ArrowDown') {
+                  e.preventDefault();
+                  if (searchResults.length > 0) {
+                    setActiveIndex((prev) => (prev + 1) % searchResults.length);
+                  }
+                } else if (e.key === 'ArrowUp') {
+                  e.preventDefault();
+                  if (searchResults.length > 0) {
+                    setActiveIndex((prev) => (prev - 1 + searchResults.length) % searchResults.length);
+                  }
+                } else if (e.key === 'Enter') {
+                  e.preventDefault();
+                  if (searchResults[activeIndex]) {
+                    goToSearchResult(searchResults[activeIndex].href);
+                  }
+                }
+              }}
+              placeholder="Search pages, solutions, features..."
+              className="w-full h-full text-sm sm:text-base text-slate-900 placeholder:text-slate-400 bg-transparent border-0 outline-none focus:ring-0"
+              aria-label="Search site pages"
+            />
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery('')}
+                className="text-xs font-semibold text-slate-400 hover:text-slate-600 px-2 py-1 rounded bg-slate-100 transition-colors cursor-pointer shrink-0"
+              >
+                Clear
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={closeSearch}
+              className="h-8 w-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer shrink-0"
+              aria-label="Close search"
+              title="Close (Esc)"
+            >
+              <X size={18} />
+            </button>
+          </div>
+
+          {/* Results Section */}
+          <div className="flex-1 overflow-y-auto scrollbar-hide py-2">
+            <div className="px-5 py-2 text-xs font-mono font-bold text-slate-400 uppercase tracking-wider flex items-center justify-between">
+              <span>{normalizedQuery ? `Search Results (${searchResults.length})` : 'Popular Pages'}</span>
+              <span className="text-[11px] font-normal text-slate-400 font-mono hidden sm:inline">Use ↑↓ and Enter</span>
+            </div>
+
+            {searchResults.length === 0 ? (
+              <div className="px-5 py-10 text-center text-sm text-slate-500">
+                No pages found matching &ldquo;<span className="font-semibold text-slate-800">{searchQuery}</span>&rdquo;
+              </div>
+            ) : (
+              <ul className="divide-y divide-slate-50">
+                {searchResults.map((page, index) => (
+                  <li key={page.href}>
+                    <button
+                      type="button"
+                      onClick={() => goToSearchResult(page.href)}
+                      onMouseEnter={() => setActiveIndex(index)}
+                      className={`w-full flex items-center justify-between gap-3 px-5 py-3.5 text-left text-sm transition-colors cursor-pointer group ${
+                        activeIndex === index
+                          ? 'bg-emerald-50/80 text-[#007a55]'
+                          : 'text-slate-700 hover:bg-slate-50'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2.5 truncate">
+                        <span
+                          className={`w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 transition-opacity ${
+                            activeIndex === index ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                          }`}
+                        />
+                        <span
+                          className={`font-semibold truncate transition-colors ${
+                            activeIndex === index
+                              ? 'text-[#007a55]'
+                              : 'text-slate-900 group-hover:text-[#007a55]'
+                          }`}
+                        >
+                          {page.label}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs text-slate-400 group-hover:text-[#007a55] transition-colors shrink-0">
+                        <span className="hidden sm:inline font-mono text-[11px] text-slate-400">{page.href}</span>
+                        <ArrowRight
+                          size={14}
+                          className={`transition-transform ${
+                            activeIndex === index ? 'translate-x-1 text-[#007a55]' : 'group-hover:translate-x-1'
+                          }`}
+                        />
+                      </div>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          {/* Bottom Helper Bar */}
+          <div className="px-5 py-2.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 shrink-0">
+            <div className="flex items-center gap-3 font-mono text-[11px]">
+              <span className="flex items-center gap-1.5">
+                <kbd className="px-1.5 py-0.5 rounded bg-white border border-slate-200 shadow-2xs font-bold text-slate-600">↑↓</kbd>
+                <span className="hidden sm:inline">Navigate</span>
+              </span>
+              <span className="flex items-center gap-1.5">
+                <kbd className="px-1.5 py-0.5 rounded bg-white border border-slate-200 shadow-2xs font-bold text-slate-600">Enter</kbd>
+                <span>Select</span>
+              </span>
+            </div>
+            <span className="flex items-center gap-1.5 font-mono text-[11px]">
+              <kbd className="px-1.5 py-0.5 rounded bg-white border border-slate-200 shadow-2xs font-bold text-slate-600">Esc</kbd>
+              <span>Close</span>
+            </span>
+          </div>
+        </div>
+      </div>,
+      document.body
+    )}
+  </>
+);
 }

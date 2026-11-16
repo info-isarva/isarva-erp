@@ -79,7 +79,7 @@ export default function PosFaq({ onOpenDemoModal }) {
         </div>
 
         {/* FAQ Accordion List — 2 Independent Columns on Desktop */}
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 items-start">
+        <div ref={gridRef} data-aos="fade-up" data-aos-delay="100" data-aos-duration="700" className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 items-start">
           {columns.map((col, colIdx) => (
             <div key={colIdx} className="flex flex-col gap-4 sm:gap-5 min-w-0">
               {col.map(({ faq, idx }) => {
@@ -130,7 +130,7 @@ export default function PosFaq({ onOpenDemoModal }) {
         </div>
 
         {/* Bottom CTA Button */}
-        <div className="mt-10 sm:mt-12 text-center px-4">
+        <div data-aos="fade-up" data-aos-delay="150" data-aos-duration="600" className="mt-10 sm:mt-12 text-center px-4">
           <button
             type="button"
             onClick={onOpenDemoModal}

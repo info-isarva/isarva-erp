@@ -44,7 +44,11 @@ export default function Footer({
         {/* 1. REGION-AWARE PRE-FOOTER CONVERSION BANNER */}
         {isSaudi ? (
           /* SAUDI ARABIA: HIGH-IMPACT DEEP ENTERPRISE EMERALD BANNER */
-          <div className="pre-footer-cta-dark relative rounded-3xl bg-gradient-to-br from-[#002617] via-[#003d27] to-[#002214] border border-emerald-500/30 shadow-2xl shadow-emerald-950/25 p-4 sm:p-8 lg:p-12 mb-14 overflow-hidden">
+          <div
+            data-aos="fade-up"
+            data-aos-duration="700"
+            className="pre-footer-cta-dark relative rounded-3xl bg-gradient-to-br from-[#002617] via-[#003d27] to-[#002214] border border-emerald-500/30 shadow-2xl shadow-emerald-950/25 p-4 sm:p-8 lg:p-12 mb-14 overflow-hidden"
+          >
             {/* Subtle Ambient Radial Lighting Orbs */}
             <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-emerald-400/15 rounded-full blur-3xl pointer-events-none" />
             <div className="absolute bottom-0 left-10 w-96 h-96 bg-teal-300/10 rounded-full blur-3xl pointer-events-none" />
@@ -175,7 +179,11 @@ export default function Footer({
           </div>
         ) : (
           /* INDIA & DEFAULT: HIGH-IMPACT CLEAN LIGHT ISARVA BANNER */
-          <div className="relative rounded-3xl bg-gradient-to-br from-white via-[#f4faf7] to-[#e8f6ef] border border-emerald-200/90 shadow-xl shadow-slate-900/5 p-4 sm:p-8 lg:p-12 mb-14 overflow-hidden">
+          <div
+            data-aos="fade-up"
+            data-aos-duration="700"
+            className="relative rounded-3xl bg-gradient-to-br from-white via-[#f4faf7] to-[#e8f6ef] border border-emerald-200/90 shadow-xl shadow-slate-900/5 p-4 sm:p-8 lg:p-12 mb-14 overflow-hidden"
+          >
             {/* Subtle Ambient Radial Lighting Orbs */}
             <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-[#007a55]/5 rounded-full blur-3xl pointer-events-none" />
             <div className="absolute bottom-0 left-10 w-96 h-96 bg-emerald-100/50 rounded-full blur-3xl pointer-events-none" />
@@ -303,7 +311,12 @@ export default function Footer({
         )}
 
         {/* 3. MAIN 5-COLUMN EXPANDED NAVIGATION GRID */}
-        <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8 border-b border-slate-200/80">
+        <div
+          data-aos="fade-up"
+          data-aos-delay="100"
+          data-aos-duration="700"
+          className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8 border-b border-slate-200/80"
+        >
 
           {/* Column 1: Brand Info, Regional Hubs & Socials (5 cols) */}
           <div className="lg:col-span-5 space-y-4 text-center lg:text-left flex flex-col items-center lg:items-start">
@@ -434,7 +447,12 @@ export default function Footer({
         </div>
 
         {/* 4. SUB-FOOTER BOTTOM BAR */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-medium text-center md:text-left">
+        <div
+          data-aos="fade-up"
+          data-aos-delay="150"
+          data-aos-duration="600"
+          className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-medium text-center md:text-left"
+        >
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center md:text-left w-full md:w-auto">
             <span>© 2026 ISARVA IT Solutions Pvt. Ltd. All rights reserved.</span>
             <span className="hidden sm:inline text-slate-300">•</span>

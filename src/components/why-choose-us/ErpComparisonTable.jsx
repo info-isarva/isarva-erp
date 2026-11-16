@@ -211,7 +211,7 @@ export default function ErpComparisonTable({ onOpenModal }) {
         {/* RESPONSIVE & MOBILE VIEW: Touch-Friendly Comparison Feed (< lg / 1024px)   */}
         {/* Zero horizontal overflow, adaptive 2-col on tablet, 1-col on mobile       */}
         {/* ========================================================================= */}
-        <div className="block lg:hidden space-y-6">
+        <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="700" className="block lg:hidden space-y-6">
           {/* Quick Perspective Filter Tabs */}
           <div className="max-w-md mx-auto bg-white/95 backdrop-blur-sm p-1.5 rounded-2xl border border-emerald-200/80 shadow-sm flex items-center gap-1">
             <button

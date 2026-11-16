@@ -280,7 +280,7 @@ export default function FaqSection({ faqs }) {
         </div>
 
         {/* 2 Independent Columns (prevents open cards from stretching opposite column rows) */}
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 items-start">
+        <div ref={gridRef} data-aos="fade-up" data-aos-delay="100" data-aos-duration="700" className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 items-start">
           {columns.map((colItems, colIdx) => (
             <div key={colIdx} className="flex flex-col gap-4 sm:gap-5 min-w-0">
               {colItems.map(({ item, idx }) => (
