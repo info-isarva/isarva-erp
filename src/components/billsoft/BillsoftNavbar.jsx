@@ -142,7 +142,7 @@ export default function BillsoftNavbar({ onOpenDemoModal, onOpenBrochureModal })
                   }}
                   className="billsoft-secondary-btn-white w-full justify-center"
                 >
-                  <FileText size={16} className="text-[#2563eb]" />
+                  <FileText size={16} className="text-[#FF6B12]" />
                   <span>Download Brochure</span>
                 </button>
                 <button

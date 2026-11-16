@@ -92,7 +92,7 @@ export default function CrmFooter({ onOpenDemoModal, onOpenBrochureModal }) {
               className="crm-secondary-btn-white"
               style={{ height: '46px', minHeight: '46px', padding: '0 20px', fontSize: '0.875rem' }}
             >
-              <FileText size={16} className="text-sky-600 shrink-0" />
+              <FileText size={16} className="text-[#FF6B12] shrink-0" />
               <span>Download Brochure</span>
             </button>
             <button

@@ -426,15 +426,15 @@
   justify-content: center;
   gap: 0.5rem;
   background-color: #ffffff;
-  color: #334155;
+  color: #FF6B12;
   font-weight: 700;
-  font-size: 0.925rem;
+  font-size: 0.95rem;
   line-height: 1.3;
   box-sizing: border-box;
-  padding: 0.65rem 1.15rem;
-  border-radius: 9999px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+  padding: 0.65rem 1.35rem;
+  border-radius: 0.85rem;
+  border: 2px solid #FF6B12;
+  box-shadow: 0 1px 3px rgba(255, 107, 18, 0.08);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   max-width: 100%;
@@ -446,16 +446,16 @@
 
 @media (min-width: 640px) {
   .btn-brand-secondary {
-    padding: 0.685rem 1.4rem;
+    padding: 0.685rem 1.5rem;
   }
 }
 
 .btn-brand-secondary:hover {
-  background-color: #f8fafc;
-  border-color: #94a3b8;
-  color: #0f172a;
+  background-color: #fff7ed;
+  border-color: #ea580c;
+  color: #ea580c;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px -3px rgba(15, 23, 42, 0.1), 0 3px 6px -1px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 8px 20px -3px rgba(255, 107, 18, 0.25);
 }
 
 .btn-brand-secondary:active {
@@ -463,7 +463,12 @@
 }
 
 .btn-brand-secondary svg {
+  color: #FF6B12;
   transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.btn-brand-secondary:hover svg {
+  color: #ea580c;
 }
 
 .btn-brand-secondary:hover svg:last-child {
@@ -897,14 +902,14 @@
 .crm-secondary-btn-white {
   min-height: 48px;
   height: auto;
-  border: 1.5px solid #cbd5e1;
+  border: 2px solid #FF6B12;
   background: #ffffff;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 1px 3px rgba(255, 107, 18, 0.08);
   cursor: pointer;
-  border-radius: 0.75rem;
-  padding: 0.65rem 1.25rem;
+  border-radius: 0.85rem;
+  padding: 0.65rem 1.35rem;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  color: #1e293b;
+  color: #FF6B12;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
@@ -924,7 +929,7 @@
   border-color: #ea580c;
   color: #ea580c;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px -3px rgba(234, 88, 12, 0.15);
+  box-shadow: 0 8px 20px -3px rgba(255, 107, 18, 0.25);
 }
 
 .crm-secondary-btn-white:active {
@@ -932,7 +937,12 @@
 }
 
 .crm-secondary-btn-white svg {
+  color: #FF6B12;
   transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.crm-secondary-btn-white:hover svg {
+  color: #ea580c;
 }
 
 .crm-secondary-btn-white:hover svg:last-child {
@@ -940,7 +950,7 @@
 }
 
 .crm-secondary-btn-white:hover svg:first-child:not(:last-child) {
-  transform: scale(1.08);
+  transform: translateY(2px) scale(1.05);
 }
 
 /* Dedicated HRMS & Payroll Landing CTA Buttons */
@@ -1012,14 +1022,14 @@
 .hrms-secondary-btn-white {
   min-height: 48px;
   height: auto;
-  border: 1.5px solid #cbd5e1;
+  border: 2px solid #FF6B12;
   background: #ffffff;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 1px 3px rgba(255, 107, 18, 0.08);
   cursor: pointer;
-  border-radius: 0.75rem;
-  padding: 0.65rem 1.25rem;
+  border-radius: 0.85rem;
+  padding: 0.65rem 1.35rem;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  color: #1e293b;
+  color: #FF6B12;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
@@ -1035,11 +1045,11 @@
 }
 
 .hrms-secondary-btn-white:hover {
-  background: #faf5ff;
-  border-color: #7c3aed;
-  color: #6d28d9;
+  background: #fff7ed;
+  border-color: #ea580c;
+  color: #ea580c;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px -3px rgba(124, 58, 237, 0.15);
+  box-shadow: 0 8px 20px -3px rgba(255, 107, 18, 0.25);
 }
 
 .hrms-secondary-btn-white:active {
@@ -1047,7 +1057,12 @@
 }
 
 .hrms-secondary-btn-white svg {
+  color: #FF6B12;
   transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.hrms-secondary-btn-white:hover svg {
+  color: #ea580c;
 }
 
 .hrms-secondary-btn-white:hover svg:last-child {
@@ -1055,7 +1070,7 @@
 }
 
 .hrms-secondary-btn-white:hover svg:first-child:not(:last-child) {
-  transform: scale(1.08);
+  transform: translateY(2px) scale(1.05);
 }
 
 /* Dedicated Restaurant POS Landing CTA Buttons */
@@ -1127,14 +1142,14 @@
 .pos-secondary-btn-white {
   min-height: 48px;
   height: auto;
-  border: 1.5px solid #cbd5e1;
+  border: 2px solid #FF6B12;
   background: #ffffff;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 1px 3px rgba(255, 107, 18, 0.08);
   cursor: pointer;
-  border-radius: 0.75rem;
-  padding: 0.65rem 1.25rem;
+  border-radius: 0.85rem;
+  padding: 0.65rem 1.35rem;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  color: #1e293b;
+  color: #FF6B12;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
@@ -1150,11 +1165,11 @@
 }
 
 .pos-secondary-btn-white:hover {
-  background: #f0fdf4;
-  border-color: #059669;
-  color: #047857;
+  background: #fff7ed;
+  border-color: #ea580c;
+  color: #ea580c;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px -3px rgba(5, 150, 105, 0.15);
+  box-shadow: 0 8px 20px -3px rgba(255, 107, 18, 0.25);
 }
 
 .pos-secondary-btn-white:active {
@@ -1162,7 +1177,12 @@
 }
 
 .pos-secondary-btn-white svg {
+  color: #FF6B12;
   transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.pos-secondary-btn-white:hover svg {
+  color: #ea580c;
 }
 
 .pos-secondary-btn-white:hover svg:last-child {
@@ -1170,7 +1190,7 @@
 }
 
 .pos-secondary-btn-white:hover svg:first-child:not(:last-child) {
-  transform: scale(1.08);
+  transform: translateY(2px) scale(1.05);
 }
 
 /* Dedicated BillSoft Accounting Landing CTA Buttons */
@@ -1242,14 +1262,14 @@
 .billsoft-secondary-btn-white {
   min-height: 48px;
   height: auto;
-  border: 1.5px solid #cbd5e1;
+  border: 2px solid #FF6B12;
   background: #ffffff;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 1px 3px rgba(255, 107, 18, 0.08);
   cursor: pointer;
-  border-radius: 0.75rem;
-  padding: 0.65rem 1.25rem;
+  border-radius: 0.85rem;
+  padding: 0.65rem 1.35rem;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  color: #1e293b;
+  color: #FF6B12;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
@@ -1265,11 +1285,11 @@
 }
 
 .billsoft-secondary-btn-white:hover {
-  background: #eff6ff;
-  border-color: #2563eb;
-  color: #1d4ed8;
+  background: #fff7ed;
+  border-color: #ea580c;
+  color: #ea580c;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px -3px rgba(37, 99, 235, 0.15);
+  box-shadow: 0 8px 20px -3px rgba(255, 107, 18, 0.25);
 }
 
 .billsoft-secondary-btn-white:active {
@@ -1277,7 +1297,12 @@
 }
 
 .billsoft-secondary-btn-white svg {
+  color: #FF6B12;
   transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.billsoft-secondary-btn-white:hover svg {
+  color: #ea580c;
 }
 
 .billsoft-secondary-btn-white:hover svg:last-child {
@@ -1285,7 +1310,7 @@
 }
 
 .billsoft-secondary-btn-white:hover svg:first-child:not(:last-child) {
-  transform: scale(1.08);
+  transform: translateY(2px) scale(1.05);
 }
 
 /* Responsive Guard: Ensure all landing buttons never cause horizontal overflow on mobile viewports */

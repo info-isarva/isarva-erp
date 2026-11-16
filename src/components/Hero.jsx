@@ -607,7 +607,7 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
 
                     <button
                       onClick={() => onOpenModal('demo', slide.productName)}
-                      className="btn-brand-secondary w-full sm:w-auto px-7 py-3.5 text-base font-bold text-slate-900 border border-slate-200"
+                      className="btn-brand-secondary w-full sm:w-auto px-7 py-3.5 text-base font-bold"
                     >
                       <span
                         className="w-6 h-6 rounded-full text-white flex items-center justify-center text-xs pl-0.5"
