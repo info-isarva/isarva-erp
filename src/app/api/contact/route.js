@@ -40,7 +40,7 @@ async function sendToCrm(inquiryData) {
         'X-Api-Key': CRM_API_KEY
       },
       body: JSON.stringify(payload),
-      signal: AbortSignal.timeout(4000)
+      signal: AbortSignal.timeout(10000)
     });
 
     const rawText = await res.text();
