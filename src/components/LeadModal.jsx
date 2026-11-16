@@ -19,7 +19,8 @@ import {
   ArrowRight,
   Search,
   ChevronDown,
-  Check
+  Check,
+  Download
 } from 'lucide-react';
 
 /** Map site product labels to CRM category ids when names differ. */
@@ -89,6 +90,14 @@ function getPhoneValidationError(value) {
     return 'Enter a valid phone number with 10–15 digits (e.g. +91 98765 43210).';
   }
   return '';
+}
+
+function getBrochureUrl(productName) {
+  const needle = String(productName || '').toLowerCase();
+  if (needle.includes('crm') || needle.includes('sales')) {
+    return '/docs/CRM-Brochure.pdf';
+  }
+  return '/docs/ISARVA-ERP-Brochure.pdf';
 }
 
 export default function LeadModal({ isOpen, onClose, modalType = 'demo', selectedProduct, countryCode = 'IN' }) {
@@ -237,6 +246,20 @@ export default function LeadModal({ isOpen, onClose, modalType = 'demo', selecte
       const data = await res.json().catch(() => null);
       if (res.ok && data?.success) {
         setIsSubmitted(true);
+        if (modalType === 'brochure') {
+          try {
+            const brochureUrl = getBrochureUrl(formData.product || selectedProduct);
+            const link = document.createElement('a');
+            link.href = brochureUrl;
+            link.download = brochureUrl.split('/').pop() || 'ISARVA-Brochure.pdf';
+            link.target = '_blank';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          } catch (dlErr) {
+            console.warn('Auto download error:', dlErr);
+          }
+        }
       } else {
         setErrorMsg(data?.error || 'Failed to submit inquiry. Please try again.');
       }
@@ -463,8 +486,8 @@ export default function LeadModal({ isOpen, onClose, modalType = 'demo', selecte
                           onBlur={handlePhoneBlur}
                           aria-invalid={Boolean(phoneError)}
                           className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl border bg-slate-50/50 text-slate-900 text-sm placeholder:text-slate-400 focus:bg-white focus:ring-2 focus:outline-none transition-all ${phoneError
-                              ? 'border-rose-400 focus:border-rose-500 focus:ring-rose-500/15'
-                              : 'border-slate-200 focus:border-[#009b55] focus:ring-[#009b55]/15'
+                            ? 'border-rose-400 focus:border-rose-500 focus:ring-rose-500/15'
+                            : 'border-slate-200 focus:border-[#009b55] focus:ring-[#009b55]/15'
                             }`}
                         />
                       </div>
@@ -508,8 +531,8 @@ export default function LeadModal({ isOpen, onClose, modalType = 'demo', selecte
                       aria-expanded={productMenuOpen}
                       onClick={() => setProductMenuOpen((open) => !open)}
                       className={`relative w-full pl-10 pr-10 py-2.5 rounded-xl border text-left text-sm transition-all flex items-center focus:outline-none disabled:opacity-60 disabled:cursor-wait ${productMenuOpen
-                          ? 'bg-white border-[#009b55] ring-2 ring-[#009b55]/15'
-                          : 'border-slate-200 bg-slate-50/50 hover:bg-white focus:bg-white focus:border-[#009b55] focus:ring-2 focus:ring-[#009b55]/15'
+                        ? 'bg-white border-[#009b55] ring-2 ring-[#009b55]/15'
+                        : 'border-slate-200 bg-slate-50/50 hover:bg-white focus:bg-white focus:border-[#009b55] focus:ring-2 focus:ring-[#009b55]/15'
                         }`}
                     >
                       <span className="absolute left-3.5 text-slate-400 pointer-events-none">
@@ -559,8 +582,8 @@ export default function LeadModal({ isOpen, onClose, modalType = 'demo', selecte
                                     aria-selected={isActive}
                                     onClick={() => selectCategory(category)}
                                     className={`w-full px-3.5 py-2.5 text-left text-sm flex items-center justify-between gap-2 transition-colors ${isActive
-                                        ? 'bg-emerald-50 text-[#009b55] font-semibold'
-                                        : 'text-slate-800 hover:bg-slate-50'
+                                      ? 'bg-emerald-50 text-[#009b55] font-semibold'
+                                      : 'text-slate-800 hover:bg-slate-50'
                                       }`}
                                   >
                                     <span className="truncate">{category.category_name}</span>
@@ -668,18 +691,44 @@ export default function LeadModal({ isOpen, onClose, modalType = 'demo', selecte
               <CheckCircle2 size={36} />
             </div>
             <div className="text-2xl font-black text-slate-900 tracking-tight font-heading">
-              Request Received Successfully!
+              {modalType === 'brochure' ? 'Brochure Ready for Download!' : 'Request Received Successfully!'}
             </div>
-            <div className="text-sm text-slate-600 max-w-sm mx-auto leading-relaxed">
-              Thank you, <span className="font-bold text-slate-900">{formData.name}</span>. Our enterprise specialist will get in touch with you shortly.
+            <div className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
+              {modalType === 'brochure' ? (
+                <>
+                  Thank you, <span className="font-bold text-slate-900">{formData.name}</span>. Your product brochure download has been initiated automatically. If it didn&apos;t start, click below.
+                </>
+              ) : (
+                <>
+                  Thank you, <span className="font-bold text-slate-900">{formData.name}</span>. Our enterprise specialist will get in touch with you shortly.
+                </>
+              )}
             </div>
-            <button
-              onClick={handleClose}
-              type="button"
-              className="btn-brand-primary py-3 px-8 text-sm mt-4"
-            >
-              Done
-            </button>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+              {modalType === 'brochure' && (
+                <a
+                  href={getBrochureUrl(formData.product || selectedProduct)}
+                  download
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-brand-primary py-3 px-6 text-sm inline-flex items-center gap-2"
+                >
+                  <Download size={16} />
+                  <span>Download PDF Brochure</span>
+                </a>
+              )}
+              <button
+                onClick={handleClose}
+                type="button"
+                className={`py-3 px-8 text-sm rounded-xl font-semibold transition-colors cursor-pointer ${modalType === 'brochure'
+                    ? 'border border-slate-200 text-slate-700 hover:bg-slate-50'
+                    : 'btn-brand-primary'
+                  }`}
+              >
+                {modalType === 'brochure' ? 'Close' : 'Done'}
+              </button>
+            </div>
           </div>
         )}
       </div>
