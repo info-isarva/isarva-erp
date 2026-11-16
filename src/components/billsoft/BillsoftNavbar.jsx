@@ -86,7 +86,7 @@ export default function BillsoftNavbar({ onOpenDemoModal, onOpenBrochureModal })
               onClick={onOpenBrochureModal}
               className="billsoft-secondary-btn-white text-xs h-10 px-4"
             >
-              <FileText size={15} className="text-[#2563eb]" />
+              <FileText size={15} className="text-[#FF6B12]" />
               <span>Brochure</span>
             </button>
             <button

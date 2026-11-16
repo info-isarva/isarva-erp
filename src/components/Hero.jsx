@@ -607,12 +607,9 @@ export default function Hero({ hero: heroProp, products = [], onOpenModal }) {
 
                     <button
                       onClick={() => onOpenModal('demo', slide.productName)}
-                      className="btn-brand-secondary w-full sm:w-auto px-7 py-3.5 text-base font-bold"
+                      className="btn-brand-secondary w-full sm:w-auto px-7 py-3.5 text-base font-bold group"
                     >
-                      <span
-                        className="w-6 h-6 rounded-full text-white flex items-center justify-center text-xs pl-0.5"
-                        style={{ backgroundColor: slide.themeColor }}
-                      >
+                      <span className="w-6 h-6 rounded-full bg-[#FF6B12] text-white flex items-center justify-center text-xs pl-0.5 shrink-0 shadow-2xs group-hover:bg-[#ea580c] transition-colors">
                         ▶
                       </span>
                       <span>{slide.secondaryCtaText}</span>

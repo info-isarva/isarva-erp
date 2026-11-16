@@ -65,10 +65,10 @@ export default function CrmFooter({ onOpenDemoModal, onOpenBrochureModal }) {
   return (
     <footer className="bg-gradient-to-b from-white via-slate-50 to-sky-50/40 border-t border-slate-200/90 pt-16 pb-12">
       <div className="site-container">
-        
+
         {/* Top Footer Row */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-12 border-b border-slate-200">
-          
+
           {/* Logo */}
           <Link href="/crm" className="flex items-center gap-2.5 group">
             <img

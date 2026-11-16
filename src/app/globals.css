@@ -471,6 +471,10 @@
   color: #ea580c;
 }
 
+.btn-brand-secondary:hover span.rounded-full {
+  background-color: #ea580c;
+}
+
 .btn-brand-secondary:hover svg:last-child {
   transform: translateX(3px);
 }

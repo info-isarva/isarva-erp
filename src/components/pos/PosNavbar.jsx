@@ -87,7 +87,7 @@ export default function PosNavbar({ onOpenDemoModal, onOpenBrochureModal }) {
               className="pos-secondary-btn-white"
               style={{ height: '42px', minHeight: '42px', padding: '0 16px', fontSize: '0.875rem' }}
             >
-              <FileText size={16} className="text-emerald-600" />
+              <FileText size={16} className="text-[#FF6B12]" />
               <span>Brochure</span>
             </button>
             <button
@@ -184,7 +184,7 @@ export default function PosNavbar({ onOpenDemoModal, onOpenBrochureModal }) {
               }}
               className="pos-secondary-btn-white w-full justify-center"
             >
-              <FileText size={16} className="text-emerald-600" />
+              <FileText size={16} className="text-[#FF6B12]" />
               <span>Download PDF Brochure</span>
             </button>
             <div className="text-center text-xs font-semibold text-slate-500 pt-1">
