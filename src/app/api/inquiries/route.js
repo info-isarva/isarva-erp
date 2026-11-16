@@ -39,7 +39,6 @@ async function sendToCrm(inquiryData) {
       website: inquiryData.website || '',
       full_name: inquiryData.name,
       email: inquiryData.email || '',
-      mobile: inquiryData.phone,
       mobile: formatMobileNumber(inquiryData.phone),
       categories: resolveCategoryId(inquiryData),
       lead_source: CRM_LEAD_SOURCE
@@ -49,7 +48,6 @@ async function sendToCrm(inquiryData) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
         'Accept': 'application/json',
         'X-Api-Key': CRM_API_KEY
       },
