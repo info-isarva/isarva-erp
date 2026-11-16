@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import {
   Search,
   ChevronDown,
@@ -35,6 +35,20 @@ const SITE_SEARCH_PAGES = [
 
 export default function Navbar({ content, onOpenModal, selectedCountry: selectedCountryProp, onSelectCountry }) {
   const router = useRouter();
+  const pathname = usePathname() || '/';
+
+  const isHomeActive = pathname === '/';
+  const isAboutActive = pathname === '/about';
+  const isSolutionsActive =
+    pathname === '/solutions' ||
+    pathname === '/restaurant-pos' ||
+    pathname === '/billsoft' ||
+    pathname === '/hrms' ||
+    pathname === '/crm';
+  const isFeaturesActive = pathname === '/erp-features';
+  const isWhyChooseActive = pathname === '/why-choose-us';
+  const isContactActive = pathname === '/contact';
+
   const [isCountryOpen, setIsCountryOpen] = useState(false);
   const selectedCountry = selectedCountryProp || content?.countries?.[0] || { code: 'IN', name: 'India' };
   const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
@@ -42,22 +56,27 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [mounted, setMounted] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(-1);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  const normalizedQuery = searchQuery.trim().toLowerCase();
+
   useEffect(() => {
-    setActiveIndex(0);
-  }, [searchQuery, isSearchOpen]);
+    if (normalizedQuery) {
+      setActiveIndex(0);
+    } else {
+      setActiveIndex(-1);
+    }
+  }, [normalizedQuery, isSearchOpen]);
 
   const solutionsRef = useRef(null);
   const countryRef = useRef(null);
   const searchRef = useRef(null);
   const searchInputRef = useRef(null);
 
-  const normalizedQuery = searchQuery.trim().toLowerCase();
   const searchResults = normalizedQuery
     ? SITE_SEARCH_PAGES.filter((page) => {
       const haystack = `${page.label} ${page.keywords}`.toLowerCase();
@@ -156,12 +175,22 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-2.5 xl:gap-5 2xl:gap-7 text-xs xl:text-sm font-semibold text-slate-600 whitespace-nowrap shrink-0">
-            <Link href="/" className="text-brand-500 hover:text-brand-600 transition-colors">
+          <nav className="hidden lg:flex items-center gap-2.5 xl:gap-5 2xl:gap-7 text-xs xl:text-sm font-semibold whitespace-nowrap shrink-0">
+            <Link
+              href="/"
+              className={`transition-colors py-2 ${
+                isHomeActive ? 'text-[#007a55] font-bold' : 'text-slate-600 hover:text-[#007a55]'
+              }`}
+            >
               Home
             </Link>
 
-            <Link href="/about" className="hover:text-brand-500 transition-colors">
+            <Link
+              href="/about"
+              className={`transition-colors py-2 ${
+                isAboutActive ? 'text-[#007a55] font-bold' : 'text-slate-600 hover:text-[#007a55]'
+              }`}
+            >
               About Us
             </Link>
 
@@ -170,7 +199,9 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
               <button
                 onMouseEnter={() => setIsSolutionsOpen(true)}
                 onClick={() => setIsSolutionsOpen(!isSolutionsOpen)}
-                className="flex items-center gap-1 hover:text-brand-500 transition-colors py-2"
+                className={`flex items-center gap-1 transition-colors py-2 ${
+                  isSolutionsActive ? 'text-[#007a55] font-bold' : 'text-slate-600 hover:text-[#007a55]'
+                }`}
               >
                 <span>Our Solutions</span>
                 <ChevronDown size={14} className={`transition-transform duration-200 ${isSolutionsOpen ? 'rotate-180 text-brand-500' : ''}`} />
@@ -252,13 +283,28 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
               )}
             </div>
 
-            <Link href="/erp-features" className="hover:text-brand-500 transition-colors">
+            <Link
+              href="/erp-features"
+              className={`transition-colors py-2 ${
+                isFeaturesActive ? 'text-[#007a55] font-bold' : 'text-slate-600 hover:text-[#007a55]'
+              }`}
+            >
               Features
             </Link>
-            <Link href="/why-choose-us" className="hover:text-brand-500 transition-colors">
+            <Link
+              href="/why-choose-us"
+              className={`transition-colors py-2 ${
+                isWhyChooseActive ? 'text-[#007a55] font-bold' : 'text-slate-600 hover:text-[#007a55]'
+              }`}
+            >
               Why Choose Us
             </Link>
-            <Link href="/contact" className="hover:text-brand-500 transition-colors">
+            <Link
+              href="/contact"
+              className={`transition-colors py-2 ${
+                isContactActive ? 'text-[#007a55] font-bold' : 'text-slate-600 hover:text-[#007a55]'
+              }`}
+            >
               Contact Us
             </Link>
           </nav>
@@ -370,40 +416,110 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
       {/* Mobile Menu Dropdown with Smooth Scrolling */}
       {isMobileMenuOpen && (
         <div className="lg:hidden absolute left-0 right-0 top-full z-50 border-t border-slate-100 bg-white px-4 pt-3 pb-8 space-y-3 max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain shadow-2xl">
-          <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-slate-800">
+          <Link
+            href="/"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className={`block py-2 text-base font-semibold transition-colors ${
+              isHomeActive ? 'text-[#007a55] font-bold' : 'text-slate-800 hover:text-[#007a55]'
+            }`}
+          >
             Home
           </Link>
-          <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-slate-800">
+          <Link
+            href="/about"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className={`block py-2 text-base font-semibold transition-colors ${
+              isAboutActive ? 'text-[#007a55] font-bold' : 'text-slate-800 hover:text-[#007a55]'
+            }`}
+          >
             About Us
           </Link>
           <div className="pt-1 pb-1">
             <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
               Our Solutions
             </div>
-            <Link href="/solutions" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-sm font-bold text-[#007a55] pl-2 border-l-2 border-[#007a55] mb-1">
+            <Link
+              href="/solutions"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`block py-2 text-sm font-bold pl-2 border-l-2 mb-1 ${
+                pathname === '/solutions'
+                  ? 'border-[#007a55] text-[#007a55] bg-emerald-50/50'
+                  : 'border-slate-300 text-slate-700 hover:text-[#007a55]'
+              }`}
+            >
               All Solutions Overview &rarr;
             </Link>
-            <Link href="/restaurant-pos" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-sm font-semibold text-emerald-600 pl-2 border-l-2 border-emerald-500 mb-1">
+            <Link
+              href="/restaurant-pos"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`block py-2 text-sm font-semibold pl-2 border-l-2 mb-1 ${
+                pathname === '/restaurant-pos'
+                  ? 'border-emerald-500 text-emerald-700 bg-emerald-50/50'
+                  : 'border-slate-200 text-slate-700 hover:text-emerald-600'
+              }`}
+            >
               Restaurant POS Software
             </Link>
-            <Link href="/billsoft" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-sm font-semibold text-blue-600 pl-2 border-l-2 border-blue-500 mb-1">
+            <Link
+              href="/billsoft"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`block py-2 text-sm font-semibold pl-2 border-l-2 mb-1 ${
+                pathname === '/billsoft'
+                  ? 'border-blue-500 text-blue-700 bg-blue-50/50'
+                  : 'border-slate-200 text-slate-700 hover:text-blue-600'
+              }`}
+            >
               BillSoft Accounting Software
             </Link>
-            <Link href="/hrms" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-sm font-semibold text-purple-600 pl-2 border-l-2 border-purple-500 mb-1">
+            <Link
+              href="/hrms"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`block py-2 text-sm font-semibold pl-2 border-l-2 mb-1 ${
+                pathname === '/hrms'
+                  ? 'border-purple-500 text-purple-700 bg-purple-50/50'
+                  : 'border-slate-200 text-slate-700 hover:text-purple-600'
+              }`}
+            >
               HRMS &amp; Payroll Software
             </Link>
-            <Link href="/crm" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-sm font-semibold text-orange-600 pl-2 border-l-2 border-orange-500">
+            <Link
+              href="/crm"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`block py-2 text-sm font-semibold pl-2 border-l-2 ${
+                pathname === '/crm'
+                  ? 'border-orange-500 text-orange-700 bg-orange-50/50'
+                  : 'border-slate-200 text-slate-700 hover:text-orange-600'
+              }`}
+            >
               CRM &amp; Sales Management
             </Link>
           </div>
 
-          <Link href="/erp-features" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-slate-800">
+          <Link
+            href="/erp-features"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className={`block py-2 text-base font-semibold transition-colors ${
+              isFeaturesActive ? 'text-[#007a55] font-bold' : 'text-slate-800 hover:text-[#007a55]'
+            }`}
+          >
             Features
           </Link>
-          <Link href="/why-choose-us" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-slate-800">
+          <Link
+            href="/why-choose-us"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className={`block py-2 text-base font-semibold transition-colors ${
+              isWhyChooseActive ? 'text-[#007a55] font-bold' : 'text-slate-800 hover:text-[#007a55]'
+            }`}
+          >
             Why Choose Us
           </Link>
-          <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 text-base font-semibold text-slate-800">
+          <Link
+            href="/contact"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className={`block py-2 text-base font-semibold transition-colors ${
+              isContactActive ? 'text-[#007a55] font-bold' : 'text-slate-800 hover:text-[#007a55]'
+            }`}
+          >
             Contact Us
           </Link>
 
@@ -475,17 +591,21 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
                 if (e.key === 'ArrowDown') {
                   e.preventDefault();
                   if (searchResults.length > 0) {
-                    setActiveIndex((prev) => (prev + 1) % searchResults.length);
+                    setActiveIndex((prev) => (prev < 0 ? 0 : (prev + 1) % searchResults.length));
                   }
                 } else if (e.key === 'ArrowUp') {
                   e.preventDefault();
                   if (searchResults.length > 0) {
-                    setActiveIndex((prev) => (prev - 1 + searchResults.length) % searchResults.length);
+                    setActiveIndex((prev) => (prev <= 0 ? searchResults.length - 1 : prev - 1));
                   }
                 } else if (e.key === 'Enter') {
                   e.preventDefault();
-                  if (searchResults[activeIndex]) {
-                    goToSearchResult(searchResults[activeIndex].href);
+                  const targetPage =
+                    activeIndex >= 0 && searchResults[activeIndex]
+                      ? searchResults[activeIndex]
+                      : searchResults[0];
+                  if (targetPage) {
+                    goToSearchResult(targetPage.href);
                   }
                 }
               }}
@@ -532,16 +652,17 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
                       type="button"
                       onClick={() => goToSearchResult(page.href)}
                       onMouseEnter={() => setActiveIndex(index)}
+                      onFocus={() => setActiveIndex(index)}
                       className={`w-full flex items-center justify-between gap-3 px-5 py-3.5 text-left text-sm transition-colors cursor-pointer group ${
                         activeIndex === index
-                          ? 'bg-emerald-50/80 text-[#007a55]'
+                          ? 'bg-emerald-50 text-[#007a55]'
                           : 'text-slate-700 hover:bg-slate-50'
                       }`}
                     >
                       <div className="flex items-center gap-2.5 truncate">
                         <span
                           className={`w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0 transition-opacity ${
-                            activeIndex === index ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                            activeIndex === index ? 'opacity-100' : 'opacity-0'
                           }`}
                         />
                         <span
@@ -553,6 +674,11 @@ export default function Navbar({ content, onOpenModal, selectedCountry: selected
                         >
                           {page.label}
                         </span>
+                        {page.href === pathname && (
+                          <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-100/70 px-1.5 py-0.5 rounded-full shrink-0">
+                            Current
+                          </span>
+                        )}
                       </div>
                       <div className="flex items-center gap-2 text-xs text-slate-400 group-hover:text-[#007a55] transition-colors shrink-0">
                         <span className="hidden sm:inline font-mono text-[11px] text-slate-400">{page.href}</span>

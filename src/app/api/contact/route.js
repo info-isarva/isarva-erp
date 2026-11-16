@@ -62,16 +62,7 @@ export async function POST(request) {
       return NextResponse.json({ success: false, error: 'Name and Phone number are required' }, { status: 400 });
     }
 
-    // 1. Create lead in Isarva CRM (primary)
-    const crmResult = await sendToCrm(body);
-    if (!crmResult.success) {
-      return NextResponse.json(
-        { success: false, error: crmResult.error || 'Failed to submit lead to CRM' },
-        { status: 502 }
-      );
-    }
-
-    // 2. Keep a local copy for Admin CMS (non-blocking)
+    // 1. Always record inquiry in PostgreSQL / content-store first
     let newInquiry = null;
     try {
       newInquiry = await addInquiry({
@@ -80,14 +71,25 @@ export async function POST(request) {
         source: 'Contact Page Clone'
       });
     } catch (localErr) {
-      console.warn('Local contact inquiry save failed after CRM success:', localErr.message);
+      console.warn('Local contact inquiry save failed:', localErr.message);
+    }
+
+    // 2. Sync to Isarva CRM (best-effort, non-blocking so inquiries succeed even if CRM is unconfigured)
+    let crmResult = { success: false };
+    try {
+      crmResult = await sendToCrm(body);
+      if (!crmResult.success) {
+        console.warn('CRM sync notice (contact inquiry saved locally):', crmResult.error);
+      }
+    } catch (crmErr) {
+      console.warn('CRM sync notice (contact inquiry saved locally):', crmErr.message);
     }
 
     return NextResponse.json({
       success: true,
       inquiry: newInquiry,
-      crmSynced: true,
-      crmLead: crmResult.crmResponse?.lead || null
+      crmSynced: Boolean(crmResult?.success),
+      crmLead: crmResult?.crmResponse?.lead || null
     });
   } catch (error) {
     console.error('Contact inquiry error:', error);
