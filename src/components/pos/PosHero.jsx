@@ -74,7 +74,7 @@ export default function PosHero({ onOpenDemoModal, onOpenBrochureModal, onOpenLi
               <button
                 type="button"
                 onClick={onOpenDemoModal}
-                className="pos-primary-btn-emerald w-full sm:w-auto"
+                className="btn-brand-primary w-full sm:w-auto"
               >
                 <span>Book a Free Demo</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 9" className="h-2.5 w-4 shrink-0">

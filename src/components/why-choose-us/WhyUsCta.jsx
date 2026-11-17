@@ -50,7 +50,7 @@ export default function WhyUsCta({ onOpenModal }) {
                 href="/contact"
                 className="btn-brand-secondary text-sm sm:text-base px-5 sm:px-7 py-3.5 sm:py-4"
               >
-                <Headphones className="w-4 h-4 text-[#007a55]" />
+                <Headphones className="w-4 h-4 text-[#FF6B12]" />
                 <span>Talk to an Architect</span>
               </Link>
             </div>

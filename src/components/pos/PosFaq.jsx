@@ -134,7 +134,7 @@ export default function PosFaq({ onOpenDemoModal }) {
           <button
             type="button"
             onClick={onOpenDemoModal}
-            className="pos-primary-btn-emerald max-w-full text-xs sm:text-sm md:text-base px-4 sm:px-6 py-3 h-auto whitespace-normal leading-snug"
+            className="btn-brand-primary max-w-full text-xs sm:text-sm md:text-base px-4 sm:px-6 py-3 h-auto whitespace-normal leading-snug"
           >
             <span>Still have questions? Book a live demo</span>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 9" className="h-2.5 w-4 shrink-0">

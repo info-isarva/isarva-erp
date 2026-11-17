@@ -432,7 +432,7 @@
   line-height: 1.3;
   box-sizing: border-box;
   padding: 0.65rem 1.35rem;
-  border-radius: 0.85rem;
+  border-radius: 9999px;
   border: 2px solid #FF6B12;
   box-shadow: 0 1px 3px rgba(255, 107, 18, 0.08);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -541,16 +541,16 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background: linear-gradient(135deg, #059669 0%, #078356 50%, #046c46 100%);
+  background: linear-gradient(135deg, #009c6c 0%, #007a55 50%, #005f42 100%);
   color: #ffffff;
   font-weight: 700;
   font-size: 0.925rem;
   padding: 0.85rem 1.25rem;
-  border-radius: 0.85rem;
+  border-radius: 9999px;
   width: 100%;
   border: 1px solid transparent;
   border-top-color: rgba(255, 255, 255, 0.35);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(7, 131, 86, 0.3);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 8px 20px -4px rgba(0, 122, 85, 0.45);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
 }
@@ -568,9 +568,9 @@
 }
 
 .btn-pos:hover {
-  background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
+  background: linear-gradient(135deg, #00b07a 0%, #008960 50%, #006e4d 100%);
   transform: translateY(-2px) scale(1.02);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 10px 24px -4px rgba(7, 131, 86, 0.5);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 12px 28px -4px rgba(0, 122, 85, 0.55);
 }
 
 .btn-pos:hover::after {
@@ -601,7 +601,7 @@
   font-weight: 700;
   font-size: 0.925rem;
   padding: 0.85rem 1.25rem;
-  border-radius: 0.85rem;
+  border-radius: 9999px;
   width: 100%;
   border: 1px solid transparent;
   border-top-color: rgba(255, 255, 255, 0.35);
@@ -656,7 +656,7 @@
   font-weight: 700;
   font-size: 0.925rem;
   padding: 0.85rem 1.25rem;
-  border-radius: 0.85rem;
+  border-radius: 9999px;
   width: 100%;
   border: 1px solid transparent;
   border-top-color: rgba(255, 255, 255, 0.35);
@@ -711,7 +711,7 @@
   font-weight: 700;
   font-size: 0.925rem;
   padding: 0.85rem 1.25rem;
-  border-radius: 0.85rem;
+  border-radius: 9999px;
   width: 100%;
   border: 1px solid transparent;
   border-top-color: rgba(255, 255, 255, 0.35);
@@ -767,7 +767,7 @@
   font-size: 0.925rem;
   line-height: 1.3;
   padding: 0.75rem 1.25rem;
-  border-radius: 0.85rem;
+  border-radius: 9999px;
   width: 100%;
   max-width: 100%;
   border: 1px solid transparent;
@@ -847,7 +847,7 @@
   border-bottom: 3px solid #c2410c;
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(234, 88, 12, 0.25);
   cursor: pointer;
-  border-radius: 0.75rem;
+  border-radius: 9999px;
   padding: 0 1.5rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -910,7 +910,7 @@
   background: #ffffff;
   box-shadow: 0 1px 3px rgba(255, 107, 18, 0.08);
   cursor: pointer;
-  border-radius: 0.85rem;
+  border-radius: 9999px;
   padding: 0.65rem 1.35rem;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   color: #FF6B12;
@@ -967,7 +967,7 @@
   border-bottom: 3px solid #5b21b6;
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(124, 58, 237, 0.25);
   cursor: pointer;
-  border-radius: 0.75rem;
+  border-radius: 9999px;
   padding: 0 1.5rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -1030,7 +1030,7 @@
   background: #ffffff;
   box-shadow: 0 1px 3px rgba(255, 107, 18, 0.08);
   cursor: pointer;
-  border-radius: 0.85rem;
+  border-radius: 9999px;
   padding: 0.65rem 1.35rem;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   color: #FF6B12;
@@ -1079,27 +1079,25 @@
 
 /* Dedicated Restaurant POS Landing CTA Buttons */
 .pos-primary-btn-emerald {
-  height: 48px;
-  min-height: 48px;
-  background: linear-gradient(135deg, #059669 0%, #047857 50%, #065f46 100%);
-  border: 1px solid transparent;
-  border-top-color: rgba(255, 255, 255, 0.4);
-  border-bottom: 3px solid #064e3b;
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(5, 150, 105, 0.25);
-  cursor: pointer;
-  border-radius: 0.75rem;
-  padding: 0 1.5rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  color: #ffffff;
-  font-weight: 700;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  font-size: 0.95rem;
+  background: linear-gradient(135deg, #009c6c 0%, #007a55 50%, #005f42 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.925rem;
   line-height: 1.3;
+  box-sizing: border-box;
+  padding: 0.65rem 1.15rem;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  border-top-color: rgba(255, 255, 255, 0.35);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 8px 20px -4px rgba(0, 122, 85, 0.45);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
   max-width: 100%;
   text-align: center;
   white-space: normal;
@@ -1120,10 +1118,9 @@
 }
 
 .pos-primary-btn-emerald:hover {
-  background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
+  background: linear-gradient(135deg, #00b07a 0%, #008960 50%, #006e4d 100%);
   transform: translateY(-2px) scale(1.02);
-  border-bottom-width: 2px;
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 10px 24px -4px rgba(5, 150, 105, 0.5);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 12px 28px -4px rgba(0, 122, 85, 0.55);
 }
 
 .pos-primary-btn-emerald:hover::after {
@@ -1131,7 +1128,6 @@
 }
 
 .pos-primary-btn-emerald:active {
-  border-bottom-width: 0px;
   transform: translateY(0) scale(0.98);
 }
 
@@ -1150,7 +1146,7 @@
   background: #ffffff;
   box-shadow: 0 1px 3px rgba(255, 107, 18, 0.08);
   cursor: pointer;
-  border-radius: 0.85rem;
+  border-radius: 9999px;
   padding: 0.65rem 1.35rem;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   color: #FF6B12;
@@ -1207,7 +1203,7 @@
   border-bottom: 3px solid #1e3a8a;
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(37, 99, 235, 0.25);
   cursor: pointer;
-  border-radius: 0.75rem;
+  border-radius: 9999px;
   padding: 0 1.5rem;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -1270,7 +1266,7 @@
   background: #ffffff;
   box-shadow: 0 1px 3px rgba(255, 107, 18, 0.08);
   cursor: pointer;
-  border-radius: 0.85rem;
+  border-radius: 9999px;
   padding: 0.65rem 1.35rem;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   color: #FF6B12;
@@ -2468,7 +2464,7 @@
   color: #fff;
   background: #f97316;
   border: none;
-  border-radius: 12px;
+  border-radius: 9999px;
   justify-content: center;
   align-items: center;
   gap: 10px;
