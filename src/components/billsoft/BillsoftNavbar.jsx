@@ -84,7 +84,7 @@ export default function BillsoftNavbar({ onOpenDemoModal, onOpenBrochureModal })
             <button
               type="button"
               onClick={onOpenBrochureModal}
-              className="billsoft-secondary-btn-white text-xs h-10 px-4"
+              className="billsoft-secondary-btn-white text-xs py-2 px-4"
             >
               <FileText size={15} className="text-[#FF6B12]" />
               <span>Brochure</span>
@@ -92,7 +92,7 @@ export default function BillsoftNavbar({ onOpenDemoModal, onOpenBrochureModal })
             <button
               type="button"
               onClick={onOpenDemoModal}
-              className="billsoft-primary-btn-blue text-xs h-10 px-4"
+              className="billsoft-primary-btn-blue text-xs py-2 px-4"
             >
               <span>Book Demo</span>
             </button>
@@ -103,7 +103,7 @@ export default function BillsoftNavbar({ onOpenDemoModal, onOpenBrochureModal })
             <button
               type="button"
               onClick={onOpenDemoModal}
-              className="billsoft-primary-btn-blue text-xs h-9 px-3"
+              className="billsoft-primary-btn-blue text-xs py-1.5 px-3"
             >
               <span>Demo</span>
             </button>

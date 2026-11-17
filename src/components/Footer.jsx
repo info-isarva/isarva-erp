@@ -291,7 +291,7 @@ export default function Footer({
                   <button
                     type="button"
                     onClick={() => onOpenModal ? onOpenModal('demo') : null}
-                    className="btn-brand-primary w-full h-11 sm:h-12 px-4 sm:px-6 text-xs sm:text-sm font-bold"
+                    className="btn-brand-primary w-full px-4 sm:px-6 text-xs sm:text-sm font-bold"
                   >
                     <span>Book a Free Demo</span>
                     <ArrowRight size={15} className="shrink-0" />
@@ -300,7 +300,7 @@ export default function Footer({
                   {/* Secondary Action Link */}
                   <Link
                     href="/contact"
-                    className="btn-brand-secondary w-full h-11 sm:h-12 px-4 sm:px-6 text-xs sm:text-sm font-semibold"
+                    className="btn-brand-secondary w-full px-4 sm:px-6 text-xs sm:text-sm font-semibold"
                   >
                     <span>Talk to Our Team</span>
                   </Link>

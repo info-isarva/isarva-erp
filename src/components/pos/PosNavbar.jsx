@@ -83,8 +83,7 @@ export default function PosNavbar({ onOpenDemoModal, onOpenBrochureModal }) {
             <button
               type="button"
               onClick={onOpenBrochureModal}
-              className="pos-secondary-btn-white"
-              style={{ height: '42px', minHeight: '42px', padding: '0 16px', fontSize: '0.875rem' }}
+              className="pos-secondary-btn-white py-2 px-4 text-xs sm:text-sm"
             >
               <FileText size={16} className="text-[#FF6B12]" />
               <span>Brochure</span>
@@ -92,8 +91,7 @@ export default function PosNavbar({ onOpenDemoModal, onOpenBrochureModal }) {
             <button
               type="button"
               onClick={onOpenDemoModal}
-              className="btn-brand-primary"
-              style={{ height: '42px', minHeight: '42px', padding: '0 20px', fontSize: '0.875rem' }}
+              className="btn-brand-primary py-2 px-4 text-xs sm:text-sm"
             >
               <span>Book Demo</span>
               <ArrowRight size={15} />

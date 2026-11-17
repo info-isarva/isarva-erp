@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { ShieldCheck, RefreshCw, Headphones, ZoomIn } from 'lucide-react';
+import { ShieldCheck, RefreshCw, Headphones, ZoomIn, ArrowRight, FileText } from 'lucide-react';
 
 export default function CrmHero({ onOpenDemoModal, onOpenBrochureModal, onOpenLightbox }) {
   return (
@@ -117,18 +117,14 @@ export default function CrmHero({ onOpenDemoModal, onOpenBrochureModal, onOpenLi
                 className="crm-primary-btn-orange w-full sm:w-auto hover:-translate-y-0.5 transition-all duration-200"
               >
                 <span>Book a Free Demo</span>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 9" className="h-2.5 w-4 shrink-0">
-                  <path fill="currentColor" fillRule="evenodd" d="m12.495 0 4.495 4.495-4.495 4.495-.99-.99 2.805-2.805H0v-1.4h14.31L11.505.99z" clipRule="evenodd" />
-                </svg>
+                <ArrowRight size={17} className="shrink-0" />
               </button>
               <button
                 type="button"
                 onClick={onOpenBrochureModal}
                 className="crm-secondary-btn-white w-full sm:w-auto hover:-translate-y-0.5 transition-all duration-200"
               >
-                <svg className="w-5 h-5 text-[#FF6B12] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
+                <FileText size={17} className="text-[#FF6B12] shrink-0" />
                 <span>Download Brochure</span>
               </button>
             </div>

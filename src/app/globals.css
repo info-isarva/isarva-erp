@@ -362,11 +362,13 @@
   color: #ffffff;
   font-weight: 700;
   font-size: 0.925rem;
-  line-height: 1.3;
+  line-height: 1.35;
   box-sizing: border-box;
-  padding: 0.65rem 1.15rem;
+  height: auto;
+  min-height: auto;
+  padding: 0.65rem 1.35rem;
   border-radius: 9999px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-top-color: rgba(255, 255, 255, 0.35);
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 8px 20px -4px rgba(0, 122, 85, 0.45);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -380,7 +382,7 @@
 
 @media (min-width: 640px) {
   .btn-brand-primary {
-    padding: 0.685rem 1.4rem;
+    padding: 0.685rem 1.5rem;
   }
 }
 
@@ -413,6 +415,9 @@
 
 /* Trailing arrow icon nudge on hover */
 .btn-brand-primary svg {
+  max-height: 1.25rem;
+  max-width: 1.25rem;
+  flex-shrink: 0;
   transition: transform 0.2s ease;
 }
 
@@ -421,6 +426,7 @@
 }
 
 .btn-brand-secondary {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -428,9 +434,11 @@
   background-color: #ffffff;
   color: #FF6B12;
   font-weight: 700;
-  font-size: 0.95rem;
-  line-height: 1.3;
+  font-size: 0.925rem;
+  line-height: 1.35;
   box-sizing: border-box;
+  height: auto;
+  min-height: auto;
   padding: 0.65rem 1.35rem;
   border-radius: 9999px;
   border: 2px solid #FF6B12;
@@ -490,12 +498,14 @@
   gap: 0.5rem;
   background-color: #ffffff;
   color: #007a55;
-  border: 1px solid #007a55;
+  border: 2px solid #007a55;
   font-weight: 700;
   font-size: 0.925rem;
-  line-height: 1.3;
+  line-height: 1.35;
   box-sizing: border-box;
-  padding: 0.65rem 1.15rem;
+  height: auto;
+  min-height: auto;
+  padding: 0.65rem 1.35rem;
   border-radius: 9999px;
   box-shadow: 0 1px 3px rgba(0, 122, 85, 0.08);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -509,7 +519,7 @@
 
 @media (min-width: 640px) {
   .btn-brand-outline {
-    padding: 0.685rem 1.4rem;
+    padding: 0.685rem 1.5rem;
   }
 }
 
@@ -839,32 +849,38 @@
 
 /* Dedicated CRM Landing CTA Buttons */
 .crm-primary-btn-orange {
-  height: 48px;
-  min-height: 48px;
-  background: linear-gradient(135deg, #fb923c 0%, #f97316 50%, #ea580c 100%);
-  border: 1px solid transparent;
-  border-top-color: rgba(255, 255, 255, 0.4);
-  border-bottom: 3px solid #c2410c;
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(234, 88, 12, 0.25);
-  cursor: pointer;
-  border-radius: 9999px;
-  padding: 0 1.5rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  color: #ffffff;
-  font-weight: 700;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  font-size: 0.95rem;
-  line-height: 1.3;
+  background: linear-gradient(135deg, #fb923c 0%, #f97316 50%, #ea580c 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.925rem;
+  line-height: 1.35;
+  box-sizing: border-box;
+  height: auto;
+  min-height: auto;
+  padding: 0.65rem 1.35rem;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  border-top-color: rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(234, 88, 12, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
   max-width: 100%;
   text-align: center;
   white-space: normal;
   word-break: normal;
   overflow-wrap: break-word;
+}
+
+@media (min-width: 640px) {
+  .crm-primary-btn-orange {
+    padding: 0.685rem 1.5rem;
+  }
 }
 
 .crm-primary-btn-orange::after {
@@ -882,7 +898,6 @@
 .crm-primary-btn-orange:hover {
   background: linear-gradient(135deg, #fdba74 0%, #fb923c 50%, #ea580c 100%);
   transform: translateY(-2px) scale(1.02);
-  border-bottom-width: 2px;
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 10px 24px -4px rgba(234, 88, 12, 0.5);
 }
 
@@ -891,11 +906,13 @@
 }
 
 .crm-primary-btn-orange:active {
-  border-bottom-width: 0px;
   transform: translateY(0) scale(0.98);
 }
 
 .crm-primary-btn-orange svg {
+  max-height: 1.25rem;
+  max-width: 1.25rem;
+  flex-shrink: 0;
   transition: transform 0.2s ease;
 }
 
@@ -904,28 +921,36 @@
 }
 
 .crm-secondary-btn-white {
-  min-height: 48px;
-  height: auto;
-  border: 2px solid #FF6B12;
-  background: #ffffff;
-  box-shadow: 0 1px 3px rgba(255, 107, 18, 0.08);
-  cursor: pointer;
-  border-radius: 9999px;
-  padding: 0.65rem 1.35rem;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  color: #FF6B12;
-  font-weight: 700;
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  font-size: 0.95rem;
-  line-height: 1.3;
+  background: #ffffff;
+  color: #FF6B12;
+  font-weight: 700;
+  font-size: 0.925rem;
+  line-height: 1.35;
+  box-sizing: border-box;
+  height: auto;
+  min-height: auto;
+  padding: 0.65rem 1.35rem;
+  border-radius: 9999px;
+  border: 2px solid #FF6B12;
+  box-shadow: 0 1px 3px rgba(255, 107, 18, 0.08);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
   max-width: 100%;
   text-align: center;
   white-space: normal;
   word-break: normal;
   overflow-wrap: break-word;
+}
+
+@media (min-width: 640px) {
+  .crm-secondary-btn-white {
+    padding: 0.685rem 1.5rem;
+  }
 }
 
 .crm-secondary-btn-white:hover {
@@ -941,6 +966,9 @@
 }
 
 .crm-secondary-btn-white svg {
+  max-height: 1.25rem;
+  max-width: 1.25rem;
+  flex-shrink: 0;
   color: #FF6B12;
   transition: transform 0.2s ease, color 0.2s ease;
 }
@@ -959,32 +987,38 @@
 
 /* Dedicated HRMS & Payroll Landing CTA Buttons */
 .hrms-primary-btn-purple {
-  height: 48px;
-  min-height: 48px;
-  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 50%, #6d28d9 100%);
-  border: 1px solid transparent;
-  border-top-color: rgba(255, 255, 255, 0.4);
-  border-bottom: 3px solid #5b21b6;
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(124, 58, 237, 0.25);
-  cursor: pointer;
-  border-radius: 9999px;
-  padding: 0 1.5rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  color: #ffffff;
-  font-weight: 700;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  font-size: 0.95rem;
-  line-height: 1.3;
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 50%, #6d28d9 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.925rem;
+  line-height: 1.35;
+  box-sizing: border-box;
+  height: auto;
+  min-height: auto;
+  padding: 0.65rem 1.35rem;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  border-top-color: rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(124, 58, 237, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
   max-width: 100%;
   text-align: center;
   white-space: normal;
   word-break: normal;
   overflow-wrap: break-word;
+}
+
+@media (min-width: 640px) {
+  .hrms-primary-btn-purple {
+    padding: 0.685rem 1.5rem;
+  }
 }
 
 .hrms-primary-btn-purple::after {
@@ -1002,7 +1036,6 @@
 .hrms-primary-btn-purple:hover {
   background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 50%, #7c3aed 100%);
   transform: translateY(-2px) scale(1.02);
-  border-bottom-width: 2px;
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 10px 24px -4px rgba(124, 58, 237, 0.5);
 }
 
@@ -1011,11 +1044,13 @@
 }
 
 .hrms-primary-btn-purple:active {
-  border-bottom-width: 0px;
   transform: translateY(0) scale(0.98);
 }
 
 .hrms-primary-btn-purple svg {
+  max-height: 1.25rem;
+  max-width: 1.25rem;
+  flex-shrink: 0;
   transition: transform 0.2s ease;
 }
 
@@ -1024,28 +1059,36 @@
 }
 
 .hrms-secondary-btn-white {
-  min-height: 48px;
-  height: auto;
-  border: 2px solid #FF6B12;
-  background: #ffffff;
-  box-shadow: 0 1px 3px rgba(255, 107, 18, 0.08);
-  cursor: pointer;
-  border-radius: 9999px;
-  padding: 0.65rem 1.35rem;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  color: #FF6B12;
-  font-weight: 700;
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  font-size: 0.95rem;
-  line-height: 1.3;
+  background: #ffffff;
+  color: #FF6B12;
+  font-weight: 700;
+  font-size: 0.925rem;
+  line-height: 1.35;
+  box-sizing: border-box;
+  height: auto;
+  min-height: auto;
+  padding: 0.65rem 1.35rem;
+  border-radius: 9999px;
+  border: 2px solid #FF6B12;
+  box-shadow: 0 1px 3px rgba(255, 107, 18, 0.08);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
   max-width: 100%;
   text-align: center;
   white-space: normal;
   word-break: normal;
   overflow-wrap: break-word;
+}
+
+@media (min-width: 640px) {
+  .hrms-secondary-btn-white {
+    padding: 0.685rem 1.5rem;
+  }
 }
 
 .hrms-secondary-btn-white:hover {
@@ -1061,6 +1104,9 @@
 }
 
 .hrms-secondary-btn-white svg {
+  max-height: 1.25rem;
+  max-width: 1.25rem;
+  flex-shrink: 0;
   color: #FF6B12;
   transition: transform 0.2s ease, color 0.2s ease;
 }
@@ -1089,11 +1135,13 @@
   color: #ffffff;
   font-weight: 700;
   font-size: 0.925rem;
-  line-height: 1.3;
+  line-height: 1.35;
   box-sizing: border-box;
-  padding: 0.65rem 1.15rem;
+  height: auto;
+  min-height: auto;
+  padding: 0.65rem 1.35rem;
   border-radius: 9999px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-top-color: rgba(255, 255, 255, 0.35);
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 8px 20px -4px rgba(0, 122, 85, 0.45);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1103,6 +1151,12 @@
   white-space: normal;
   word-break: normal;
   overflow-wrap: break-word;
+}
+
+@media (min-width: 640px) {
+  .pos-primary-btn-emerald {
+    padding: 0.685rem 1.5rem;
+  }
 }
 
 .pos-primary-btn-emerald::after {
@@ -1132,6 +1186,9 @@
 }
 
 .pos-primary-btn-emerald svg {
+  max-height: 1.25rem;
+  max-width: 1.25rem;
+  flex-shrink: 0;
   transition: transform 0.2s ease;
 }
 
@@ -1140,28 +1197,36 @@
 }
 
 .pos-secondary-btn-white {
-  min-height: 48px;
-  height: auto;
-  border: 2px solid #FF6B12;
-  background: #ffffff;
-  box-shadow: 0 1px 3px rgba(255, 107, 18, 0.08);
-  cursor: pointer;
-  border-radius: 9999px;
-  padding: 0.65rem 1.35rem;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  color: #FF6B12;
-  font-weight: 700;
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  font-size: 0.95rem;
-  line-height: 1.3;
+  background: #ffffff;
+  color: #FF6B12;
+  font-weight: 700;
+  font-size: 0.925rem;
+  line-height: 1.35;
+  box-sizing: border-box;
+  height: auto;
+  min-height: auto;
+  padding: 0.65rem 1.35rem;
+  border-radius: 9999px;
+  border: 2px solid #FF6B12;
+  box-shadow: 0 1px 3px rgba(255, 107, 18, 0.08);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
   max-width: 100%;
   text-align: center;
   white-space: normal;
   word-break: normal;
   overflow-wrap: break-word;
+}
+
+@media (min-width: 640px) {
+  .pos-secondary-btn-white {
+    padding: 0.685rem 1.5rem;
+  }
 }
 
 .pos-secondary-btn-white:hover {
@@ -1177,6 +1242,9 @@
 }
 
 .pos-secondary-btn-white svg {
+  max-height: 1.25rem;
+  max-width: 1.25rem;
+  flex-shrink: 0;
   color: #FF6B12;
   transition: transform 0.2s ease, color 0.2s ease;
 }
@@ -1195,32 +1263,38 @@
 
 /* Dedicated BillSoft Accounting Landing CTA Buttons */
 .billsoft-primary-btn-blue {
-  height: 48px;
-  min-height: 48px;
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
-  border: 1px solid transparent;
-  border-top-color: rgba(255, 255, 255, 0.4);
-  border-bottom: 3px solid #1e3a8a;
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(37, 99, 235, 0.25);
-  cursor: pointer;
-  border-radius: 9999px;
-  padding: 0 1.5rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  color: #ffffff;
-  font-weight: 700;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  font-size: 0.95rem;
-  line-height: 1.3;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.925rem;
+  line-height: 1.35;
+  box-sizing: border-box;
+  height: auto;
+  min-height: auto;
+  padding: 0.65rem 1.35rem;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  border-top-color: rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 4px 14px rgba(37, 99, 235, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
   max-width: 100%;
   text-align: center;
   white-space: normal;
   word-break: normal;
   overflow-wrap: break-word;
+}
+
+@media (min-width: 640px) {
+  .billsoft-primary-btn-blue {
+    padding: 0.685rem 1.5rem;
+  }
 }
 
 .billsoft-primary-btn-blue::after {
@@ -1238,7 +1312,6 @@
 .billsoft-primary-btn-blue:hover {
   background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%);
   transform: translateY(-2px) scale(1.02);
-  border-bottom-width: 2px;
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 10px 24px -4px rgba(37, 99, 235, 0.5);
 }
 
@@ -1247,11 +1320,13 @@
 }
 
 .billsoft-primary-btn-blue:active {
-  border-bottom-width: 0px;
   transform: translateY(0) scale(0.98);
 }
 
 .billsoft-primary-btn-blue svg {
+  max-height: 1.25rem;
+  max-width: 1.25rem;
+  flex-shrink: 0;
   transition: transform 0.2s ease;
 }
 
@@ -1260,28 +1335,36 @@
 }
 
 .billsoft-secondary-btn-white {
-  min-height: 48px;
-  height: auto;
-  border: 2px solid #FF6B12;
-  background: #ffffff;
-  box-shadow: 0 1px 3px rgba(255, 107, 18, 0.08);
-  cursor: pointer;
-  border-radius: 9999px;
-  padding: 0.65rem 1.35rem;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  color: #FF6B12;
-  font-weight: 700;
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  font-size: 0.95rem;
-  line-height: 1.3;
+  background: #ffffff;
+  color: #FF6B12;
+  font-weight: 700;
+  font-size: 0.925rem;
+  line-height: 1.35;
+  box-sizing: border-box;
+  height: auto;
+  min-height: auto;
+  padding: 0.65rem 1.35rem;
+  border-radius: 9999px;
+  border: 2px solid #FF6B12;
+  box-shadow: 0 1px 3px rgba(255, 107, 18, 0.08);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
   max-width: 100%;
   text-align: center;
   white-space: normal;
   word-break: normal;
   overflow-wrap: break-word;
+}
+
+@media (min-width: 640px) {
+  .billsoft-secondary-btn-white {
+    padding: 0.685rem 1.5rem;
+  }
 }
 
 .billsoft-secondary-btn-white:hover {
@@ -1297,6 +1380,9 @@
 }
 
 .billsoft-secondary-btn-white svg {
+  max-height: 1.25rem;
+  max-width: 1.25rem;
+  flex-shrink: 0;
   color: #FF6B12;
   transition: transform 0.2s ease, color 0.2s ease;
 }
@@ -1337,8 +1423,8 @@
   .crm-secondary-btn-white {
     white-space: normal;
     height: auto;
-    min-height: 48px;
-    padding: 0.65rem 1rem;
+    min-height: auto;
+    padding: 0.65rem 1.15rem;
     line-height: 1.35;
     text-align: center;
   }

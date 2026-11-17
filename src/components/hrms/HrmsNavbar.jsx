@@ -82,8 +82,7 @@ export default function HrmsNavbar({ onOpenDemoModal, onOpenBrochureModal }) {
             <button
               type="button"
               onClick={onOpenBrochureModal}
-              className="hrms-secondary-btn-white"
-              style={{ height: '42px', minHeight: '42px', padding: '0 16px', fontSize: '0.875rem' }}
+              className="hrms-secondary-btn-white py-2 px-4 text-xs sm:text-sm"
             >
               <FileText size={16} className="text-[#FF6B12]" />
               <span>Brochure</span>
@@ -91,8 +90,7 @@ export default function HrmsNavbar({ onOpenDemoModal, onOpenBrochureModal }) {
             <button
               type="button"
               onClick={onOpenDemoModal}
-              className="hrms-primary-btn-purple"
-              style={{ height: '42px', minHeight: '42px', padding: '0 20px', fontSize: '0.875rem' }}
+              className="hrms-primary-btn-purple py-2 px-4 text-xs sm:text-sm"
             >
               <span>Book Demo</span>
               <ArrowRight size={15} />

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { ShieldCheck, Zap, Building2, ZoomIn, FileText, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, Zap, Building2, ZoomIn, FileText, CheckCircle2, ArrowRight } from 'lucide-react';
 
 export default function BillsoftHero({ onOpenDemoModal, onOpenBrochureModal, onOpenLightbox }) {
   return (
@@ -77,18 +77,14 @@ export default function BillsoftHero({ onOpenDemoModal, onOpenBrochureModal, onO
                 className="billsoft-primary-btn-blue w-full sm:w-auto"
               >
                 <span>Request Live Demo</span>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 9" className="h-2.5 w-4 shrink-0">
-                  <path fill="currentColor" fillRule="evenodd" d="m12.495 0 4.495 4.495-4.495 4.495-.99-.99 2.805-2.805H0v-1.4h14.31L11.505.99z" clipRule="evenodd" />
-                </svg>
+                <ArrowRight size={17} className="shrink-0" />
               </button>
               <button
                 type="button"
                 onClick={onOpenBrochureModal}
                 className="billsoft-secondary-btn-white w-full sm:w-auto"
               >
-                <svg className="w-5 h-5 text-[#FF6B12] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
+                <FileText size={17} className="text-[#FF6B12] shrink-0" />
                 <span>Download Brochure</span>
               </button>
             </div>
