@@ -114,7 +114,7 @@ export default function CrmHero({ onOpenDemoModal, onOpenBrochureModal, onOpenLi
               <button
                 type="button"
                 onClick={onOpenDemoModal}
-                className="crm-primary-btn-orange w-full sm:w-auto hover:-translate-y-0.5 transition-all duration-200"
+                className="btn-brand-primary w-full sm:w-auto hover:-translate-y-0.5 transition-all duration-200"
               >
                 <span>Book a Free Demo</span>
                 <ArrowRight size={17} className="shrink-0" />

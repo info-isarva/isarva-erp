@@ -31,15 +31,14 @@ export default function HrmsNavbar({ onOpenDemoModal, onOpenBrochureModal }) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${isScrolled
           ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200/80 py-3'
           : 'bg-white/80 backdrop-blur-sm border-b border-slate-200/50 py-4'
-      }`}
+        }`}
     >
       <div className="site-container">
         <div className="flex items-center justify-between gap-4">
-          
+
           {/* Logo & Platform Backlink */}
           <div className="flex items-center gap-4 lg:gap-6">
             <Link href="/" className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-brand-500 transition-colors group">
